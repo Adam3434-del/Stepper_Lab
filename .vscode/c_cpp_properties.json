@@ -24,7 +24,11 @@
                 "-mabi=ilp32",
                 "-mcmodel=medlow",
                 ""
-            ]
+            ],
+            "defines": [
+                    "USE_STDPERIPH_DRIVER", //Idk why this works //todo//
+                    "HXTAL_VALUE=8000000U"
+                ]
         }
     ],
     "version": 4

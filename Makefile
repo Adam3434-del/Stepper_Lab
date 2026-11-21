@@ -39,6 +39,8 @@ $(wildcard $(FIRMWARE_DIR)/RISCV/drivers/*.c) \
 $(FIRMWARE_DIR)/RISCV/env_Eclipse/handlers.c \
 $(FIRMWARE_DIR)/RISCV/env_Eclipse/init.c \
 $(wildcard lib/*/src/*.c) \
+$(wildcard bsp_motor/*.c) \
+$(wildcard bsp_sensor/*.c) \
 $(wildcard src/*.c) \
 $(wildcard ./*.c) 
 # ASM sources
@@ -102,6 +104,8 @@ C_INCLUDES =  \
 -I$(FIRMWARE_DIR)/RISCV/drivers \
 -I$(FIRMWARE_DIR)/RISCV/stubs/ \
 -Iinclude \
+-Ibsp_motor \
+-Ibsp_sensor \
 $(patsubst %, -I% , $(LIB_DIRS))
 
 # Don't link debugger files unless they are needed (keeps code size down since IRQs get linked even of they aren't used)
