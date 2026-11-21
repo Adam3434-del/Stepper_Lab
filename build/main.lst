@@ -1,0 +1,105 @@
+GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s 			page 1
+
+
+   1              		.file	"main.c"
+   2              		.option nopic
+   3              		.attribute arch, "rv32i2p0_m2p0_a2p0_c2p0"
+   4              		.attribute unaligned_access, 0
+   5              		.attribute stack_align, 16
+   6              		.text
+   7              	.Ltext0:
+   8              		.cfi_sections	.debug_frame
+   9              		.section	.text.startup.main,"ax",@progbits
+  10              		.align	1
+  11              		.globl	main
+  13              	main:
+  14              	.LFB2:
+  15              		.file 1 "main.c"
+   1:main.c        **** #include "stepperUP.h"
+   2:main.c        **** int main(void) {
+  16              		.loc 1 2 16
+  17              		.cfi_startproc
+   3:main.c        **** 
+   4:main.c        ****     stepperUP_init();
+  18              		.loc 1 4 5
+   2:main.c        ****     
+  19              		.loc 1 2 16 is_stmt 0
+  20 0000 4111     		addi	sp,sp,-16
+  21              	.LCFI0:
+  22              		.cfi_def_cfa_offset 16
+  23 0002 06C6     		sw	ra,12(sp)
+  24              		.cfi_offset 1, -4
+  25              		.loc 1 4 5
+  26 0004 97000000 		call	stepperUP_init
+  26      E7800000 
+  27              	.LVL0:
+  28              	.L2:
+   5:main.c        ****     
+   6:main.c        ****     while(1){
+  29              		.loc 1 6 5 is_stmt 1 discriminator 1
+   7:main.c        ****         stepperUP_step();
+  30              		.loc 1 7 9 discriminator 1
+  31 000c 97000000 		call	stepperUP_step
+  31      E7800000 
+  32              	.LVL1:
+  33 0014 E5BF     		j	.L2
+  34              		.cfi_endproc
+  35              	.LFE2:
+  37              		.text
+  38              	.Letext0:
+  39              		.file 2 "c:\\users\\dellboy\\desktop\\toolchain-gd32v-v202-win\\compiler\\riscv64-unknown-elf\\inc
+  40              		.file 3 "c:\\users\\dellboy\\desktop\\toolchain-gd32v-v202-win\\compiler\\riscv64-unknown-elf\\inc
+  41              		.file 4 "stepperUP.h"
+  42              		.file 5 "./../../firmware/GD32VF103_standard_peripheral/system_gd32vf103.h"
+GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s 			page 2
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 main.c
+C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:13     .text.startup.main:0000000000000000 main
+C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:17     .text.startup.main:0000000000000000 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:18     .text.startup.main:0000000000000000 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:19     .text.startup.main:0000000000000000 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:20     .text.startup.main:0000000000000000 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:22     .text.startup.main:0000000000000002 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:24     .text.startup.main:0000000000000004 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:26     .text.startup.main:0000000000000004 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:30     .text.startup.main:000000000000000c .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:31     .text.startup.main:000000000000000c .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:34     .text.startup.main:0000000000000016 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:37     .text.startup.main:0000000000000016 .L0 
+                     .debug_frame:0000000000000000 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:28     .text.startup.main:000000000000000c .L2
+C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:160    .debug_abbrev:0000000000000000 .Ldebug_abbrev0
+C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:358    .debug_str:00000000000000e5 .LASF14
+C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:336    .debug_str:000000000000001c .LASF15
+C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:340    .debug_str:000000000000002e .LASF16
+C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:324    .debug_ranges:0000000000000000 .Ldebug_ranges0
+C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:330    .debug_line:0000000000000000 .Ldebug_line0
+C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:334    .debug_str:000000000000000f .LASF0
+C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:362    .debug_str:0000000000000180 .LASF1
+C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:344    .debug_str:000000000000008a .LASF2
+C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:368    .debug_str:00000000000001a1 .LASF3
+C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:360    .debug_str:000000000000016d .LASF4
+C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:364    .debug_str:000000000000018c .LASF5
+C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:338    .debug_str:0000000000000023 .LASF9
+C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:354    .debug_str:00000000000000c5 .LASF6
+C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:356    .debug_str:00000000000000d7 .LASF7
+C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:342    .debug_str:0000000000000073 .LASF8
+C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:350    .debug_str:00000000000000ac .LASF10
+C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:352    .debug_str:00000000000000b5 .LASF17
+C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:366    .debug_str:0000000000000195 .LASF11
+C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:346    .debug_str:0000000000000098 .LASF18
+C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:14     .text.startup.main:0000000000000000 .LFB2
+C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:35     .text.startup.main:0000000000000016 .LFE2
+C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:298    .debug_loc:0000000000000000 .LLST0
+C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:27     .text.startup.main:000000000000000c .LVL0
+C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:32     .text.startup.main:0000000000000014 .LVL1
+C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:348    .debug_str:000000000000009d .LASF12
+C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:332    .debug_str:0000000000000000 .LASF13
+C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:21     .text.startup.main:0000000000000002 .LCFI0
+C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:44     .debug_info:0000000000000000 .Ldebug_info0
+
+UNDEFINED SYMBOLS
+stepperUP_init
+stepperUP_step

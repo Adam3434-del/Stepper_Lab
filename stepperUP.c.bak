@@ -1,0 +1,76 @@
+#include "stepperUP.h"
+#include "lcd.h"
+
+void stepperUP_init(void){
+    
+    rcu_periph_clock_enable(RCU_GPIOA);
+    rcu_periph_clock_enable(RCU_GPIOB);
+    gpio_init(GPIOA, GPIO_MODE_OUT_PP, GPIO_OSPEED_2MHZ, GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_2 | GPIO_PIN_3);
+    gpio_init(GPIOA, GPIO_MODE_IPD, GPIO_OSPEED_2MHZ, GPIO_PIN_5 | GPIO_PIN_6 );
+    gpio_init(GPIOB, GPIO_MODE_OUT_PP, GPIO_OSPEED_2MHZ, GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_2);
+    
+}
+void stepperUP_step(void){
+    static uint8_t phase = 0;
+    static uint8_t input = -1;
+    static uint8_t left = 0;
+    static uint8_t right = 0;   
+
+
+
+    left = gpio_input_bit_get(GPIOA, GPIO_PIN_5);
+    right = gpio_input_bit_get(GPIOA, GPIO_PIN_6);
+    
+    
+   
+     if(right ==1){  //one light is on, the other is off, so we can determine the direction of rotation
+        input =-1;
+        gpio_bit_reset(GPIOB,
+        GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_2);
+        gpio_bit_set(GPIOB, GPIO_PIN_0); 
+        gpio_bit_reset(GPIOB, GPIO_PIN_1);
+        gpio_bit_reset(GPIOB, GPIO_PIN_2);
+    
+         
+       
+    } else if(left == 1){ // two lights are on, so we can determine the direction of rotation
+        input = 1;
+        gpio_bit_reset(GPIOB,
+        GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_2);
+         gpio_bit_reset(GPIOB, GPIO_PIN_0);
+        gpio_bit_set(GPIOB, GPIO_PIN_1);
+        gpio_bit_set(GPIOB, GPIO_PIN_2);
+   
+          
+      
+    }
+    
+   
+  
+    
+     
+
+
+    gpio_bit_reset(GPIOA,
+        GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_2 | GPIO_PIN_3);
+    
+
+    switch (phase) {
+    case 0:
+        gpio_bit_set(GPIOA, GPIO_PIN_0);
+        break;
+    case 1:
+        gpio_bit_set(GPIOA, GPIO_PIN_1);
+        break;
+    case 2:
+        gpio_bit_set(GPIOA, GPIO_PIN_2);
+        break;
+    case 3:
+        gpio_bit_set(GPIOA, GPIO_PIN_3);
+        break;
+    }
+    if(input==1){ phase = (phase + 1) % 4;}
+    else{ phase = (phase +3) % 4;}
+   
+    lcd_delay_1ms(10);
+}
