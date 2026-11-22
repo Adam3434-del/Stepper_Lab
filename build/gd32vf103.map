@@ -121,10 +121,20 @@ Discarded input sections
  .text          0x0000000000000000        0x0 build/gd32vf103_adc.o
  .data          0x0000000000000000        0x0 build/gd32vf103_adc.o
  .bss           0x0000000000000000        0x0 build/gd32vf103_adc.o
+ .text.adc_deinit
+                0x0000000000000000       0x50 build/gd32vf103_adc.o
+ .text.adc_mode_config
+                0x0000000000000000       0x20 build/gd32vf103_adc.o
  .text.adc_special_function_config
                 0x0000000000000000       0x48 build/gd32vf103_adc.o
+ .text.adc_data_alignment_config
+                0x0000000000000000       0x1a build/gd32vf103_adc.o
+ .text.adc_enable
+                0x0000000000000000       0x10 build/gd32vf103_adc.o
  .text.adc_disable
                 0x0000000000000000        0x8 build/gd32vf103_adc.o
+ .text.adc_calibration_enable
+                0x0000000000000000       0x22 build/gd32vf103_adc.o
  .text.adc_tempsensor_vrefint_enable
                 0x0000000000000000       0x14 build/gd32vf103_adc.o
  .text.adc_tempsensor_vrefint_disable
@@ -135,10 +145,22 @@ Discarded input sections
                 0x0000000000000000        0xa build/gd32vf103_adc.o
  .text.adc_discontinuous_mode_config
                 0x0000000000000000       0x46 build/gd32vf103_adc.o
+ .text.adc_channel_length_config
+                0x0000000000000000       0x4a build/gd32vf103_adc.o
+ .text.adc_regular_channel_config
+                0x0000000000000000       0xbe build/gd32vf103_adc.o
  .text.adc_inserted_channel_config
                 0x0000000000000000       0x76 build/gd32vf103_adc.o
  .text.adc_inserted_channel_offset_config
                 0x0000000000000000       0x1e build/gd32vf103_adc.o
+ .text.adc_external_trigger_source_config
+                0x0000000000000000       0x34 build/gd32vf103_adc.o
+ .text.adc_external_trigger_config
+                0x0000000000000000       0x3a build/gd32vf103_adc.o
+ .text.adc_software_trigger_enable
+                0x0000000000000000       0x20 build/gd32vf103_adc.o
+ .text.adc_regular_data_read
+                0x0000000000000000        0x8 build/gd32vf103_adc.o
  .text.adc_inserted_data_read
                 0x0000000000000000       0x2c build/gd32vf103_adc.o
  .text.adc_sync_mode_convert_value_read
@@ -151,6 +173,10 @@ Discarded input sections
                 0x0000000000000000       0x10 build/gd32vf103_adc.o
  .text.adc_watchdog_threshold_config
                 0x0000000000000000        0xe build/gd32vf103_adc.o
+ .text.adc_flag_get
+                0x0000000000000000        0xa build/gd32vf103_adc.o
+ .text.adc_flag_clear
+                0x0000000000000000        0xc build/gd32vf103_adc.o
  .text.adc_regular_software_startconv_flag_get
                 0x0000000000000000        0x8 build/gd32vf103_adc.o
  .text.adc_inserted_software_startconv_flag_get
@@ -171,6 +197,18 @@ Discarded input sections
                 0x0000000000000000        0xe build/gd32vf103_adc.o
  .text.adc_oversample_mode_disable
                 0x0000000000000000        0xc build/gd32vf103_adc.o
+ .debug_info    0x0000000000000000      0xb98 build/gd32vf103_adc.o
+ .debug_abbrev  0x0000000000000000      0x216 build/gd32vf103_adc.o
+ .debug_loc     0x0000000000000000      0x7d6 build/gd32vf103_adc.o
+ .debug_aranges
+                0x0000000000000000      0x140 build/gd32vf103_adc.o
+ .debug_ranges  0x0000000000000000      0x130 build/gd32vf103_adc.o
+ .debug_line    0x0000000000000000     0x1491 build/gd32vf103_adc.o
+ .debug_str     0x0000000000000000      0x8c6 build/gd32vf103_adc.o
+ .comment       0x0000000000000000       0x29 build/gd32vf103_adc.o
+ .debug_frame   0x0000000000000000      0x288 build/gd32vf103_adc.o
+ .riscv.attributes
+                0x0000000000000000       0x2b build/gd32vf103_adc.o
  .text          0x0000000000000000        0x0 build/gd32vf103_bkp.o
  .data          0x0000000000000000        0x0 build/gd32vf103_bkp.o
  .bss           0x0000000000000000        0x0 build/gd32vf103_bkp.o
@@ -817,6 +855,10 @@ Discarded input sections
                 0x0000000000000000       0x18 build/gd32vf103_rcu.o
  .text.rcu_periph_clock_sleep_disable
                 0x0000000000000000       0x1c build/gd32vf103_rcu.o
+ .text.rcu_periph_reset_enable
+                0x0000000000000000       0x18 build/gd32vf103_rcu.o
+ .text.rcu_periph_reset_disable
+                0x0000000000000000       0x1c build/gd32vf103_rcu.o
  .text.rcu_bkp_reset_enable
                 0x0000000000000000        0xe build/gd32vf103_rcu.o
  .text.rcu_bkp_reset_disable
@@ -843,6 +885,8 @@ Discarded input sections
                 0x0000000000000000       0x18 build/gd32vf103_rcu.o
  .text.rcu_pll2_config
                 0x0000000000000000       0x16 build/gd32vf103_rcu.o
+ .text.rcu_adc_clock_config
+                0x0000000000000000       0x40 build/gd32vf103_rcu.o
  .text.rcu_usb_clock_config
                 0x0000000000000000       0x14 build/gd32vf103_rcu.o
  .text.rcu_rtc_clock_config
@@ -936,6 +980,12 @@ Discarded input sections
  .bss           0x0000000000000000        0x0 build/gd32vf103_spi.o
  .text.spi_i2s_deinit
                 0x0000000000000000       0x66 build/gd32vf103_spi.o
+ .text.spi_struct_para_init
+                0x0000000000000000       0x1a build/gd32vf103_spi.o
+ .text.spi_init
+                0x0000000000000000       0x36 build/gd32vf103_spi.o
+ .text.spi_enable
+                0x0000000000000000        0xa build/gd32vf103_spi.o
  .text.spi_disable
                 0x0000000000000000        0xa build/gd32vf103_spi.o
  .text.i2s_init
@@ -960,10 +1010,14 @@ Discarded input sections
                 0x0000000000000000        0xe build/gd32vf103_spi.o
  .text.spi_i2s_data_frame_format_config
                 0x0000000000000000       0x14 build/gd32vf103_spi.o
+ .text.spi_i2s_data_transmit
+                0x0000000000000000        0x4 build/gd32vf103_spi.o
  .text.spi_i2s_data_receive
                 0x0000000000000000        0x8 build/gd32vf103_spi.o
  .text.spi_bidirectional_transfer_config
                 0x0000000000000000       0x18 build/gd32vf103_spi.o
+ .text.spi_crc_polynomial_set
+                0x0000000000000000        0xc build/gd32vf103_spi.o
  .text.spi_crc_polynomial_get
                 0x0000000000000000        0x8 build/gd32vf103_spi.o
  .text.spi_crc_on
@@ -990,8 +1044,22 @@ Discarded input sections
                 0x0000000000000000       0x50 build/gd32vf103_spi.o
  .rodata.spi_i2s_interrupt_flag_get
                 0x0000000000000000       0x1c build/gd32vf103_spi.o
+ .text.spi_i2s_flag_get
+                0x0000000000000000        0xa build/gd32vf103_spi.o
  .text.spi_crc_error_clear
                 0x0000000000000000        0x8 build/gd32vf103_spi.o
+ .debug_info    0x0000000000000000      0xa73 build/gd32vf103_spi.o
+ .debug_abbrev  0x0000000000000000      0x21a build/gd32vf103_spi.o
+ .debug_loc     0x0000000000000000      0x54e build/gd32vf103_spi.o
+ .debug_aranges
+                0x0000000000000000      0x128 build/gd32vf103_spi.o
+ .debug_ranges  0x0000000000000000      0x118 build/gd32vf103_spi.o
+ .debug_line    0x0000000000000000      0xe35 build/gd32vf103_spi.o
+ .debug_str     0x0000000000000000      0x77a build/gd32vf103_spi.o
+ .comment       0x0000000000000000       0x29 build/gd32vf103_spi.o
+ .debug_frame   0x0000000000000000      0x260 build/gd32vf103_spi.o
+ .riscv.attributes
+                0x0000000000000000       0x2b build/gd32vf103_spi.o
  .text          0x0000000000000000        0x0 build/gd32vf103_timer.o
  .data          0x0000000000000000        0x0 build/gd32vf103_timer.o
  .bss           0x0000000000000000        0x0 build/gd32vf103_timer.o
@@ -1334,6 +1402,8 @@ Discarded input sections
                 0x0000000000000000        0x8 build/n200_func.o
  .text.mtime_hi
                 0x0000000000000000        0x8 build/n200_func.o
+ .text.get_timer_value
+                0x0000000000000000       0x10 build/n200_func.o
  .text.get_timer_freq
                 0x0000000000000000        0xc build/n200_func.o
  .text.get_instret_value
@@ -1816,19 +1886,58 @@ Discarded input sections
  .debug_frame   0x0000000000000000      0x228 build/timers.o
  .riscv.attributes
                 0x0000000000000000       0x2b build/timers.o
+ .text          0x0000000000000000        0x0 build/bsp_motor.o
+ .data          0x0000000000000000        0x0 build/bsp_motor.o
+ .bss           0x0000000000000000        0x0 build/bsp_motor.o
+ .text.set_motor_direction
+                0x0000000000000000       0x10 build/bsp_motor.o
+ .text          0x0000000000000000        0x0 build/bsp_sensor.o
+ .data          0x0000000000000000        0x0 build/bsp_sensor.o
+ .bss           0x0000000000000000        0x0 build/bsp_sensor.o
+ .debug_info    0x0000000000000000       0x91 build/bsp_sensor.o
+ .debug_abbrev  0x0000000000000000       0x48 build/bsp_sensor.o
+ .debug_aranges
+                0x0000000000000000       0x18 build/bsp_sensor.o
+ .debug_line    0x0000000000000000      0x13d build/bsp_sensor.o
+ .debug_str     0x0000000000000000      0x199 build/bsp_sensor.o
+ .comment       0x0000000000000000       0x29 build/bsp_sensor.o
+ .riscv.attributes
+                0x0000000000000000       0x2b build/bsp_sensor.o
  .text          0x0000000000000000        0x0 build/lcd.o
  .data          0x0000000000000000        0x0 build/lcd.o
  .bss           0x0000000000000000        0x0 build/lcd.o
+ .text.lcd_delay_1ms
+                0x0000000000000000       0xce build/lcd.o
+ .text.LCD_WR_Queue
+                0x0000000000000000       0xc2 build/lcd.o
+ .text.LCD_Wait_On_Queue
+                0x0000000000000000       0x30 build/lcd.o
+ .text.LCD_Write_Bus
+                0x0000000000000000       0x58 build/lcd.o
  .text.LCD_Writ_Bus
                 0x0000000000000000       0x78 build/lcd.o
  .text.LCD_WR_DATA8
                 0x0000000000000000        0xc build/lcd.o
+ .text.LCD_WR_DATA
+                0x0000000000000000       0x2c build/lcd.o
  .text.LCD_WR_REG
                 0x0000000000000000        0x8 build/lcd.o
+ .text.LCD_Address_Set
+                0x0000000000000000       0x82 build/lcd.o
+ .text.spi_config
+                0x0000000000000000       0x6c build/lcd.o
+ .text.Lcd_SetType
+                0x0000000000000000       0x26 build/lcd.o
+ .text.Lcd_Init
+                0x0000000000000000      0x464 build/lcd.o
  .text.LCD_Clear
                 0x0000000000000000       0x46 build/lcd.o
  .text.LCD_ShowChinese
                 0x0000000000000000       0x98 build/lcd.o
+ .text.LCD_DrawPoint
+                0x0000000000000000       0x24 build/lcd.o
+ .text.LCD_Fill
+                0x0000000000000000       0x50 build/lcd.o
  .text.LCD_DrawPoint_big
                 0x0000000000000000       0x16 build/lcd.o
  .text.LCD_DrawLine
@@ -1837,19 +1946,45 @@ Discarded input sections
                 0x0000000000000000       0x66 build/lcd.o
  .text.Draw_Circle
                 0x0000000000000000       0xf2 build/lcd.o
+ .text.LCD_ShowChar
+                0x0000000000000000       0xde build/lcd.o
  .text.LCD_ShowString
                 0x0000000000000000       0x76 build/lcd.o
  .text.LCD_ShowStr
                 0x0000000000000000       0x60 build/lcd.o
  .text.mypow    0x0000000000000000       0x1a build/lcd.o
+ .text.LCD_ShowNum
+                0x0000000000000000       0xa8 build/lcd.o
  .text.LCD_ShowNum1
                 0x0000000000000000       0xcc build/lcd.o
  .text.LCD_ShowPicture
                 0x0000000000000000       0x4c build/lcd.o
+ .bss.queue     0x0000000000000000      0x400 build/lcd.o
  .data.Hzk16    0x0000000000000000       0xe0 build/lcd.o
  .data.Hzk32    0x0000000000000000      0x280 build/lcd.o
  .rodata.LCD_ShowNum1.cst4
                 0x0000000000000000        0x4 build/lcd.o
+ .rodata.asc2_1608
+                0x0000000000000000      0x5e0 build/lcd.o
+ .rodata.lcd_delay_1ms.cst8
+                0x0000000000000000        0x8 build/lcd.o
+ .sbss.lcd_conf
+                0x0000000000000000        0x4 build/lcd.o
+ .sbss.r        0x0000000000000000        0x4 build/lcd.o
+ .sbss.w        0x0000000000000000        0x4 build/lcd.o
+ .debug_info    0x0000000000000000     0x2fa5 build/lcd.o
+ .debug_abbrev  0x0000000000000000      0x55b build/lcd.o
+ .debug_loc     0x0000000000000000     0x1ec3 build/lcd.o
+ .debug_aranges
+                0x0000000000000000       0xf0 build/lcd.o
+ .debug_ranges  0x0000000000000000      0x1c8 build/lcd.o
+ .debug_line    0x0000000000000000     0x1e6b build/lcd.o
+ .debug_str     0x0000000000000000      0xabc build/lcd.o
+ .comment       0x0000000000000000       0x29 build/lcd.o
+ .debug_frame   0x0000000000000000      0x560 build/lcd.o
+ .riscv.attributes
+                0x0000000000000000       0x2b build/lcd.o
+ COMMON         0x0000000000000000        0x4 build/lcd.o
  .text          0x0000000000000000        0x0 build/main.o
  .data          0x0000000000000000        0x0 build/main.o
  .bss           0x0000000000000000        0x0 build/main.o
@@ -1887,16 +2022,83 @@ Discarded input sections
  .text          0x0000000000000000        0x0 build/portasm.o
  .data          0x0000000000000000        0x0 build/portasm.o
  .bss           0x0000000000000000        0x0 build/portasm.o
+ .text          0x0000000000000000      0x546 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(divdf3.o)
  .data          0x0000000000000000        0x0 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(divdf3.o)
  .bss           0x0000000000000000        0x0 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(divdf3.o)
+ .rodata        0x0000000000000000       0x3c c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(divdf3.o)
+ .debug_info    0x0000000000000000      0x734 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(divdf3.o)
+ .debug_abbrev  0x0000000000000000      0x187 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(divdf3.o)
+ .debug_loc     0x0000000000000000     0x129b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(divdf3.o)
+ .debug_aranges
+                0x0000000000000000       0x20 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(divdf3.o)
+ .debug_ranges  0x0000000000000000      0x180 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(divdf3.o)
+ .debug_line    0x0000000000000000      0xe35 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(divdf3.o)
+ .debug_str     0x0000000000000000      0x452 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(divdf3.o)
+ .comment       0x0000000000000000       0x29 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(divdf3.o)
+ .debug_frame   0x0000000000000000       0x54 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(divdf3.o)
+ .riscv.attributes
+                0x0000000000000000       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(divdf3.o)
+ .text          0x0000000000000000       0xa4 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(ledf2.o)
  .data          0x0000000000000000        0x0 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(ledf2.o)
  .bss           0x0000000000000000        0x0 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(ledf2.o)
+ .debug_info    0x0000000000000000      0x286 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(ledf2.o)
+ .debug_abbrev  0x0000000000000000      0x199 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(ledf2.o)
+ .debug_loc     0x0000000000000000      0x156 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(ledf2.o)
+ .debug_aranges
+                0x0000000000000000       0x20 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(ledf2.o)
+ .debug_ranges  0x0000000000000000       0x68 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(ledf2.o)
+ .debug_line    0x0000000000000000      0x303 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(ledf2.o)
+ .debug_str     0x0000000000000000      0x2ce c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(ledf2.o)
+ .comment       0x0000000000000000       0x29 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(ledf2.o)
+ .debug_frame   0x0000000000000000       0x20 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(ledf2.o)
+ .riscv.attributes
+                0x0000000000000000       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(ledf2.o)
+ .text          0x0000000000000000      0x44c c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(muldf3.o)
  .data          0x0000000000000000        0x0 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(muldf3.o)
  .bss           0x0000000000000000        0x0 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(muldf3.o)
+ .rodata        0x0000000000000000       0x3c c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(muldf3.o)
+ .debug_info    0x0000000000000000      0x76c c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(muldf3.o)
+ .debug_abbrev  0x0000000000000000      0x197 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(muldf3.o)
+ .debug_loc     0x0000000000000000      0xd6e c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(muldf3.o)
+ .debug_aranges
+                0x0000000000000000       0x20 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(muldf3.o)
+ .debug_ranges  0x0000000000000000      0x1c0 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(muldf3.o)
+ .debug_line    0x0000000000000000      0xbf8 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(muldf3.o)
+ .debug_str     0x0000000000000000      0x4aa c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(muldf3.o)
+ .comment       0x0000000000000000       0x29 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(muldf3.o)
+ .debug_frame   0x0000000000000000       0x54 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(muldf3.o)
+ .riscv.attributes
+                0x0000000000000000       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(muldf3.o)
+ .text          0x0000000000000000       0x56 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(floatunsidf.o)
  .data          0x0000000000000000        0x0 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(floatunsidf.o)
  .bss           0x0000000000000000        0x0 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(floatunsidf.o)
+ .debug_info    0x0000000000000000      0x2af c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(floatunsidf.o)
+ .debug_abbrev  0x0000000000000000      0x178 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(floatunsidf.o)
+ .debug_loc     0x0000000000000000      0x15c c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(floatunsidf.o)
+ .debug_aranges
+                0x0000000000000000       0x20 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(floatunsidf.o)
+ .debug_ranges  0x0000000000000000       0x68 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(floatunsidf.o)
+ .debug_line    0x0000000000000000      0x239 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(floatunsidf.o)
+ .debug_str     0x0000000000000000      0x33a c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(floatunsidf.o)
+ .comment       0x0000000000000000       0x29 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(floatunsidf.o)
+ .debug_frame   0x0000000000000000       0x34 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(floatunsidf.o)
+ .riscv.attributes
+                0x0000000000000000       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(floatunsidf.o)
+ .text          0x0000000000000000      0x166 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(floatundidf.o)
  .data          0x0000000000000000        0x0 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(floatundidf.o)
  .bss           0x0000000000000000        0x0 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(floatundidf.o)
+ .debug_info    0x0000000000000000      0x2e8 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(floatundidf.o)
+ .debug_abbrev  0x0000000000000000      0x19f c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(floatundidf.o)
+ .debug_loc     0x0000000000000000      0x2ec c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(floatundidf.o)
+ .debug_aranges
+                0x0000000000000000       0x20 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(floatundidf.o)
+ .debug_ranges  0x0000000000000000       0x68 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(floatundidf.o)
+ .debug_line    0x0000000000000000      0x3f5 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(floatundidf.o)
+ .debug_str     0x0000000000000000      0x344 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(floatundidf.o)
+ .comment       0x0000000000000000       0x29 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(floatundidf.o)
+ .debug_frame   0x0000000000000000       0x44 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(floatundidf.o)
+ .riscv.attributes
+                0x0000000000000000       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(floatundidf.o)
  .text          0x0000000000000000      0x228 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(mulsf3.o)
  .data          0x0000000000000000        0x0 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(mulsf3.o)
  .bss           0x0000000000000000        0x0 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(mulsf3.o)
@@ -1928,15 +2130,62 @@ Discarded input sections
  .debug_frame   0x0000000000000000       0x20 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(fixunssfsi.o)
  .riscv.attributes
                 0x0000000000000000       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(fixunssfsi.o)
+ .text          0x0000000000000000       0x2a c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_lshrdi3.o)
  .data          0x0000000000000000        0x0 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_lshrdi3.o)
  .bss           0x0000000000000000        0x0 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_lshrdi3.o)
+ .debug_info    0x0000000000000000      0xc72 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_lshrdi3.o)
+ .debug_abbrev  0x0000000000000000      0x275 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_lshrdi3.o)
+ .debug_loc     0x0000000000000000       0x7e c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_lshrdi3.o)
+ .debug_aranges
+                0x0000000000000000       0x20 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_lshrdi3.o)
+ .debug_line    0x0000000000000000      0x4c4 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_lshrdi3.o)
+ .debug_str     0x0000000000000000      0x860 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_lshrdi3.o)
+ .comment       0x0000000000000000       0x29 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_lshrdi3.o)
+ .debug_frame   0x0000000000000000       0x20 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_lshrdi3.o)
+ .riscv.attributes
+                0x0000000000000000       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_lshrdi3.o)
+ .text          0x0000000000000000       0x2a c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_ashldi3.o)
  .data          0x0000000000000000        0x0 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_ashldi3.o)
  .bss           0x0000000000000000        0x0 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_ashldi3.o)
+ .debug_info    0x0000000000000000      0xc72 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_ashldi3.o)
+ .debug_abbrev  0x0000000000000000      0x275 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_ashldi3.o)
+ .debug_loc     0x0000000000000000       0x7e c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_ashldi3.o)
+ .debug_aranges
+                0x0000000000000000       0x20 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_ashldi3.o)
+ .debug_line    0x0000000000000000      0x4c4 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_ashldi3.o)
+ .debug_str     0x0000000000000000      0x860 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_ashldi3.o)
+ .comment       0x0000000000000000       0x29 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_ashldi3.o)
+ .debug_frame   0x0000000000000000       0x20 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_ashldi3.o)
+ .riscv.attributes
+                0x0000000000000000       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_ashldi3.o)
+ .text          0x0000000000000000       0x3c c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_clzsi2.o)
  .data          0x0000000000000000        0x0 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_clzsi2.o)
  .bss           0x0000000000000000        0x0 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_clzsi2.o)
+ .debug_info    0x0000000000000000      0xbd7 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_clzsi2.o)
+ .debug_abbrev  0x0000000000000000      0x242 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_clzsi2.o)
+ .debug_loc     0x0000000000000000       0x6b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_clzsi2.o)
+ .debug_aranges
+                0x0000000000000000       0x20 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_clzsi2.o)
+ .debug_ranges  0x0000000000000000       0x20 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_clzsi2.o)
+ .debug_line    0x0000000000000000      0x472 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_clzsi2.o)
+ .debug_str     0x0000000000000000      0x82e c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_clzsi2.o)
+ .comment       0x0000000000000000       0x29 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_clzsi2.o)
+ .debug_frame   0x0000000000000000       0x20 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_clzsi2.o)
+ .riscv.attributes
+                0x0000000000000000       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_clzsi2.o)
  .text          0x0000000000000000        0x0 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_clz.o)
  .data          0x0000000000000000        0x0 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_clz.o)
  .bss           0x0000000000000000        0x0 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_clz.o)
+ .rodata        0x0000000000000000      0x100 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_clz.o)
+ .debug_info    0x0000000000000000      0xb6a c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_clz.o)
+ .debug_abbrev  0x0000000000000000      0x1e8 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_clz.o)
+ .debug_aranges
+                0x0000000000000000       0x18 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_clz.o)
+ .debug_line    0x0000000000000000      0x3f0 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_clz.o)
+ .debug_str     0x0000000000000000      0x811 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_clz.o)
+ .comment       0x0000000000000000       0x29 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_clz.o)
+ .riscv.attributes
+                0x0000000000000000       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_clz.o)
  .text          0x0000000000000000        0x0 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-atexit.o)
  .data          0x0000000000000000        0x0 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-atexit.o)
  .bss           0x0000000000000000        0x0 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-atexit.o)
@@ -2194,6 +2443,8 @@ LOAD build/port.o
 LOAD build/queue.o
 LOAD build/tasks.o
 LOAD build/timers.o
+LOAD build/bsp_motor.o
+LOAD build/bsp_sensor.o
 LOAD build/lcd.o
 LOAD build/main.o
 LOAD build/stepperUP.o
@@ -2226,7 +2477,7 @@ END GROUP
 .ialign         0x0000000008000254        0x0
                 [!provide]                        PROVIDE (_ilm = .)
 
-.text           0x0000000008000280     0x458a
+.text           0x0000000008000280     0x2588
  *(.rodata .rodata.*)
  .rodata._exit.str1.4
                 0x0000000008000280       0x1f build/_exit.o
@@ -2237,446 +2488,325 @@ END GROUP
  *fill*         0x00000000080002a3        0x1 
  .rodata.ulSynchTrap.str1.4
                 0x00000000080002a4       0x74 build/port.o
- .rodata.asc2_1608
-                0x0000000008000318      0x5e0 build/lcd.o
-                0x0000000008000318                asc2_1608
- .rodata.lcd_delay_1ms.cst8
-                0x00000000080008f8        0x8 build/lcd.o
- .rodata        0x0000000008000900       0x3c c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(divdf3.o)
- .rodata        0x000000000800093c       0x3c c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(muldf3.o)
- .rodata        0x0000000008000978      0x100 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_clz.o)
-                0x0000000008000978                __clz_tab
  .rodata.__sf_fake_stderr
-                0x0000000008000a78       0x20 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-findfp.o)
-                0x0000000008000a78                __sf_fake_stderr
+                0x0000000008000318       0x20 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-findfp.o)
+                0x0000000008000318                __sf_fake_stderr
  .rodata.__sf_fake_stdin
-                0x0000000008000a98       0x20 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-findfp.o)
-                0x0000000008000a98                __sf_fake_stdin
+                0x0000000008000338       0x20 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-findfp.o)
+                0x0000000008000338                __sf_fake_stdin
  .rodata.__sf_fake_stdout
-                0x0000000008000ab8       0x20 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-findfp.o)
-                0x0000000008000ab8                __sf_fake_stdout
+                0x0000000008000358       0x20 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-findfp.o)
+                0x0000000008000358                __sf_fake_stdout
  .rodata._printf_i.str1.4
-                0x0000000008000ad8       0x25 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-nano-vfprintf_i.o)
- *fill*         0x0000000008000afd        0x3 
+                0x0000000008000378       0x25 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-nano-vfprintf_i.o)
+ *fill*         0x000000000800039d        0x3 
  .rodata._vfprintf_r.str1.4
-                0x0000000008000b00       0x14 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-nano-vfprintf.o)
+                0x00000000080003a0       0x14 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-nano-vfprintf.o)
                                          0x13 (size before relaxing)
  *(.text.unlikely .text.unlikely.*)
  *(.text.startup .text.startup.*)
  .text.startup.main
-                0x0000000008000b14       0x16 build/main.o
-                0x0000000008000b14                main
+                0x00000000080003b4       0x16 build/main.o
+                0x00000000080003b4                main
  *(.text .text.*)
- .text.adc_deinit
-                0x0000000008000b2a       0x50 build/gd32vf103_adc.o
-                0x0000000008000b2a                adc_deinit
- .text.adc_mode_config
-                0x0000000008000b7a       0x20 build/gd32vf103_adc.o
-                0x0000000008000b7a                adc_mode_config
- .text.adc_data_alignment_config
-                0x0000000008000b9a       0x1a build/gd32vf103_adc.o
-                0x0000000008000b9a                adc_data_alignment_config
- .text.adc_enable
-                0x0000000008000bb4       0x10 build/gd32vf103_adc.o
-                0x0000000008000bb4                adc_enable
- .text.adc_calibration_enable
-                0x0000000008000bc4       0x22 build/gd32vf103_adc.o
-                0x0000000008000bc4                adc_calibration_enable
- .text.adc_channel_length_config
-                0x0000000008000be6       0x4a build/gd32vf103_adc.o
-                0x0000000008000be6                adc_channel_length_config
- .text.adc_regular_channel_config
-                0x0000000008000c30       0xbe build/gd32vf103_adc.o
-                0x0000000008000c30                adc_regular_channel_config
- .text.adc_external_trigger_source_config
-                0x0000000008000cee       0x34 build/gd32vf103_adc.o
-                0x0000000008000cee                adc_external_trigger_source_config
- .text.adc_external_trigger_config
-                0x0000000008000d22       0x3a build/gd32vf103_adc.o
-                0x0000000008000d22                adc_external_trigger_config
- .text.adc_software_trigger_enable
-                0x0000000008000d5c       0x20 build/gd32vf103_adc.o
-                0x0000000008000d5c                adc_software_trigger_enable
- .text.adc_regular_data_read
-                0x0000000008000d7c        0x8 build/gd32vf103_adc.o
-                0x0000000008000d7c                adc_regular_data_read
- .text.adc_flag_get
-                0x0000000008000d84        0xa build/gd32vf103_adc.o
-                0x0000000008000d84                adc_flag_get
- .text.adc_flag_clear
-                0x0000000008000d8e        0xc build/gd32vf103_adc.o
-                0x0000000008000d8e                adc_flag_clear
  .text.gpio_init
-                0x0000000008000d9a       0xa4 build/gd32vf103_gpio.o
-                0x0000000008000d9a                gpio_init
+                0x00000000080003ca       0xa4 build/gd32vf103_gpio.o
+                0x00000000080003ca                gpio_init
  .text.gpio_bit_set
-                0x0000000008000e3e        0x4 build/gd32vf103_gpio.o
-                0x0000000008000e3e                gpio_bit_set
+                0x000000000800046e        0x4 build/gd32vf103_gpio.o
+                0x000000000800046e                gpio_bit_set
  .text.gpio_bit_reset
-                0x0000000008000e42        0x4 build/gd32vf103_gpio.o
-                0x0000000008000e42                gpio_bit_reset
+                0x0000000008000472        0x4 build/gd32vf103_gpio.o
+                0x0000000008000472                gpio_bit_reset
  .text.gpio_input_bit_get
-                0x0000000008000e46        0xa build/gd32vf103_gpio.o
-                0x0000000008000e46                gpio_input_bit_get
+                0x0000000008000476        0xa build/gd32vf103_gpio.o
+                0x0000000008000476                gpio_input_bit_get
  .text.rcu_periph_clock_enable
-                0x0000000008000e50       0x18 build/gd32vf103_rcu.o
-                0x0000000008000e50                rcu_periph_clock_enable
- .text.rcu_periph_reset_enable
-                0x0000000008000e68       0x18 build/gd32vf103_rcu.o
-                0x0000000008000e68                rcu_periph_reset_enable
- .text.rcu_periph_reset_disable
-                0x0000000008000e80       0x1c build/gd32vf103_rcu.o
-                0x0000000008000e80                rcu_periph_reset_disable
- .text.rcu_adc_clock_config
-                0x0000000008000e9c       0x40 build/gd32vf103_rcu.o
-                0x0000000008000e9c                rcu_adc_clock_config
- .text.spi_struct_para_init
-                0x0000000008000edc       0x1a build/gd32vf103_spi.o
-                0x0000000008000edc                spi_struct_para_init
- .text.spi_init
-                0x0000000008000ef6       0x36 build/gd32vf103_spi.o
-                0x0000000008000ef6                spi_init
- .text.spi_enable
-                0x0000000008000f2c        0xa build/gd32vf103_spi.o
-                0x0000000008000f2c                spi_enable
- .text.spi_i2s_data_transmit
-                0x0000000008000f36        0x4 build/gd32vf103_spi.o
-                0x0000000008000f36                spi_i2s_data_transmit
- .text.spi_crc_polynomial_set
-                0x0000000008000f3a        0xc build/gd32vf103_spi.o
-                0x0000000008000f3a                spi_crc_polynomial_set
- .text.spi_i2s_flag_get
-                0x0000000008000f46        0xa build/gd32vf103_spi.o
-                0x0000000008000f46                spi_i2s_flag_get
+                0x0000000008000480       0x18 build/gd32vf103_rcu.o
+                0x0000000008000480                rcu_periph_clock_enable
  .text.SystemInit
-                0x0000000008000f50      0x11c build/system_gd32vf103.o
-                0x0000000008000f50                SystemInit
- .text._exit    0x000000000800106c       0x4c build/_exit.o
-                0x000000000800106c                _exit
- .text._close   0x00000000080010b8        0x4 build/close.o
-                0x00000000080010b8                _close
- .text._fstat   0x00000000080010bc       0x22 build/fstat.o
-                0x00000000080010bc                _fstat
- .text._isatty  0x00000000080010de        0x8 build/isatty.o
-                0x00000000080010de                _isatty
- .text._lseek   0x00000000080010e6       0x1a build/lseek.o
-                0x00000000080010e6                _lseek
- .text._read    0x0000000008001100        0x4 build/read.o
-                0x0000000008001100                _read
- .text._sbrk    0x0000000008001104       0x2e build/sbrk.o
-                0x0000000008001104                _sbrk
+                0x0000000008000498      0x11c build/system_gd32vf103.o
+                0x0000000008000498                SystemInit
+ .text._exit    0x00000000080005b4       0x4c build/_exit.o
+                0x00000000080005b4                _exit
+ .text._close   0x0000000008000600        0x4 build/close.o
+                0x0000000008000600                _close
+ .text._fstat   0x0000000008000604       0x22 build/fstat.o
+                0x0000000008000604                _fstat
+ .text._isatty  0x0000000008000626        0x8 build/isatty.o
+                0x0000000008000626                _isatty
+ .text._lseek   0x000000000800062e       0x1a build/lseek.o
+                0x000000000800062e                _lseek
+ .text._read    0x0000000008000648        0x4 build/read.o
+                0x0000000008000648                _read
+ .text._sbrk    0x000000000800064c       0x2e build/sbrk.o
+                0x000000000800064c                _sbrk
  .text.write_hex
-                0x0000000008001132       0x7c build/write_hex.o
-                0x0000000008001132                write_hex
- .text.get_timer_value
-                0x00000000080011ae       0x10 build/n200_func.o
-                0x00000000080011ae                get_timer_value
+                0x000000000800067a       0x7c build/write_hex.o
+                0x000000000800067a                write_hex
  .text.eclic_init
-                0x00000000080011be       0x22 build/n200_func.o
-                0x00000000080011be                eclic_init
+                0x00000000080006f6       0x22 build/n200_func.o
+                0x00000000080006f6                eclic_init
  .text.eclic_enable_interrupt
-                0x00000000080011e0       0x12 build/n200_func.o
-                0x00000000080011e0                eclic_enable_interrupt
+                0x0000000008000718       0x12 build/n200_func.o
+                0x0000000008000718                eclic_enable_interrupt
  .text.eclic_set_intattr
-                0x00000000080011f2       0x10 build/n200_func.o
-                0x00000000080011f2                eclic_set_intattr
+                0x000000000800072a       0x10 build/n200_func.o
+                0x000000000800072a                eclic_set_intattr
  .text.eclic_get_intattr
-                0x0000000008001202       0x10 build/n200_func.o
-                0x0000000008001202                eclic_get_intattr
+                0x000000000800073a       0x10 build/n200_func.o
+                0x000000000800073a                eclic_get_intattr
  .text.eclic_get_nlbits
-                0x0000000008001212        0xe build/n200_func.o
-                0x0000000008001212                eclic_get_nlbits
+                0x000000000800074a        0xe build/n200_func.o
+                0x000000000800074a                eclic_get_nlbits
  .text.eclic_set_irq_lvl_abs
-                0x0000000008001220       0x58 build/n200_func.o
-                0x0000000008001220                eclic_set_irq_lvl_abs
+                0x0000000008000758       0x58 build/n200_func.o
+                0x0000000008000758                eclic_set_irq_lvl_abs
  .text.eclic_mode_enable
-                0x0000000008001278       0x12 build/n200_func.o
-                0x0000000008001278                eclic_mode_enable
- .text._init    0x000000000800128a       0x2c build/init.o
-                0x000000000800128a                _init
- .text._fini    0x00000000080012b6        0x2 build/init.o
-                0x00000000080012b6                _fini
+                0x00000000080007b0       0x12 build/n200_func.o
+                0x00000000080007b0                eclic_mode_enable
+ .text._init    0x00000000080007c2       0x2c build/init.o
+                0x00000000080007c2                _init
+ .text._fini    0x00000000080007ee        0x2 build/init.o
+                0x00000000080007ee                _fini
  .text.vListInsertEnd
-                0x00000000080012b8       0x18 build/list.o
-                0x00000000080012b8                vListInsertEnd
+                0x00000000080007f0       0x18 build/list.o
+                0x00000000080007f0                vListInsertEnd
  .text.uxListRemove
-                0x00000000080012d0       0x1e build/list.o
-                0x00000000080012d0                uxListRemove
+                0x0000000008000808       0x1e build/list.o
+                0x0000000008000808                uxListRemove
  .text.ulSynchTrap
-                0x00000000080012ee       0xd4 build/port.o
-                0x00000000080012ee                ulSynchTrap
+                0x0000000008000826       0xd4 build/port.o
+                0x0000000008000826                ulSynchTrap
  .text.vPortSysTickHandler
-                0x00000000080013c2       0x74 build/port.o
-                0x00000000080013c2                vPortSysTickHandler
+                0x00000000080008fa       0x74 build/port.o
+                0x00000000080008fa                vPortSysTickHandler
  .text.vPortSetupTimer
-                0x0000000008001436       0x66 build/port.o
-                0x0000000008001436                vPortSetupTimer
+                0x000000000800096e       0x66 build/port.o
+                0x000000000800096e                vPortSetupTimer
  .text.vPortSetup
-                0x000000000800149c       0x1a build/port.o
-                0x000000000800149c                vPortSetup
+                0x00000000080009d4       0x1a build/port.o
+                0x00000000080009d4                vPortSetup
  .text.prvResetNextTaskUnblockTime
-                0x00000000080014b6       0x26 build/tasks.o
+                0x00000000080009ee       0x26 build/tasks.o
  .text.xTaskIncrementTick
-                0x00000000080014dc      0x168 build/tasks.o
-                0x00000000080014dc                xTaskIncrementTick
+                0x0000000008000a14      0x168 build/tasks.o
+                0x0000000008000a14                xTaskIncrementTick
  .text.vTaskSwitchContext
-                0x0000000008001644       0x76 build/tasks.o
-                0x0000000008001644                vTaskSwitchContext
- .text.lcd_delay_1ms
-                0x00000000080016ba       0xce build/lcd.o
-                0x00000000080016ba                lcd_delay_1ms
- .text.LCD_WR_Queue
-                0x0000000008001788       0xc2 build/lcd.o
-                0x0000000008001788                LCD_WR_Queue
- .text.LCD_Wait_On_Queue
-                0x000000000800184a       0x30 build/lcd.o
-                0x000000000800184a                LCD_Wait_On_Queue
- .text.LCD_Write_Bus
-                0x000000000800187a       0x58 build/lcd.o
-                0x000000000800187a                LCD_Write_Bus
- .text.LCD_WR_DATA
-                0x00000000080018d2       0x2c build/lcd.o
-                0x00000000080018d2                LCD_WR_DATA
- .text.LCD_Address_Set
-                0x00000000080018fe       0x82 build/lcd.o
-                0x00000000080018fe                LCD_Address_Set
- .text.spi_config
-                0x0000000008001980       0x6c build/lcd.o
-                0x0000000008001980                spi_config
- .text.Lcd_SetType
-                0x00000000080019ec       0x26 build/lcd.o
-                0x00000000080019ec                Lcd_SetType
- .text.Lcd_Init
-                0x0000000008001a12      0x464 build/lcd.o
-                0x0000000008001a12                Lcd_Init
- .text.LCD_DrawPoint
-                0x0000000008001e76       0x24 build/lcd.o
-                0x0000000008001e76                LCD_DrawPoint
- .text.LCD_Fill
-                0x0000000008001e9a       0x50 build/lcd.o
-                0x0000000008001e9a                LCD_Fill
- .text.LCD_ShowChar
-                0x0000000008001eea       0xde build/lcd.o
-                0x0000000008001eea                LCD_ShowChar
- .text.LCD_ShowNum
-                0x0000000008001fc8       0xa8 build/lcd.o
-                0x0000000008001fc8                LCD_ShowNum
- .text.adc_read
-                0x0000000008002070       0x60 build/stepperUP.o
+                0x0000000008000b7c       0x76 build/tasks.o
+                0x0000000008000b7c                vTaskSwitchContext
+ .text.gpio_clock_on
+                0x0000000008000bf2       0x58 build/bsp_motor.o
+ .text.motor_init
+                0x0000000008000c4a       0x7c build/bsp_motor.o
+                0x0000000008000c4a                motor_init
+ .text.motor_run
+                0x0000000008000cc6      0x13a build/bsp_motor.o
+                0x0000000008000cc6                motor_run
+ .text.debug_button_init
+                0x0000000008000e00       0x40 build/bsp_motor.o
+                0x0000000008000e00                debug_button_init
+ .text.debug_button_read
+                0x0000000008000e40       0x2a build/bsp_motor.o
+                0x0000000008000e40                debug_button_read
+ .text.debug_lamp
+                0x0000000008000e6a       0x5c build/bsp_motor.o
+                0x0000000008000e6a                debug_lamp
  .text.stepperUP_init
-                0x00000000080020d0      0x11e build/stepperUP.o
-                0x00000000080020d0                stepperUP_init
+                0x0000000008000ec6       0x34 build/stepperUP.o
+                0x0000000008000ec6                stepperUP_init
  .text.stepperUP_step
-                0x00000000080021ee       0xee build/stepperUP.o
-                0x00000000080021ee                stepperUP_step
- *fill*         0x00000000080022dc       0x24 
- .text.entry    0x0000000008002300      0x312 build/portasm.o
-                0x0000000008002300                trap_entry
-                0x000000000800238c                irq_entry
-                0x0000000008002448                eclic_mtip_handler
-                0x0000000008002502                xPortStartScheduler
-                0x0000000008002580                vPortYield
-                0x00000000080025fc                vPortEndScheduler
- .text          0x0000000008002612      0x546 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(divdf3.o)
-                0x0000000008002612                __divdf3
- .text          0x0000000008002b58       0xa4 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(ledf2.o)
-                0x0000000008002b58                __ledf2
-                0x0000000008002b58                __ltdf2
- .text          0x0000000008002bfc      0x44c c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(muldf3.o)
-                0x0000000008002bfc                __muldf3
- .text          0x0000000008003048       0x56 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(floatunsidf.o)
-                0x0000000008003048                __floatunsidf
- .text          0x000000000800309e      0x166 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(floatundidf.o)
-                0x000000000800309e                __floatundidf
- .text          0x0000000008003204       0x2a c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_lshrdi3.o)
-                0x0000000008003204                __lshrdi3
- .text          0x000000000800322e       0x2a c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_ashldi3.o)
-                0x000000000800322e                __ashldi3
- .text          0x0000000008003258       0x3c c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_clzsi2.o)
-                0x0000000008003258                __clzsi2
- .text.atexit   0x0000000008003294       0x10 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-atexit.o)
-                0x0000000008003294                atexit
- .text.exit     0x00000000080032a4       0x36 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-exit.o)
-                0x00000000080032a4                exit
+                0x0000000008000efa       0x66 build/stepperUP.o
+                0x0000000008000efa                stepperUP_step
+ *fill*         0x0000000008000f60       0x20 
+ .text.entry    0x0000000008000f80      0x312 build/portasm.o
+                0x0000000008000f80                trap_entry
+                0x000000000800100c                irq_entry
+                0x00000000080010c8                eclic_mtip_handler
+                0x0000000008001182                xPortStartScheduler
+                0x0000000008001200                vPortYield
+                0x000000000800127c                vPortEndScheduler
+ .text.atexit   0x0000000008001292       0x10 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-atexit.o)
+                0x0000000008001292                atexit
+ .text.exit     0x00000000080012a2       0x36 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-exit.o)
+                0x00000000080012a2                exit
  .text.__libc_fini_array
-                0x00000000080032da       0x38 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-fini.o)
-                0x00000000080032da                __libc_fini_array
+                0x00000000080012d8       0x38 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-fini.o)
+                0x00000000080012d8                __libc_fini_array
  .text.__libc_init_array
-                0x0000000008003312       0x6a c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-init.o)
-                0x0000000008003312                __libc_init_array
- .text          0x000000000800337c       0x16 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-memcpy-asm.o)
-                0x000000000800337c                memcpy
- .text          0x0000000008003392       0x10 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-memset.o)
-                0x0000000008003392                memset
- .text.printf   0x00000000080033a2       0x4e c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-printf.o)
-                0x00000000080033a2                iprintf
-                0x00000000080033a2                printf
- .text.isatty   0x00000000080033f0        0x8 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-sysisatty.o)
-                0x00000000080033f0                isatty
- .text.write    0x00000000080033f8       0x18 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-syswrite.o)
-                0x00000000080033f8                write
+                0x0000000008001310       0x6a c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-init.o)
+                0x0000000008001310                __libc_init_array
+ .text          0x000000000800137a       0x16 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-memcpy-asm.o)
+                0x000000000800137a                memcpy
+ .text          0x0000000008001390       0x10 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-memset.o)
+                0x0000000008001390                memset
+ .text.printf   0x00000000080013a0       0x4e c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-printf.o)
+                0x00000000080013a0                iprintf
+                0x00000000080013a0                printf
+ .text.isatty   0x00000000080013ee        0x8 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-sysisatty.o)
+                0x00000000080013ee                isatty
+ .text.write    0x00000000080013f6       0x18 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-syswrite.o)
+                0x00000000080013f6                write
  .text._write_r
-                0x0000000008003410       0x3a c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-writer.o)
-                0x0000000008003410                _write_r
+                0x000000000800140e       0x3a c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-writer.o)
+                0x000000000800140e                _write_r
  .text.__register_exitproc
-                0x000000000800344a       0x8c c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-__atexit.o)
-                0x000000000800344a                __register_exitproc
+                0x0000000008001448       0x8c c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-__atexit.o)
+                0x0000000008001448                __register_exitproc
  .text.__call_exitprocs
-                0x00000000080034d6       0xc8 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-__call_atexit.o)
-                0x00000000080034d6                __call_exitprocs
- .text.std      0x000000000800359e       0x6e c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-findfp.o)
+                0x00000000080014d4       0xc8 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-__call_atexit.o)
+                0x00000000080014d4                __call_exitprocs
+ .text.std      0x000000000800159c       0x6e c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-findfp.o)
  .text._cleanup_r
-                0x000000000800360c       0x10 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-findfp.o)
-                0x000000000800360c                _cleanup_r
+                0x000000000800160a       0x10 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-findfp.o)
+                0x000000000800160a                _cleanup_r
  .text.__sfmoreglue
-                0x000000000800361c       0x50 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-findfp.o)
-                0x000000000800361c                __sfmoreglue
- .text.__sinit  0x000000000800366c       0x8e c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-findfp.o)
-                0x000000000800366c                __sinit
- .text.__sfp    0x00000000080036fa       0xb0 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-findfp.o)
-                0x00000000080036fa                __sfp
+                0x000000000800161a       0x50 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-findfp.o)
+                0x000000000800161a                __sfmoreglue
+ .text.__sinit  0x000000000800166a       0x8e c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-findfp.o)
+                0x000000000800166a                __sinit
+ .text.__sfp    0x00000000080016f8       0xb0 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-findfp.o)
+                0x00000000080016f8                __sfp
  .text._fwalk_reent
-                0x00000000080037aa       0x6c c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-fwalk.o)
-                0x00000000080037aa                _fwalk_reent
+                0x00000000080017a8       0x6c c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-fwalk.o)
+                0x00000000080017a8                _fwalk_reent
  .text._malloc_r
-                0x0000000008003816      0x102 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-nano-mallocr.o)
-                0x0000000008003816                _malloc_r
+                0x0000000008001814      0x102 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-nano-mallocr.o)
+                0x0000000008001814                _malloc_r
  .text._printf_common
-                0x0000000008003918      0x10c c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-nano-vfprintf_i.o)
-                0x0000000008003918                _printf_common
+                0x0000000008001916      0x10c c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-nano-vfprintf_i.o)
+                0x0000000008001916                _printf_common
  .text._printf_i
-                0x0000000008003a24      0x2ae c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-nano-vfprintf_i.o)
-                0x0000000008003a24                _printf_i
+                0x0000000008001a22      0x2ae c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-nano-vfprintf_i.o)
+                0x0000000008001a22                _printf_i
  .text.__sfputc_r
-                0x0000000008003cd2       0x2e c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-nano-vfprintf.o)
+                0x0000000008001cd0       0x2e c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-nano-vfprintf.o)
  .text.__sfputs_r
-                0x0000000008003d00       0x48 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-nano-vfprintf.o)
-                0x0000000008003d00                __sfputs_r
+                0x0000000008001cfe       0x48 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-nano-vfprintf.o)
+                0x0000000008001cfe                __sfputs_r
  .text._vfprintf_r
-                0x0000000008003d48      0x2c0 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-nano-vfprintf.o)
-                0x0000000008003d48                _vfprintf_r
-                0x0000000008003d48                _vfiprintf_r
- .text._sbrk_r  0x0000000008004008       0x36 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-sbrkr.o)
-                0x0000000008004008                _sbrk_r
- .text.__sread  0x000000000800403e       0x36 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-stdio.o)
-                0x000000000800403e                __sread
+                0x0000000008001d46      0x2c0 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-nano-vfprintf.o)
+                0x0000000008001d46                _vfprintf_r
+                0x0000000008001d46                _vfiprintf_r
+ .text._sbrk_r  0x0000000008002006       0x36 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-sbrkr.o)
+                0x0000000008002006                _sbrk_r
+ .text.__sread  0x000000000800203c       0x36 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-stdio.o)
+                0x000000000800203c                __sread
  .text.__swrite
-                0x0000000008004074       0x5a c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-stdio.o)
-                0x0000000008004074                __swrite
- .text.__sseek  0x00000000080040ce       0x3c c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-stdio.o)
-                0x00000000080040ce                __sseek
+                0x0000000008002072       0x5a c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-stdio.o)
+                0x0000000008002072                __swrite
+ .text.__sseek  0x00000000080020cc       0x3c c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-stdio.o)
+                0x00000000080020cc                __sseek
  .text.__sclose
-                0x000000000800410a        0xc c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-stdio.o)
-                0x000000000800410a                __sclose
+                0x0000000008002108        0xc c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-stdio.o)
+                0x0000000008002108                __sclose
  .text.__swbuf_r
-                0x0000000008004116       0xd8 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-wbuf.o)
-                0x0000000008004116                __swbuf_r
+                0x0000000008002114       0xd8 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-wbuf.o)
+                0x0000000008002114                __swbuf_r
  .text.__swsetup_r
-                0x00000000080041ee      0x122 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-wsetup.o)
-                0x00000000080041ee                __swsetup_r
+                0x00000000080021ec      0x122 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-wsetup.o)
+                0x00000000080021ec                __swsetup_r
  .text._close_r
-                0x0000000008004310       0x36 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-closer.o)
-                0x0000000008004310                _close_r
+                0x000000000800230e       0x36 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-closer.o)
+                0x000000000800230e                _close_r
  .text.__sflush_r
-                0x0000000008004346      0x150 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-fflush.o)
-                0x0000000008004346                __sflush_r
+                0x0000000008002344      0x150 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-fflush.o)
+                0x0000000008002344                __sflush_r
  .text._fflush_r
-                0x0000000008004496       0x70 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-fflush.o)
-                0x0000000008004496                _fflush_r
+                0x0000000008002494       0x70 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-fflush.o)
+                0x0000000008002494                _fflush_r
  .text._lseek_r
-                0x0000000008004506       0x3a c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-lseekr.o)
-                0x0000000008004506                _lseek_r
+                0x0000000008002504       0x3a c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-lseekr.o)
+                0x0000000008002504                _lseek_r
  .text.__swhatbuf_r
-                0x0000000008004540       0x5e c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-makebuf.o)
-                0x0000000008004540                __swhatbuf_r
+                0x000000000800253e       0x5e c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-makebuf.o)
+                0x000000000800253e                __swhatbuf_r
  .text.__smakebuf_r
-                0x000000000800459e       0xae c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-makebuf.o)
-                0x000000000800459e                __smakebuf_r
- .text.memchr   0x000000000800464c       0x1a c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-memchr.o)
-                0x000000000800464c                memchr
+                0x000000000800259c       0xae c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-makebuf.o)
+                0x000000000800259c                __smakebuf_r
+ .text.memchr   0x000000000800264a       0x1a c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-memchr.o)
+                0x000000000800264a                memchr
  .text.__malloc_lock
-                0x0000000008004666        0x2 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-mlock.o)
-                0x0000000008004666                __malloc_lock
+                0x0000000008002664        0x2 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-mlock.o)
+                0x0000000008002664                __malloc_lock
  .text.__malloc_unlock
-                0x0000000008004668        0x2 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-mlock.o)
-                0x0000000008004668                __malloc_unlock
- .text._free_r  0x000000000800466a       0xb8 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-nano-freer.o)
-                0x000000000800466a                _free_r
- .text._read_r  0x0000000008004722       0x3a c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-readr.o)
-                0x0000000008004722                _read_r
+                0x0000000008002666        0x2 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-mlock.o)
+                0x0000000008002666                __malloc_unlock
+ .text._free_r  0x0000000008002668       0xb8 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-nano-freer.o)
+                0x0000000008002668                _free_r
+ .text._read_r  0x0000000008002720       0x3a c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-readr.o)
+                0x0000000008002720                _read_r
  .text._fstat_r
-                0x000000000800475c       0x38 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-fstatr.o)
-                0x000000000800475c                _fstat_r
+                0x000000000800275a       0x38 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-fstatr.o)
+                0x000000000800275a                _fstat_r
  .text._isatty_r
-                0x0000000008004794       0x36 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-isattyr.o)
-                0x0000000008004794                _isatty_r
- .text._write   0x00000000080047ca       0x34 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libgloss_nano.a(sys_write.o)
-                0x00000000080047ca                _write
- .text.__errno  0x00000000080047fe        0xc c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-errno.o)
-                0x00000000080047fe                __errno
+                0x0000000008002792       0x36 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-isattyr.o)
+                0x0000000008002792                _isatty_r
+ .text._write   0x00000000080027c8       0x34 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libgloss_nano.a(sys_write.o)
+                0x00000000080027c8                _write
+ .text.__errno  0x00000000080027fc        0xc c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-errno.o)
+                0x00000000080027fc                __errno
  *(.gnu.linkonce.t.*)
 
 .sdata2._global_impure_ptr
-                0x000000000800480c        0x4
+                0x0000000008002808        0x4
  .sdata2._global_impure_ptr
-                0x000000000800480c        0x4 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-impure.o)
-                0x000000000800480c                _global_impure_ptr
+                0x0000000008002808        0x4 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-impure.o)
+                0x0000000008002808                _global_impure_ptr
 
-.rela.dyn       0x0000000008004810        0x0
+.rela.dyn       0x000000000800280c        0x0
  .rela.text._sbrk
-                0x0000000008004810        0x0 build/gd32vf103_adc.o
+                0x000000000800280c        0x0 build/gd32vf103_gpio.o
  .rela.sdata.curbrk.1524
-                0x0000000008004810        0x0 build/gd32vf103_adc.o
- .rela.text.LCD_ShowChar
-                0x0000000008004810        0x0 build/gd32vf103_adc.o
- .rela.init     0x0000000008004810        0x0 build/gd32vf103_adc.o
+                0x000000000800280c        0x0 build/gd32vf103_gpio.o
+ .rela.init     0x000000000800280c        0x0 build/gd32vf103_gpio.o
  .rela.text.__libc_fini_array
-                0x0000000008004810        0x0 build/gd32vf103_adc.o
+                0x000000000800280c        0x0 build/gd32vf103_gpio.o
  .rela.text.__libc_init_array
-                0x0000000008004810        0x0 build/gd32vf103_adc.o
+                0x000000000800280c        0x0 build/gd32vf103_gpio.o
  .rela.text._write_r
-                0x0000000008004810        0x0 build/gd32vf103_adc.o
+                0x000000000800280c        0x0 build/gd32vf103_gpio.o
  .rela.text.__register_exitproc
-                0x0000000008004810        0x0 build/gd32vf103_adc.o
+                0x000000000800280c        0x0 build/gd32vf103_gpio.o
  .rela.text._vfprintf_r
-                0x0000000008004810        0x0 build/gd32vf103_adc.o
+                0x000000000800280c        0x0 build/gd32vf103_gpio.o
  .rela.text._sbrk_r
-                0x0000000008004810        0x0 build/gd32vf103_adc.o
+                0x000000000800280c        0x0 build/gd32vf103_gpio.o
  .rela.text._close_r
-                0x0000000008004810        0x0 build/gd32vf103_adc.o
+                0x000000000800280c        0x0 build/gd32vf103_gpio.o
  .rela.text._lseek_r
-                0x0000000008004810        0x0 build/gd32vf103_adc.o
+                0x000000000800280c        0x0 build/gd32vf103_gpio.o
  .rela.text._read_r
-                0x0000000008004810        0x0 build/gd32vf103_adc.o
+                0x000000000800280c        0x0 build/gd32vf103_gpio.o
  .rela.text._fstat_r
-                0x0000000008004810        0x0 build/gd32vf103_adc.o
+                0x000000000800280c        0x0 build/gd32vf103_gpio.o
  .rela.text._isatty_r
-                0x0000000008004810        0x0 build/gd32vf103_adc.o
+                0x000000000800280c        0x0 build/gd32vf103_gpio.o
 
 .fini
  *(SORT_NONE(.fini))
-                0x0000000008004810                . = ALIGN (0x4)
+                0x000000000800280c                . = ALIGN (0x4)
                 [!provide]                        PROVIDE (__etext = .)
                 [!provide]                        PROVIDE (_etext = .)
                 [!provide]                        PROVIDE (etext = .)
                 [!provide]                        PROVIDE (_eilm = .)
 
-.preinit_array  0x0000000008004810        0x0
-                0x0000000008004810                PROVIDE (__preinit_array_start = .)
+.preinit_array  0x000000000800280c        0x0
+                0x000000000800280c                PROVIDE (__preinit_array_start = .)
  *(.preinit_array)
-                0x0000000008004810                PROVIDE (__preinit_array_end = .)
+                0x000000000800280c                PROVIDE (__preinit_array_end = .)
 
-.init_array     0x0000000008004810        0x0
-                0x0000000008004810                PROVIDE (__init_array_start = .)
+.init_array     0x000000000800280c        0x0
+                0x000000000800280c                PROVIDE (__init_array_start = .)
  *(SORT_BY_INIT_PRIORITY(.init_array.*) SORT_BY_INIT_PRIORITY(.ctors.*))
  *(.init_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .ctors)
-                0x0000000008004810                PROVIDE (__init_array_end = .)
+                0x000000000800280c                PROVIDE (__init_array_end = .)
 
-.fini_array     0x0000000008004810        0x0
-                0x0000000008004810                PROVIDE (__fini_array_start = .)
+.fini_array     0x000000000800280c        0x0
+                0x000000000800280c                PROVIDE (__fini_array_start = .)
  *(SORT_BY_INIT_PRIORITY(.fini_array.*) SORT_BY_INIT_PRIORITY(.dtors.*))
  *(.fini_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .dtors)
-                0x0000000008004810                PROVIDE (__fini_array_end = .)
+                0x000000000800280c                PROVIDE (__fini_array_end = .)
 
 .ctors
  *crtbegin.o(.ctors)
@@ -2691,18 +2821,18 @@ END GROUP
  *(EXCLUDE_FILE(*crtend?.o *crtend.o) .dtors)
  *(SORT_BY_NAME(.dtors.*))
  *(.dtors)
-                0x0000000008004810                . = ALIGN (0x4)
+                0x000000000800280c                . = ALIGN (0x4)
                 [!provide]                        PROVIDE (_eilm = .)
 
-.lalign         0x0000000008004810        0x0
-                0x0000000008004810                . = ALIGN (0x4)
-                0x0000000008004810                PROVIDE (_data_lma = .)
+.lalign         0x000000000800280c        0x0
+                0x000000000800280c                . = ALIGN (0x4)
+                0x000000000800280c                PROVIDE (_data_lma = .)
 
-.dalign         0x0000000020000000        0x0 load address 0x0000000008004810
+.dalign         0x0000000020000000        0x0 load address 0x000000000800280c
                 0x0000000020000000                . = ALIGN (0x4)
                 0x0000000020000000                PROVIDE (_data = .)
 
-.data           0x0000000020000000       0x78 load address 0x0000000008004810
+.data           0x0000000020000000       0x78 load address 0x000000000800280c
  *(.rdata)
  *(.gnu.linkonce.r.*)
  *(.data .data.*)
@@ -2720,8 +2850,7 @@ END GROUP
  .sdata.uxCriticalNesting
                 0x0000000020000068        0x4 build/port.o
                 0x0000000020000068                uxCriticalNesting
- .sdata.input.4198
-                0x000000002000006c        0x1 build/stepperUP.o
+ .sdata.dir     0x000000002000006c        0x1 build/bsp_motor.o
  *fill*         0x000000002000006d        0x3 
  .sdata._impure_ptr
                 0x0000000020000070        0x4 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-impure.o)
@@ -2740,7 +2869,7 @@ END GROUP
                 [!provide]                        PROVIDE (_fbss = .)
                 0x0000000020000078                PROVIDE (__bss_start = .)
 
-.bss            0x0000000020000078      0x530
+.bss            0x0000000020000078      0x130
  *(.sbss*)
  .sbss.then.5588
                 0x0000000020000078        0x8 build/port.o
@@ -2765,45 +2894,41 @@ END GROUP
                 0x00000000200000a0        0x4 build/tasks.o
  .sbss.xYieldPending
                 0x00000000200000a4        0x4 build/tasks.o
- .sbss.lcd_conf
-                0x00000000200000a8        0x4 build/lcd.o
-                0x00000000200000a8                lcd_conf
- .sbss.r        0x00000000200000ac        0x4 build/lcd.o
-                0x00000000200000ac                r
- .sbss.w        0x00000000200000b0        0x4 build/lcd.o
-                0x00000000200000b0                w
- .sbss.phase.4197
-                0x00000000200000b4        0x1 build/stepperUP.o
+ .sbss.button_peripheral
+                0x00000000200000a8        0x4 build/bsp_motor.o
+ .sbss.button_pin
+                0x00000000200000ac        0x1 build/bsp_motor.o
+ *fill*         0x00000000200000ad        0x3 
+ .sbss.peripheral
+                0x00000000200000b0        0x4 build/bsp_motor.o
+ .sbss.phase    0x00000000200000b4        0x1 build/bsp_motor.o
  *fill*         0x00000000200000b5        0x3 
+ .sbss.pins     0x00000000200000b8        0x4 build/bsp_motor.o
  .sbss._global_atexit
-                0x00000000200000b8        0x4 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-__call_atexit.o)
-                0x00000000200000b8                _global_atexit
+                0x00000000200000bc        0x4 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-__call_atexit.o)
+                0x00000000200000bc                _global_atexit
  .sbss.__malloc_free_list
-                0x00000000200000bc        0x4 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-nano-mallocr.o)
-                0x00000000200000bc                __malloc_free_list
- .sbss.__malloc_sbrk_start
                 0x00000000200000c0        0x4 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-nano-mallocr.o)
-                0x00000000200000c0                __malloc_sbrk_start
+                0x00000000200000c0                __malloc_free_list
+ .sbss.__malloc_sbrk_start
+                0x00000000200000c4        0x4 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-nano-mallocr.o)
+                0x00000000200000c4                __malloc_sbrk_start
  *(.gnu.linkonce.sb.*)
  *(.bss .bss.*)
  .bss.pxReadyTasksLists
-                0x00000000200000c4       0x50 build/tasks.o
- .bss.queue     0x0000000020000114      0x400 build/lcd.o
-                0x0000000020000114                queue
+                0x00000000200000c8       0x50 build/tasks.o
  .bss._global_atexit0
-                0x0000000020000514       0x8c c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-__atexit.o)
+                0x0000000020000118       0x8c c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-__atexit.o)
  *(.gnu.linkonce.b.*)
  *(COMMON)
- COMMON         0x00000000200005a0        0x4 build/lcd.o
-                0x00000000200005a0                BACK_COLOR
- COMMON         0x00000000200005a4        0x4 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-reent.o)
-                0x00000000200005a4                errno
-                0x00000000200005a8                . = ALIGN (0x4)
-                0x00000000200005a8                . = ALIGN (0x8)
-                0x00000000200005a8                PROVIDE (_end = .)
+ COMMON         0x00000000200001a4        0x4 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-reent.o)
+                0x00000000200001a4                errno
+                0x00000000200001a8                . = ALIGN (0x4)
+                0x00000000200001a8                . = ALIGN (0x8)
+                0x00000000200001a8                PROVIDE (_end = .)
                 [!provide]                        PROVIDE (end = .)
 
-.stack          0x0000000020007000     0x1000 load address 0x00000000200005a8
+.stack          0x0000000020007000     0x1000 load address 0x00000000200001a8
                 0x0000000020007000                PROVIDE (_heap_end = .)
                 0x0000000000001000                . = __stack_size
  *fill*         0x0000000020007000     0x1000 
@@ -2812,305 +2937,209 @@ END GROUP
                 [!provide]                        PROVIDE (_dbg_sp = .)
 OUTPUT(build/gd32vf103.elf elf32-littleriscv)
 
-.debug_info     0x0000000000000000    0x1676a
- .debug_info    0x0000000000000000      0xb98 build/gd32vf103_adc.o
- .debug_info    0x0000000000000b98      0x6f6 build/gd32vf103_gpio.o
- .debug_info    0x000000000000128e      0xf51 build/gd32vf103_rcu.o
- .debug_info    0x00000000000021df      0xa73 build/gd32vf103_spi.o
- .debug_info    0x0000000000002c52      0x203 build/system_gd32vf103.o
- .debug_info    0x0000000000002e55      0x1d3 build/_exit.o
- .debug_info    0x0000000000003028      0xacd build/close.o
- .debug_info    0x0000000000003af5      0xd59 build/fstat.o
- .debug_info    0x000000000000484e      0x108 build/isatty.o
- .debug_info    0x0000000000004956      0xb29 build/lseek.o
- .debug_info    0x000000000000547f      0xb01 build/read.o
- .debug_info    0x0000000000005f80       0xd0 build/sbrk.o
- .debug_info    0x0000000000006050      0x1bb build/write_hex.o
- .debug_info    0x000000000000620b     0x18a2 build/n200_func.o
- .debug_info    0x0000000000007aad      0xcb0 build/init.o
- .debug_info    0x000000000000875d      0xc82 build/list.o
- .debug_info    0x00000000000093df     0x10c5 build/port.o
- .debug_info    0x000000000000a4a4     0x3a2f build/tasks.o
- .debug_info    0x000000000000ded3     0x2fa5 build/lcd.o
- .debug_info    0x0000000000010e78       0xeb build/main.o
- .debug_info    0x0000000000010f63     0x10d9 build/stepperUP.o
- .debug_info    0x000000000001203c       0x26 build/start.o
- .debug_info    0x0000000000012062       0x26 build/portasm.o
- .debug_info    0x0000000000012088      0x734 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(divdf3.o)
- .debug_info    0x00000000000127bc      0x286 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(ledf2.o)
- .debug_info    0x0000000000012a42      0x76c c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(muldf3.o)
- .debug_info    0x00000000000131ae      0x2af c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(floatunsidf.o)
- .debug_info    0x000000000001345d      0x2e8 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(floatundidf.o)
- .debug_info    0x0000000000013745      0xc72 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_lshrdi3.o)
- .debug_info    0x00000000000143b7      0xc72 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_ashldi3.o)
- .debug_info    0x0000000000015029      0xbd7 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_clzsi2.o)
- .debug_info    0x0000000000015c00      0xb6a c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_clz.o)
+.debug_info     0x0000000000000000     0xe4a0
+ .debug_info    0x0000000000000000      0x6f6 build/gd32vf103_gpio.o
+ .debug_info    0x00000000000006f6      0xf51 build/gd32vf103_rcu.o
+ .debug_info    0x0000000000001647      0x203 build/system_gd32vf103.o
+ .debug_info    0x000000000000184a      0x1d3 build/_exit.o
+ .debug_info    0x0000000000001a1d      0xacd build/close.o
+ .debug_info    0x00000000000024ea      0xd59 build/fstat.o
+ .debug_info    0x0000000000003243      0x108 build/isatty.o
+ .debug_info    0x000000000000334b      0xb29 build/lseek.o
+ .debug_info    0x0000000000003e74      0xb01 build/read.o
+ .debug_info    0x0000000000004975       0xd0 build/sbrk.o
+ .debug_info    0x0000000000004a45      0x1bb build/write_hex.o
+ .debug_info    0x0000000000004c00     0x18a2 build/n200_func.o
+ .debug_info    0x00000000000064a2      0xcb0 build/init.o
+ .debug_info    0x0000000000007152      0xc82 build/list.o
+ .debug_info    0x0000000000007dd4     0x10c5 build/port.o
+ .debug_info    0x0000000000008e99     0x3a2f build/tasks.o
+ .debug_info    0x000000000000c8c8      0x53a build/bsp_motor.o
+ .debug_info    0x000000000000ce02      0xa95 build/main.o
+ .debug_info    0x000000000000d897      0xbbd build/stepperUP.o
+ .debug_info    0x000000000000e454       0x26 build/start.o
+ .debug_info    0x000000000000e47a       0x26 build/portasm.o
 
-.debug_abbrev   0x0000000000000000     0x4060
- .debug_abbrev  0x0000000000000000      0x216 build/gd32vf103_adc.o
- .debug_abbrev  0x0000000000000216      0x228 build/gd32vf103_gpio.o
- .debug_abbrev  0x000000000000043e      0x259 build/gd32vf103_rcu.o
- .debug_abbrev  0x0000000000000697      0x21a build/gd32vf103_spi.o
- .debug_abbrev  0x00000000000008b1       0xe0 build/system_gd32vf103.o
- .debug_abbrev  0x0000000000000991       0xec build/_exit.o
- .debug_abbrev  0x0000000000000a7d      0x1eb build/close.o
- .debug_abbrev  0x0000000000000c68      0x218 build/fstat.o
- .debug_abbrev  0x0000000000000e80       0x75 build/isatty.o
- .debug_abbrev  0x0000000000000ef5      0x218 build/lseek.o
- .debug_abbrev  0x000000000000110d      0x1fc build/read.o
- .debug_abbrev  0x0000000000001309       0xac build/sbrk.o
- .debug_abbrev  0x00000000000013b5       0xfa build/write_hex.o
- .debug_abbrev  0x00000000000014af      0x4db build/n200_func.o
- .debug_abbrev  0x000000000000198a      0x22b build/init.o
- .debug_abbrev  0x0000000000001bb5      0x22d build/list.o
- .debug_abbrev  0x0000000000001de2      0x3d0 build/port.o
- .debug_abbrev  0x00000000000021b2      0x512 build/tasks.o
- .debug_abbrev  0x00000000000026c4      0x55b build/lcd.o
- .debug_abbrev  0x0000000000002c1f       0x8b build/main.o
- .debug_abbrev  0x0000000000002caa      0x2ac build/stepperUP.o
- .debug_abbrev  0x0000000000002f56       0x14 build/start.o
- .debug_abbrev  0x0000000000002f6a       0x14 build/portasm.o
- .debug_abbrev  0x0000000000002f7e      0x187 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(divdf3.o)
- .debug_abbrev  0x0000000000003105      0x199 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(ledf2.o)
- .debug_abbrev  0x000000000000329e      0x197 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(muldf3.o)
- .debug_abbrev  0x0000000000003435      0x178 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(floatunsidf.o)
- .debug_abbrev  0x00000000000035ad      0x19f c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(floatundidf.o)
- .debug_abbrev  0x000000000000374c      0x275 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_lshrdi3.o)
- .debug_abbrev  0x00000000000039c1      0x275 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_ashldi3.o)
- .debug_abbrev  0x0000000000003c36      0x242 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_clzsi2.o)
- .debug_abbrev  0x0000000000003e78      0x1e8 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_clz.o)
+.debug_abbrev   0x0000000000000000     0x28b0
+ .debug_abbrev  0x0000000000000000      0x228 build/gd32vf103_gpio.o
+ .debug_abbrev  0x0000000000000228      0x259 build/gd32vf103_rcu.o
+ .debug_abbrev  0x0000000000000481       0xe0 build/system_gd32vf103.o
+ .debug_abbrev  0x0000000000000561       0xec build/_exit.o
+ .debug_abbrev  0x000000000000064d      0x1eb build/close.o
+ .debug_abbrev  0x0000000000000838      0x218 build/fstat.o
+ .debug_abbrev  0x0000000000000a50       0x75 build/isatty.o
+ .debug_abbrev  0x0000000000000ac5      0x218 build/lseek.o
+ .debug_abbrev  0x0000000000000cdd      0x1fc build/read.o
+ .debug_abbrev  0x0000000000000ed9       0xac build/sbrk.o
+ .debug_abbrev  0x0000000000000f85       0xfa build/write_hex.o
+ .debug_abbrev  0x000000000000107f      0x4db build/n200_func.o
+ .debug_abbrev  0x000000000000155a      0x22b build/init.o
+ .debug_abbrev  0x0000000000001785      0x22d build/list.o
+ .debug_abbrev  0x00000000000019b2      0x3d0 build/port.o
+ .debug_abbrev  0x0000000000001d82      0x512 build/tasks.o
+ .debug_abbrev  0x0000000000002294      0x1ba build/bsp_motor.o
+ .debug_abbrev  0x000000000000244e      0x1e1 build/main.o
+ .debug_abbrev  0x000000000000262f      0x259 build/stepperUP.o
+ .debug_abbrev  0x0000000000002888       0x14 build/start.o
+ .debug_abbrev  0x000000000000289c       0x14 build/portasm.o
 
-.debug_loc      0x0000000000000000     0x9ee5
- .debug_loc     0x0000000000000000      0x7d6 build/gd32vf103_adc.o
- .debug_loc     0x00000000000007d6      0x4ba build/gd32vf103_gpio.o
- .debug_loc     0x0000000000000c90      0xcf4 build/gd32vf103_rcu.o
- .debug_loc     0x0000000000001984      0x54e build/gd32vf103_spi.o
- .debug_loc     0x0000000000001ed2      0x173 build/system_gd32vf103.o
- .debug_loc     0x0000000000002045       0x3e build/_exit.o
- .debug_loc     0x0000000000002083       0x21 build/close.o
- .debug_loc     0x00000000000020a4       0x90 build/fstat.o
- .debug_loc     0x0000000000002134       0x2e build/isatty.o
- .debug_loc     0x0000000000002162       0x8f build/lseek.o
- .debug_loc     0x00000000000021f1       0x21 build/read.o
- .debug_loc     0x0000000000002212       0x21 build/sbrk.o
- .debug_loc     0x0000000000002233      0x101 build/write_hex.o
- .debug_loc     0x0000000000002334      0xa1d build/n200_func.o
- .debug_loc     0x0000000000002d51       0x2c build/init.o
- .debug_loc     0x0000000000002d7d       0x94 build/list.o
- .debug_loc     0x0000000000002e11      0x2ff build/port.o
- .debug_loc     0x0000000000003110     0x26e1 build/tasks.o
- .debug_loc     0x00000000000057f1     0x1ec3 build/lcd.o
- .debug_loc     0x00000000000076b4       0x20 build/main.o
- .debug_loc     0x00000000000076d4      0x103 build/stepperUP.o
- .debug_loc     0x00000000000077d7     0x129b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(divdf3.o)
- .debug_loc     0x0000000000008a72      0x156 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(ledf2.o)
- .debug_loc     0x0000000000008bc8      0xd6e c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(muldf3.o)
- .debug_loc     0x0000000000009936      0x15c c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(floatunsidf.o)
- .debug_loc     0x0000000000009a92      0x2ec c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(floatundidf.o)
- .debug_loc     0x0000000000009d7e       0x7e c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_lshrdi3.o)
- .debug_loc     0x0000000000009dfc       0x7e c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_ashldi3.o)
- .debug_loc     0x0000000000009e7a       0x6b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_clzsi2.o)
+.debug_loc      0x0000000000000000     0x4f14
+ .debug_loc     0x0000000000000000      0x4ba build/gd32vf103_gpio.o
+ .debug_loc     0x00000000000004ba      0xcf4 build/gd32vf103_rcu.o
+ .debug_loc     0x00000000000011ae      0x173 build/system_gd32vf103.o
+ .debug_loc     0x0000000000001321       0x3e build/_exit.o
+ .debug_loc     0x000000000000135f       0x21 build/close.o
+ .debug_loc     0x0000000000001380       0x90 build/fstat.o
+ .debug_loc     0x0000000000001410       0x2e build/isatty.o
+ .debug_loc     0x000000000000143e       0x8f build/lseek.o
+ .debug_loc     0x00000000000014cd       0x21 build/read.o
+ .debug_loc     0x00000000000014ee       0x21 build/sbrk.o
+ .debug_loc     0x000000000000150f      0x101 build/write_hex.o
+ .debug_loc     0x0000000000001610      0xa1d build/n200_func.o
+ .debug_loc     0x000000000000202d       0x2c build/init.o
+ .debug_loc     0x0000000000002059       0x94 build/list.o
+ .debug_loc     0x00000000000020ed      0x2ff build/port.o
+ .debug_loc     0x00000000000023ec     0x26e1 build/tasks.o
+ .debug_loc     0x0000000000004acd      0x3c3 build/bsp_motor.o
+ .debug_loc     0x0000000000004e90       0x20 build/main.o
+ .debug_loc     0x0000000000004eb0       0x64 build/stepperUP.o
 
-.debug_aranges  0x0000000000000000      0xc10
+.debug_aranges  0x0000000000000000      0x7e8
  .debug_aranges
-                0x0000000000000000      0x140 build/gd32vf103_adc.o
+                0x0000000000000000       0xa0 build/gd32vf103_gpio.o
  .debug_aranges
-                0x0000000000000140       0xa0 build/gd32vf103_gpio.o
+                0x00000000000000a0      0x160 build/gd32vf103_rcu.o
  .debug_aranges
-                0x00000000000001e0      0x160 build/gd32vf103_rcu.o
+                0x0000000000000200       0x28 build/system_gd32vf103.o
  .debug_aranges
-                0x0000000000000340      0x128 build/gd32vf103_spi.o
+                0x0000000000000228       0x20 build/_exit.o
  .debug_aranges
-                0x0000000000000468       0x28 build/system_gd32vf103.o
+                0x0000000000000248       0x20 build/close.o
  .debug_aranges
-                0x0000000000000490       0x20 build/_exit.o
+                0x0000000000000268       0x20 build/fstat.o
  .debug_aranges
-                0x00000000000004b0       0x20 build/close.o
+                0x0000000000000288       0x20 build/isatty.o
  .debug_aranges
-                0x00000000000004d0       0x20 build/fstat.o
+                0x00000000000002a8       0x20 build/lseek.o
  .debug_aranges
-                0x00000000000004f0       0x20 build/isatty.o
+                0x00000000000002c8       0x20 build/read.o
  .debug_aranges
-                0x0000000000000510       0x20 build/lseek.o
+                0x00000000000002e8       0x20 build/sbrk.o
  .debug_aranges
-                0x0000000000000530       0x20 build/read.o
+                0x0000000000000308       0x20 build/write_hex.o
  .debug_aranges
-                0x0000000000000550       0x20 build/sbrk.o
+                0x0000000000000328      0x140 build/n200_func.o
  .debug_aranges
-                0x0000000000000570       0x20 build/write_hex.o
+                0x0000000000000468       0x28 build/init.o
  .debug_aranges
-                0x0000000000000590      0x140 build/n200_func.o
+                0x0000000000000490       0x40 build/list.o
  .debug_aranges
-                0x00000000000006d0       0x28 build/init.o
+                0x00000000000004d0       0x68 build/port.o
  .debug_aranges
-                0x00000000000006f8       0x40 build/list.o
+                0x0000000000000538      0x1d8 build/tasks.o
  .debug_aranges
-                0x0000000000000738       0x68 build/port.o
+                0x0000000000000710       0x50 build/bsp_motor.o
  .debug_aranges
-                0x00000000000007a0      0x1d8 build/tasks.o
+                0x0000000000000760       0x20 build/main.o
  .debug_aranges
-                0x0000000000000978       0xf0 build/lcd.o
+                0x0000000000000780       0x28 build/stepperUP.o
  .debug_aranges
-                0x0000000000000a68       0x20 build/main.o
+                0x00000000000007a8       0x20 build/start.o
  .debug_aranges
-                0x0000000000000a88       0x30 build/stepperUP.o
- .debug_aranges
-                0x0000000000000ab8       0x20 build/start.o
- .debug_aranges
-                0x0000000000000ad8       0x20 build/portasm.o
- .debug_aranges
-                0x0000000000000af8       0x20 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(divdf3.o)
- .debug_aranges
-                0x0000000000000b18       0x20 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(ledf2.o)
- .debug_aranges
-                0x0000000000000b38       0x20 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(muldf3.o)
- .debug_aranges
-                0x0000000000000b58       0x20 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(floatunsidf.o)
- .debug_aranges
-                0x0000000000000b78       0x20 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(floatundidf.o)
- .debug_aranges
-                0x0000000000000b98       0x20 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_lshrdi3.o)
- .debug_aranges
-                0x0000000000000bb8       0x20 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_ashldi3.o)
- .debug_aranges
-                0x0000000000000bd8       0x20 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_clzsi2.o)
- .debug_aranges
-                0x0000000000000bf8       0x18 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_clz.o)
+                0x00000000000007c8       0x20 build/portasm.o
 
-.debug_ranges   0x0000000000000000     0x1288
- .debug_ranges  0x0000000000000000      0x130 build/gd32vf103_adc.o
- .debug_ranges  0x0000000000000130       0x90 build/gd32vf103_gpio.o
- .debug_ranges  0x00000000000001c0      0x150 build/gd32vf103_rcu.o
- .debug_ranges  0x0000000000000310      0x118 build/gd32vf103_spi.o
- .debug_ranges  0x0000000000000428       0x18 build/system_gd32vf103.o
- .debug_ranges  0x0000000000000440       0x10 build/_exit.o
- .debug_ranges  0x0000000000000450       0x10 build/close.o
- .debug_ranges  0x0000000000000460       0x10 build/fstat.o
- .debug_ranges  0x0000000000000470       0x10 build/isatty.o
- .debug_ranges  0x0000000000000480       0x10 build/lseek.o
- .debug_ranges  0x0000000000000490       0x10 build/read.o
- .debug_ranges  0x00000000000004a0       0x10 build/sbrk.o
- .debug_ranges  0x00000000000004b0       0x30 build/write_hex.o
- .debug_ranges  0x00000000000004e0      0x240 build/n200_func.o
- .debug_ranges  0x0000000000000720       0x18 build/init.o
- .debug_ranges  0x0000000000000738       0x30 build/list.o
- .debug_ranges  0x0000000000000768       0x58 build/port.o
- .debug_ranges  0x00000000000007c0      0x438 build/tasks.o
- .debug_ranges  0x0000000000000bf8      0x1c8 build/lcd.o
- .debug_ranges  0x0000000000000dc0       0x10 build/main.o
- .debug_ranges  0x0000000000000dd0       0x20 build/stepperUP.o
- .debug_ranges  0x0000000000000df0      0x180 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(divdf3.o)
- .debug_ranges  0x0000000000000f70       0x68 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(ledf2.o)
- .debug_ranges  0x0000000000000fd8      0x1c0 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(muldf3.o)
- .debug_ranges  0x0000000000001198       0x68 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(floatunsidf.o)
- .debug_ranges  0x0000000000001200       0x68 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(floatundidf.o)
- .debug_ranges  0x0000000000001268       0x20 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_clzsi2.o)
+.debug_ranges   0x0000000000000000      0xa30
+ .debug_ranges  0x0000000000000000       0x90 build/gd32vf103_gpio.o
+ .debug_ranges  0x0000000000000090      0x150 build/gd32vf103_rcu.o
+ .debug_ranges  0x00000000000001e0       0x18 build/system_gd32vf103.o
+ .debug_ranges  0x00000000000001f8       0x10 build/_exit.o
+ .debug_ranges  0x0000000000000208       0x10 build/close.o
+ .debug_ranges  0x0000000000000218       0x10 build/fstat.o
+ .debug_ranges  0x0000000000000228       0x10 build/isatty.o
+ .debug_ranges  0x0000000000000238       0x10 build/lseek.o
+ .debug_ranges  0x0000000000000248       0x10 build/read.o
+ .debug_ranges  0x0000000000000258       0x10 build/sbrk.o
+ .debug_ranges  0x0000000000000268       0x30 build/write_hex.o
+ .debug_ranges  0x0000000000000298      0x240 build/n200_func.o
+ .debug_ranges  0x00000000000004d8       0x18 build/init.o
+ .debug_ranges  0x00000000000004f0       0x30 build/list.o
+ .debug_ranges  0x0000000000000520       0x58 build/port.o
+ .debug_ranges  0x0000000000000578      0x438 build/tasks.o
+ .debug_ranges  0x00000000000009b0       0x40 build/bsp_motor.o
+ .debug_ranges  0x00000000000009f0       0x10 build/main.o
+ .debug_ranges  0x0000000000000a00       0x30 build/stepperUP.o
 
-.debug_line     0x0000000000000000    0x12b36
- .debug_line    0x0000000000000000     0x1491 build/gd32vf103_adc.o
- .debug_line    0x0000000000001491      0xb20 build/gd32vf103_gpio.o
- .debug_line    0x0000000000001fb1     0x1513 build/gd32vf103_rcu.o
- .debug_line    0x00000000000034c4      0xe35 build/gd32vf103_spi.o
- .debug_line    0x00000000000042f9      0x6b5 build/system_gd32vf103.o
- .debug_line    0x00000000000049ae      0x148 build/_exit.o
- .debug_line    0x0000000000004af6      0x17e build/close.o
- .debug_line    0x0000000000004c74      0x2bd build/fstat.o
- .debug_line    0x0000000000004f31       0xd6 build/isatty.o
- .debug_line    0x0000000000005007      0x19f build/lseek.o
- .debug_line    0x00000000000051a6      0x18a build/read.o
- .debug_line    0x0000000000005330      0x138 build/sbrk.o
- .debug_line    0x0000000000005468      0x23d build/write_hex.o
- .debug_line    0x00000000000056a5     0x12c5 build/n200_func.o
- .debug_line    0x000000000000696a      0x2ac build/init.o
- .debug_line    0x0000000000006c16      0x5db build/list.o
- .debug_line    0x00000000000071f1      0x9cd build/port.o
- .debug_line    0x0000000000007bbe     0x51c5 build/tasks.o
- .debug_line    0x000000000000cd83     0x1e6b build/lcd.o
- .debug_line    0x000000000000ebee      0x196 build/main.o
- .debug_line    0x000000000000ed84      0x569 build/stepperUP.o
- .debug_line    0x000000000000f2ed      0x189 build/start.o
- .debug_line    0x000000000000f476      0x178 build/portasm.o
- .debug_line    0x000000000000f5ee      0xe35 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(divdf3.o)
- .debug_line    0x0000000000010423      0x303 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(ledf2.o)
- .debug_line    0x0000000000010726      0xbf8 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(muldf3.o)
- .debug_line    0x000000000001131e      0x239 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(floatunsidf.o)
- .debug_line    0x0000000000011557      0x3f5 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(floatundidf.o)
- .debug_line    0x000000000001194c      0x4c4 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_lshrdi3.o)
- .debug_line    0x0000000000011e10      0x4c4 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_ashldi3.o)
- .debug_line    0x00000000000122d4      0x472 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_clzsi2.o)
- .debug_line    0x0000000000012746      0x3f0 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_clz.o)
+.debug_line     0x0000000000000000     0xba47
+ .debug_line    0x0000000000000000      0xb20 build/gd32vf103_gpio.o
+ .debug_line    0x0000000000000b20     0x1513 build/gd32vf103_rcu.o
+ .debug_line    0x0000000000002033      0x6b5 build/system_gd32vf103.o
+ .debug_line    0x00000000000026e8      0x148 build/_exit.o
+ .debug_line    0x0000000000002830      0x17e build/close.o
+ .debug_line    0x00000000000029ae      0x2bd build/fstat.o
+ .debug_line    0x0000000000002c6b       0xd6 build/isatty.o
+ .debug_line    0x0000000000002d41      0x19f build/lseek.o
+ .debug_line    0x0000000000002ee0      0x18a build/read.o
+ .debug_line    0x000000000000306a      0x138 build/sbrk.o
+ .debug_line    0x00000000000031a2      0x23d build/write_hex.o
+ .debug_line    0x00000000000033df     0x12c5 build/n200_func.o
+ .debug_line    0x00000000000046a4      0x2ac build/init.o
+ .debug_line    0x0000000000004950      0x5db build/list.o
+ .debug_line    0x0000000000004f2b      0x9cd build/port.o
+ .debug_line    0x00000000000058f8     0x51c5 build/tasks.o
+ .debug_line    0x000000000000aabd      0x66c build/bsp_motor.o
+ .debug_line    0x000000000000b129      0x294 build/main.o
+ .debug_line    0x000000000000b3bd      0x389 build/stepperUP.o
+ .debug_line    0x000000000000b746      0x189 build/start.o
+ .debug_line    0x000000000000b8cf      0x178 build/portasm.o
 
-.debug_str      0x0000000000000000     0x4379
- .debug_str     0x0000000000000000      0x84d build/gd32vf103_adc.o
-                                        0x8c6 (size before relaxing)
- .debug_str     0x000000000000084d      0x1f0 build/gd32vf103_gpio.o
+.debug_str      0x0000000000000000     0x3060
+ .debug_str     0x0000000000000000      0x54a build/gd32vf103_gpio.o
                                         0x5ae (size before relaxing)
- .debug_str     0x0000000000000a3d      0xa8c build/gd32vf103_rcu.o
+ .debug_str     0x000000000000054a      0xa98 build/gd32vf103_rcu.o
                                         0xe2d (size before relaxing)
- .debug_str     0x00000000000014c9      0x3ae build/gd32vf103_spi.o
-                                        0x77a (size before relaxing)
- .debug_str     0x0000000000001877       0xa6 build/system_gd32vf103.o
+ .debug_str     0x0000000000000fe2       0xa6 build/system_gd32vf103.o
                                         0x280 (size before relaxing)
- .debug_str     0x000000000000191d       0x68 build/_exit.o
+ .debug_str     0x0000000000001088       0x68 build/_exit.o
                                         0x1ef (size before relaxing)
- .debug_str     0x0000000000001985      0x3e8 build/close.o
+ .debug_str     0x00000000000010f0      0x3e8 build/close.o
                                         0x5b9 (size before relaxing)
- .debug_str     0x0000000000001d6d      0x146 build/fstat.o
+ .debug_str     0x00000000000014d8      0x146 build/fstat.o
                                         0x731 (size before relaxing)
- .debug_str     0x0000000000001eb3       0x2e build/isatty.o
+ .debug_str     0x000000000000161e       0x2e build/isatty.o
                                         0x1bd (size before relaxing)
- .debug_str     0x0000000000001ee1       0x2c build/lseek.o
+ .debug_str     0x000000000000164c       0x2c build/lseek.o
                                         0x5d5 (size before relaxing)
- .debug_str     0x0000000000001f0d       0x24 build/read.o
+ .debug_str     0x0000000000001678       0x24 build/read.o
                                         0x5c7 (size before relaxing)
- .debug_str     0x0000000000001f31       0x4a build/sbrk.o
+ .debug_str     0x000000000000169c       0x4a build/sbrk.o
                                         0x15b (size before relaxing)
- .debug_str     0x0000000000001f7b       0x37 build/write_hex.o
+ .debug_str     0x00000000000016e6       0x37 build/write_hex.o
                                         0x1e8 (size before relaxing)
- .debug_str     0x0000000000001fb2      0x38a build/n200_func.o
+ .debug_str     0x000000000000171d      0x38a build/n200_func.o
                                         0x98c (size before relaxing)
- .debug_str     0x000000000000233c      0x3e7 build/init.o
+ .debug_str     0x0000000000001aa7      0x3e7 build/init.o
                                         0x9b5 (size before relaxing)
- .debug_str     0x0000000000002723      0x14c build/list.o
+ .debug_str     0x0000000000001e8e      0x14c build/list.o
                                         0x6cf (size before relaxing)
- .debug_str     0x000000000000286f      0x183 build/port.o
+ .debug_str     0x0000000000001fda      0x183 build/port.o
                                         0x806 (size before relaxing)
- .debug_str     0x00000000000029f2      0xda4 build/tasks.o
+ .debug_str     0x000000000000215d      0xda4 build/tasks.o
                                        0x156f (size before relaxing)
- .debug_str     0x0000000000003796      0x254 build/lcd.o
-                                        0xabc (size before relaxing)
- .debug_str     0x00000000000039ea       0x2a build/main.o
-                                        0x1ab (size before relaxing)
- .debug_str     0x0000000000003a14       0x36 build/stepperUP.o
-                                        0x91a (size before relaxing)
- .debug_str     0x0000000000003a4a       0x37 build/start.o
+ .debug_str     0x0000000000002f01       0xc1 build/bsp_motor.o
+                                        0x43c (size before relaxing)
+ .debug_str     0x0000000000002fc2       0x35 build/main.o
+                                        0x5ad (size before relaxing)
+ .debug_str     0x0000000000002ff7       0x17 build/stepperUP.o
+                                        0x5fc (size before relaxing)
+ .debug_str     0x000000000000300e       0x37 build/start.o
                                          0x7c (size before relaxing)
- .debug_str     0x0000000000003a81       0x1b build/portasm.o
+ .debug_str     0x0000000000003045       0x1b build/portasm.o
                                          0x6c (size before relaxing)
- .debug_str     0x0000000000003a9c      0x3c7 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(divdf3.o)
-                                        0x452 (size before relaxing)
- .debug_str     0x0000000000003e63       0x7b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(ledf2.o)
-                                        0x2ce (size before relaxing)
- .debug_str     0x0000000000003ede      0x15f c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(muldf3.o)
-                                        0x4aa (size before relaxing)
- .debug_str     0x000000000000403d       0xfd c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(floatunsidf.o)
-                                        0x33a (size before relaxing)
- .debug_str     0x000000000000413a       0x4c c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(floatundidf.o)
-                                        0x344 (size before relaxing)
- .debug_str     0x0000000000004186      0x1db c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_lshrdi3.o)
-                                        0x860 (size before relaxing)
- .debug_str     0x0000000000004361        0xa c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_ashldi3.o)
-                                        0x860 (size before relaxing)
- .debug_str     0x000000000000436b        0xe c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_clzsi2.o)
-                                        0x82e (size before relaxing)
- .debug_str     0x0000000000004379      0x811 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_clz.o)
 
 .comment        0x0000000000000000       0x28
- .comment       0x0000000000000000       0x28 build/gd32vf103_adc.o
+ .comment       0x0000000000000000       0x28 build/gd32vf103_gpio.o
                                          0x29 (size before relaxing)
- .comment       0x0000000000000028       0x29 build/gd32vf103_gpio.o
  .comment       0x0000000000000028       0x29 build/gd32vf103_rcu.o
- .comment       0x0000000000000028       0x29 build/gd32vf103_spi.o
  .comment       0x0000000000000028       0x29 build/system_gd32vf103.o
  .comment       0x0000000000000028       0x29 build/_exit.o
  .comment       0x0000000000000028       0x29 build/close.o
@@ -3125,18 +3154,9 @@ OUTPUT(build/gd32vf103.elf elf32-littleriscv)
  .comment       0x0000000000000028       0x29 build/list.o
  .comment       0x0000000000000028       0x29 build/port.o
  .comment       0x0000000000000028       0x29 build/tasks.o
- .comment       0x0000000000000028       0x29 build/lcd.o
+ .comment       0x0000000000000028       0x29 build/bsp_motor.o
  .comment       0x0000000000000028       0x29 build/main.o
  .comment       0x0000000000000028       0x29 build/stepperUP.o
- .comment       0x0000000000000028       0x29 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(divdf3.o)
- .comment       0x0000000000000028       0x29 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(ledf2.o)
- .comment       0x0000000000000028       0x29 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(muldf3.o)
- .comment       0x0000000000000028       0x29 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(floatunsidf.o)
- .comment       0x0000000000000028       0x29 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(floatundidf.o)
- .comment       0x0000000000000028       0x29 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_lshrdi3.o)
- .comment       0x0000000000000028       0x29 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_ashldi3.o)
- .comment       0x0000000000000028       0x29 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_clzsi2.o)
- .comment       0x0000000000000028       0x29 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_clz.o)
  .comment       0x0000000000000028       0x29 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-atexit.o)
  .comment       0x0000000000000028       0x29 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-exit.o)
  .comment       0x0000000000000028       0x29 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-fini.o)
@@ -3174,170 +3194,138 @@ OUTPUT(build/gd32vf103.elf elf32-littleriscv)
 .riscv.attributes
                 0x0000000000000000       0x2b
  .riscv.attributes
-                0x0000000000000000       0x2b build/gd32vf103_adc.o
+                0x0000000000000000       0x2b build/gd32vf103_gpio.o
  .riscv.attributes
-                0x000000000000002b       0x2b build/gd32vf103_gpio.o
+                0x000000000000002b       0x2b build/gd32vf103_rcu.o
  .riscv.attributes
-                0x0000000000000056       0x2b build/gd32vf103_rcu.o
+                0x0000000000000056       0x2b build/system_gd32vf103.o
  .riscv.attributes
-                0x0000000000000081       0x2b build/gd32vf103_spi.o
+                0x0000000000000081       0x2b build/_exit.o
  .riscv.attributes
-                0x00000000000000ac       0x2b build/system_gd32vf103.o
+                0x00000000000000ac       0x2b build/close.o
  .riscv.attributes
-                0x00000000000000d7       0x2b build/_exit.o
+                0x00000000000000d7       0x2b build/fstat.o
  .riscv.attributes
-                0x0000000000000102       0x2b build/close.o
+                0x0000000000000102       0x2b build/isatty.o
  .riscv.attributes
-                0x000000000000012d       0x2b build/fstat.o
+                0x000000000000012d       0x2b build/lseek.o
  .riscv.attributes
-                0x0000000000000158       0x2b build/isatty.o
+                0x0000000000000158       0x2b build/read.o
  .riscv.attributes
-                0x0000000000000183       0x2b build/lseek.o
+                0x0000000000000183       0x2b build/sbrk.o
  .riscv.attributes
-                0x00000000000001ae       0x2b build/read.o
+                0x00000000000001ae       0x2b build/write_hex.o
  .riscv.attributes
-                0x00000000000001d9       0x2b build/sbrk.o
+                0x00000000000001d9       0x2b build/n200_func.o
  .riscv.attributes
-                0x0000000000000204       0x2b build/write_hex.o
+                0x0000000000000204       0x2b build/init.o
  .riscv.attributes
-                0x000000000000022f       0x2b build/n200_func.o
+                0x000000000000022f       0x2b build/list.o
  .riscv.attributes
-                0x000000000000025a       0x2b build/init.o
+                0x000000000000025a       0x2b build/port.o
  .riscv.attributes
-                0x0000000000000285       0x2b build/list.o
+                0x0000000000000285       0x2b build/tasks.o
  .riscv.attributes
-                0x00000000000002b0       0x2b build/port.o
+                0x00000000000002b0       0x2b build/bsp_motor.o
  .riscv.attributes
-                0x00000000000002db       0x2b build/tasks.o
+                0x00000000000002db       0x2b build/main.o
  .riscv.attributes
-                0x0000000000000306       0x2b build/lcd.o
+                0x0000000000000306       0x2b build/stepperUP.o
  .riscv.attributes
-                0x0000000000000331       0x2b build/main.o
+                0x0000000000000331       0x29 build/start.o
  .riscv.attributes
-                0x000000000000035c       0x2b build/stepperUP.o
+                0x000000000000035a       0x29 build/portasm.o
  .riscv.attributes
-                0x0000000000000387       0x29 build/start.o
+                0x0000000000000383       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-atexit.o)
  .riscv.attributes
-                0x00000000000003b0       0x29 build/portasm.o
+                0x00000000000003ae       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-exit.o)
  .riscv.attributes
-                0x00000000000003d9       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(divdf3.o)
+                0x00000000000003d9       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-fini.o)
  .riscv.attributes
-                0x0000000000000404       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(ledf2.o)
+                0x0000000000000404       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-impure.o)
  .riscv.attributes
-                0x000000000000042f       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(muldf3.o)
+                0x000000000000042f       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-init.o)
  .riscv.attributes
-                0x000000000000045a       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(floatunsidf.o)
+                0x000000000000045a       0x29 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-memcpy-asm.o)
  .riscv.attributes
-                0x0000000000000485       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(floatundidf.o)
+                0x0000000000000483       0x29 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-memset.o)
  .riscv.attributes
-                0x00000000000004b0       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_lshrdi3.o)
+                0x00000000000004ac       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-printf.o)
  .riscv.attributes
-                0x00000000000004db       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_ashldi3.o)
+                0x00000000000004d7       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-sysisatty.o)
  .riscv.attributes
-                0x0000000000000506       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_clzsi2.o)
+                0x0000000000000502       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-syswrite.o)
  .riscv.attributes
-                0x0000000000000531       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_clz.o)
+                0x000000000000052d       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-writer.o)
  .riscv.attributes
-                0x000000000000055c       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-atexit.o)
+                0x0000000000000558       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-__atexit.o)
  .riscv.attributes
-                0x0000000000000587       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-exit.o)
+                0x0000000000000583       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-__call_atexit.o)
  .riscv.attributes
-                0x00000000000005b2       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-fini.o)
+                0x00000000000005ae       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-findfp.o)
  .riscv.attributes
-                0x00000000000005dd       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-impure.o)
+                0x00000000000005d9       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-fwalk.o)
  .riscv.attributes
-                0x0000000000000608       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-init.o)
+                0x0000000000000604       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-nano-mallocr.o)
  .riscv.attributes
-                0x0000000000000633       0x29 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-memcpy-asm.o)
+                0x000000000000062f       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-nano-vfprintf_i.o)
  .riscv.attributes
-                0x000000000000065c       0x29 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-memset.o)
+                0x000000000000065a       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-nano-vfprintf.o)
  .riscv.attributes
-                0x0000000000000685       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-printf.o)
+                0x0000000000000685       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-reent.o)
  .riscv.attributes
-                0x00000000000006b0       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-sysisatty.o)
+                0x00000000000006b0       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-sbrkr.o)
  .riscv.attributes
-                0x00000000000006db       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-syswrite.o)
+                0x00000000000006db       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-stdio.o)
  .riscv.attributes
-                0x0000000000000706       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-writer.o)
+                0x0000000000000706       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-wbuf.o)
  .riscv.attributes
-                0x0000000000000731       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-__atexit.o)
+                0x0000000000000731       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-wsetup.o)
  .riscv.attributes
-                0x000000000000075c       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-__call_atexit.o)
+                0x000000000000075c       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-closer.o)
  .riscv.attributes
-                0x0000000000000787       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-findfp.o)
+                0x0000000000000787       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-fflush.o)
  .riscv.attributes
-                0x00000000000007b2       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-fwalk.o)
+                0x00000000000007b2       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-lseekr.o)
  .riscv.attributes
-                0x00000000000007dd       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-nano-mallocr.o)
+                0x00000000000007dd       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-makebuf.o)
  .riscv.attributes
-                0x0000000000000808       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-nano-vfprintf_i.o)
+                0x0000000000000808       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-memchr.o)
  .riscv.attributes
-                0x0000000000000833       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-nano-vfprintf.o)
+                0x0000000000000833       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-mlock.o)
  .riscv.attributes
-                0x000000000000085e       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-reent.o)
+                0x000000000000085e       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-nano-freer.o)
  .riscv.attributes
-                0x0000000000000889       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-sbrkr.o)
+                0x0000000000000889       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-readr.o)
  .riscv.attributes
-                0x00000000000008b4       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-stdio.o)
+                0x00000000000008b4       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-fstatr.o)
  .riscv.attributes
-                0x00000000000008df       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-wbuf.o)
+                0x00000000000008df       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-isattyr.o)
  .riscv.attributes
-                0x000000000000090a       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-wsetup.o)
+                0x000000000000090a       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libgloss_nano.a(sys_write.o)
  .riscv.attributes
-                0x0000000000000935       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-closer.o)
- .riscv.attributes
-                0x0000000000000960       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-fflush.o)
- .riscv.attributes
-                0x000000000000098b       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-lseekr.o)
- .riscv.attributes
-                0x00000000000009b6       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-makebuf.o)
- .riscv.attributes
-                0x00000000000009e1       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-memchr.o)
- .riscv.attributes
-                0x0000000000000a0c       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-mlock.o)
- .riscv.attributes
-                0x0000000000000a37       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-nano-freer.o)
- .riscv.attributes
-                0x0000000000000a62       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-readr.o)
- .riscv.attributes
-                0x0000000000000a8d       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-fstatr.o)
- .riscv.attributes
-                0x0000000000000ab8       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-isattyr.o)
- .riscv.attributes
-                0x0000000000000ae3       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libgloss_nano.a(sys_write.o)
- .riscv.attributes
-                0x0000000000000b0e       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-errno.o)
+                0x0000000000000935       0x2b c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-errno.o)
 
-.debug_frame    0x0000000000000000     0x1f68
- .debug_frame   0x0000000000000000      0x288 build/gd32vf103_adc.o
- .debug_frame   0x0000000000000288      0x144 build/gd32vf103_gpio.o
- .debug_frame   0x00000000000003cc      0x2e8 build/gd32vf103_rcu.o
- .debug_frame   0x00000000000006b4      0x260 build/gd32vf103_spi.o
- .debug_frame   0x0000000000000914       0x30 build/system_gd32vf103.o
- .debug_frame   0x0000000000000944       0x2c build/_exit.o
- .debug_frame   0x0000000000000970       0x20 build/close.o
- .debug_frame   0x0000000000000990       0x30 build/fstat.o
- .debug_frame   0x00000000000009c0       0x20 build/isatty.o
- .debug_frame   0x00000000000009e0       0x2c build/lseek.o
- .debug_frame   0x0000000000000a0c       0x20 build/read.o
- .debug_frame   0x0000000000000a2c       0x20 build/sbrk.o
- .debug_frame   0x0000000000000a4c       0x50 build/write_hex.o
- .debug_frame   0x0000000000000a9c      0x2dc build/n200_func.o
- .debug_frame   0x0000000000000d78       0x3c build/init.o
- .debug_frame   0x0000000000000db4       0x60 build/list.o
- .debug_frame   0x0000000000000e14      0x114 build/port.o
- .debug_frame   0x0000000000000f28      0x88c build/tasks.o
- .debug_frame   0x00000000000017b4      0x560 build/lcd.o
- .debug_frame   0x0000000000001d14       0x28 build/main.o
- .debug_frame   0x0000000000001d3c       0x8c build/stepperUP.o
- .debug_frame   0x0000000000001dc8       0x54 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(divdf3.o)
- .debug_frame   0x0000000000001e1c       0x20 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(ledf2.o)
- .debug_frame   0x0000000000001e3c       0x54 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(muldf3.o)
- .debug_frame   0x0000000000001e90       0x34 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(floatunsidf.o)
- .debug_frame   0x0000000000001ec4       0x44 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(floatundidf.o)
- .debug_frame   0x0000000000001f08       0x20 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_lshrdi3.o)
- .debug_frame   0x0000000000001f28       0x20 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_ashldi3.o)
- .debug_frame   0x0000000000001f48       0x20 c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imac/ilp32\libgcc.a(_clzsi2.o)
+.debug_frame    0x0000000000000000     0x1464
+ .debug_frame   0x0000000000000000      0x144 build/gd32vf103_gpio.o
+ .debug_frame   0x0000000000000144      0x2e8 build/gd32vf103_rcu.o
+ .debug_frame   0x000000000000042c       0x30 build/system_gd32vf103.o
+ .debug_frame   0x000000000000045c       0x2c build/_exit.o
+ .debug_frame   0x0000000000000488       0x20 build/close.o
+ .debug_frame   0x00000000000004a8       0x30 build/fstat.o
+ .debug_frame   0x00000000000004d8       0x20 build/isatty.o
+ .debug_frame   0x00000000000004f8       0x2c build/lseek.o
+ .debug_frame   0x0000000000000524       0x20 build/read.o
+ .debug_frame   0x0000000000000544       0x20 build/sbrk.o
+ .debug_frame   0x0000000000000564       0x50 build/write_hex.o
+ .debug_frame   0x00000000000005b4      0x2dc build/n200_func.o
+ .debug_frame   0x0000000000000890       0x3c build/init.o
+ .debug_frame   0x00000000000008cc       0x60 build/list.o
+ .debug_frame   0x000000000000092c      0x114 build/port.o
+ .debug_frame   0x0000000000000a40      0x88c build/tasks.o
+ .debug_frame   0x00000000000012cc      0x118 build/bsp_motor.o
+ .debug_frame   0x00000000000013e4       0x28 build/main.o
+ .debug_frame   0x000000000000140c       0x58 build/stepperUP.o
 
 Cross Reference Table
 
@@ -3388,11 +3376,9 @@ LCD_DrawPoint                                     build/lcd.o
 LCD_DrawPoint_big                                 build/lcd.o
 LCD_DrawRectangle                                 build/lcd.o
 LCD_Fill                                          build/lcd.o
-                                                  build/stepperUP.o
 LCD_ShowChar                                      build/lcd.o
 LCD_ShowChinese                                   build/lcd.o
 LCD_ShowNum                                       build/lcd.o
-                                                  build/stepperUP.o
 LCD_ShowNum1                                      build/lcd.o
 LCD_ShowPicture                                   build/lcd.o
 LCD_ShowStr                                       build/lcd.o
@@ -3406,7 +3392,6 @@ LCD_Writ_Bus                                      build/lcd.o
 LCD_Write_Bus                                     build/lcd.o
 LVD_IRQHandler                                    build/start.o
 Lcd_Init                                          build/lcd.o
-                                                  build/stepperUP.o
 Lcd_SetType                                       build/lcd.o
 MSTATUS_INIT                                      build/port.o
 RCU_IRQHandler                                    build/start.o
@@ -3667,27 +3652,18 @@ _write_r                                          c:/users/dellboy/desktop/toolc
                                                   c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-stdio.o)
                                                   c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-syswrite.o)
 adc_calibration_enable                            build/gd32vf103_adc.o
-                                                  build/stepperUP.o
 adc_channel_length_config                         build/gd32vf103_adc.o
-                                                  build/stepperUP.o
 adc_data_alignment_config                         build/gd32vf103_adc.o
-                                                  build/stepperUP.o
 adc_deinit                                        build/gd32vf103_adc.o
-                                                  build/stepperUP.o
 adc_disable                                       build/gd32vf103_adc.o
 adc_discontinuous_mode_config                     build/gd32vf103_adc.o
 adc_dma_mode_disable                              build/gd32vf103_adc.o
 adc_dma_mode_enable                               build/gd32vf103_adc.o
 adc_enable                                        build/gd32vf103_adc.o
-                                                  build/stepperUP.o
 adc_external_trigger_config                       build/gd32vf103_adc.o
-                                                  build/stepperUP.o
 adc_external_trigger_source_config                build/gd32vf103_adc.o
-                                                  build/stepperUP.o
 adc_flag_clear                                    build/gd32vf103_adc.o
-                                                  build/stepperUP.o
 adc_flag_get                                      build/gd32vf103_adc.o
-                                                  build/stepperUP.o
 adc_inserted_channel_config                       build/gd32vf103_adc.o
 adc_inserted_channel_offset_config                build/gd32vf103_adc.o
 adc_inserted_data_read                            build/gd32vf103_adc.o
@@ -3697,18 +3673,14 @@ adc_interrupt_enable                              build/gd32vf103_adc.o
 adc_interrupt_flag_clear                          build/gd32vf103_adc.o
 adc_interrupt_flag_get                            build/gd32vf103_adc.o
 adc_mode_config                                   build/gd32vf103_adc.o
-                                                  build/stepperUP.o
 adc_oversample_mode_config                        build/gd32vf103_adc.o
 adc_oversample_mode_disable                       build/gd32vf103_adc.o
 adc_oversample_mode_enable                        build/gd32vf103_adc.o
 adc_regular_channel_config                        build/gd32vf103_adc.o
-                                                  build/stepperUP.o
 adc_regular_data_read                             build/gd32vf103_adc.o
-                                                  build/stepperUP.o
 adc_regular_software_startconv_flag_get           build/gd32vf103_adc.o
 adc_resolution_config                             build/gd32vf103_adc.o
 adc_software_trigger_enable                       build/gd32vf103_adc.o
-                                                  build/stepperUP.o
 adc_special_function_config                       build/gd32vf103_adc.o
 adc_sync_mode_convert_value_read                  build/gd32vf103_adc.o
 adc_tempsensor_vrefint_disable                    build/gd32vf103_adc.o
@@ -3806,6 +3778,12 @@ dbg_periph_disable                                build/gd32vf103_dbg.o
                                                   build/gd32vf103_can.o
 dbg_periph_enable                                 build/gd32vf103_dbg.o
                                                   build/gd32vf103_can.o
+debug_button_init                                 build/bsp_motor.o
+                                                  build/stepperUP.o
+debug_button_read                                 build/bsp_motor.o
+                                                  build/stepperUP.o
+debug_lamp                                        build/bsp_motor.o
+                                                  build/stepperUP.o
 disable_mcycle_minstret                           build/start.o
                                                   build/init.o
 dma_channel_disable                               build/gd32vf103_dma.o
@@ -3946,11 +3924,11 @@ get_timer_value                                   build/n200_func.o
                                                   build/lcd.o
 gpio_afio_deinit                                  build/gd32vf103_gpio.o
 gpio_bit_reset                                    build/gd32vf103_gpio.o
-                                                  build/stepperUP.o
                                                   build/lcd.o
+                                                  build/bsp_motor.o
 gpio_bit_set                                      build/gd32vf103_gpio.o
-                                                  build/stepperUP.o
                                                   build/lcd.o
+                                                  build/bsp_motor.o
 gpio_bit_write                                    build/gd32vf103_gpio.o
 gpio_deinit                                       build/gd32vf103_gpio.o
 gpio_event_output_config                          build/gd32vf103_gpio.o
@@ -3958,10 +3936,10 @@ gpio_event_output_disable                         build/gd32vf103_gpio.o
 gpio_event_output_enable                          build/gd32vf103_gpio.o
 gpio_exti_source_select                           build/gd32vf103_gpio.o
 gpio_init                                         build/gd32vf103_gpio.o
-                                                  build/stepperUP.o
                                                   build/lcd.o
+                                                  build/bsp_motor.o
 gpio_input_bit_get                                build/gd32vf103_gpio.o
-                                                  build/stepperUP.o
+                                                  build/bsp_motor.o
 gpio_input_port_get                               build/gd32vf103_gpio.o
 gpio_output_bit_get                               build/gd32vf103_gpio.o
 gpio_output_port_get                              build/gd32vf103_gpio.o
@@ -4041,6 +4019,10 @@ memmove                                           c:/users/dellboy/desktop/toolc
 memset                                            c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-memset.o)
                                                   c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-findfp.o)
                                                   build/tasks.o
+motor_init                                        build/bsp_motor.o
+                                                  build/stepperUP.o
+motor_run                                         build/bsp_motor.o
+                                                  build/stepperUP.o
 mtime_hi                                          build/n200_func.o
 mtime_lo                                          build/n200_func.o
 mypow                                             build/lcd.o
@@ -4091,7 +4073,6 @@ pxPortInitialiseStack                             build/port.o
 queue                                             build/lcd.o
 r                                                 build/lcd.o
 rcu_adc_clock_config                              build/gd32vf103_rcu.o
-                                                  build/stepperUP.o
 rcu_ahb_clock_config                              build/gd32vf103_rcu.o
 rcu_all_reset_flag_clear                          build/gd32vf103_rcu.o
 rcu_apb1_clock_config                             build/gd32vf103_rcu.o
@@ -4124,8 +4105,8 @@ rcu_osci_on                                       build/gd32vf103_rcu.o
 rcu_osci_stab_wait                                build/gd32vf103_rcu.o
 rcu_periph_clock_disable                          build/gd32vf103_rcu.o
 rcu_periph_clock_enable                           build/gd32vf103_rcu.o
-                                                  build/stepperUP.o
                                                   build/lcd.o
+                                                  build/bsp_motor.o
 rcu_periph_clock_sleep_disable                    build/gd32vf103_rcu.o
 rcu_periph_clock_sleep_enable                     build/gd32vf103_rcu.o
 rcu_periph_reset_disable                          build/gd32vf103_rcu.o
@@ -4174,6 +4155,7 @@ rtc_interrupt_flag_get                            build/gd32vf103_rtc.o
 rtc_lwoff_wait                                    build/gd32vf103_rtc.o
 rtc_prescaler_set                                 build/gd32vf103_rtc.o
 rtc_register_sync_wait                            build/gd32vf103_rtc.o
+set_motor_direction                               build/bsp_motor.o
 siprintf                                          c:/users/dellboy/desktop/toolchain-gd32v-v202-win/compiler/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imac/ilp32\libc_nano.a(lib_a-sprintf.o)
 spi_bidirectional_transfer_config                 build/gd32vf103_spi.o
 spi_config                                        build/lcd.o

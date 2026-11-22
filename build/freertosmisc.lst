@@ -1,4 +1,4 @@
-GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s 			page 1
+GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s 			page 1
 
 
    1              		.file	"freertosmisc.c"
@@ -58,7 +58,7 @@ GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s 			page 1
   30              	vApplicationMallocFailedHook:
   31              	.LFB3:
   29:lib/freertos/src/freertosmisc.c **** /*-----------------------------------------------------------*/
-GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s 			page 2
+GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s 			page 2
 
 
   30:lib/freertos/src/freertosmisc.c **** 
@@ -118,7 +118,7 @@ GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s 			page 1
   60 000c 0545     		li	a0,1
   61              	.LVL3:
   47:lib/freertos/src/freertosmisc.c ****   //  ( void ) pcTaskName;
-GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s 			page 3
+GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s 			page 3
 
 
   62              		.loc 1 47 1
@@ -159,100 +159,100 @@ GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s 			page 1
   95              		.file 5 "lib/freertos/include/portmacro.h"
   96              		.file 6 "lib/freertos/include/task.h"
   97              		.file 7 "./../../firmware/GD32VF103_standard_peripheral/system_gd32vf103.h"
-GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s 			page 4
+GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s 			page 4
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 freertosmisc.c
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:13     .text.vApplicationTickHook:0000000000000000 vApplicationTickHook
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:17     .text.vApplicationTickHook:0000000000000000 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:18     .text.vApplicationTickHook:0000000000000000 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:20     .text.vApplicationTickHook:0000000000000000 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:21     .text.vApplicationTickHook:0000000000000000 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:22     .text.vApplicationTickHook:0000000000000000 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:23     .text.vApplicationTickHook:0000000000000002 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:30     .text.vApplicationMallocFailedHook:0000000000000000 vApplicationMallocFailedHook
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:33     .text.vApplicationMallocFailedHook:0000000000000000 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:35     .text.vApplicationMallocFailedHook:0000000000000000 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:36     .text.vApplicationMallocFailedHook:0000000000000000 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:37     .text.vApplicationMallocFailedHook:0000000000000000 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:38     .text.vApplicationMallocFailedHook:0000000000000002 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:45     .text.vApplicationStackOverflowHook:0000000000000000 vApplicationStackOverflowHook
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:48     .text.vApplicationStackOverflowHook:0000000000000000 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:50     .text.vApplicationStackOverflowHook:0000000000000000 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:51     .text.vApplicationStackOverflowHook:0000000000000000 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:54     .text.vApplicationStackOverflowHook:0000000000000004 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:56     .text.vApplicationStackOverflowHook:0000000000000006 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:58     .text.vApplicationStackOverflowHook:0000000000000006 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:63     .text.vApplicationStackOverflowHook:000000000000000e .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:64     .text.vApplicationStackOverflowHook:0000000000000010 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:66     .text.vApplicationStackOverflowHook:0000000000000010 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:70     .text.vApplicationStackOverflowHook:0000000000000018 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:71     .text.vApplicationStackOverflowHook:0000000000000018 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:72     .text.vApplicationStackOverflowHook:000000000000001a .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:79     .text.vApplicationIdleHook:0000000000000000 vApplicationIdleHook
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:81     .text.vApplicationIdleHook:0000000000000000 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:83     .text.vApplicationIdleHook:0000000000000002 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:26     .text.vApplicationTickHook:0000000000000002 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:41     .text.vApplicationMallocFailedHook:0000000000000002 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:75     .text.vApplicationStackOverflowHook:000000000000001a .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:13     .text.vApplicationTickHook:0000000000000000 vApplicationTickHook
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:17     .text.vApplicationTickHook:0000000000000000 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:18     .text.vApplicationTickHook:0000000000000000 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:20     .text.vApplicationTickHook:0000000000000000 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:21     .text.vApplicationTickHook:0000000000000000 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:22     .text.vApplicationTickHook:0000000000000000 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:23     .text.vApplicationTickHook:0000000000000002 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:30     .text.vApplicationMallocFailedHook:0000000000000000 vApplicationMallocFailedHook
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:33     .text.vApplicationMallocFailedHook:0000000000000000 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:35     .text.vApplicationMallocFailedHook:0000000000000000 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:36     .text.vApplicationMallocFailedHook:0000000000000000 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:37     .text.vApplicationMallocFailedHook:0000000000000000 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:38     .text.vApplicationMallocFailedHook:0000000000000002 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:45     .text.vApplicationStackOverflowHook:0000000000000000 vApplicationStackOverflowHook
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:48     .text.vApplicationStackOverflowHook:0000000000000000 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:50     .text.vApplicationStackOverflowHook:0000000000000000 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:51     .text.vApplicationStackOverflowHook:0000000000000000 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:54     .text.vApplicationStackOverflowHook:0000000000000004 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:56     .text.vApplicationStackOverflowHook:0000000000000006 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:58     .text.vApplicationStackOverflowHook:0000000000000006 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:63     .text.vApplicationStackOverflowHook:000000000000000e .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:64     .text.vApplicationStackOverflowHook:0000000000000010 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:66     .text.vApplicationStackOverflowHook:0000000000000010 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:70     .text.vApplicationStackOverflowHook:0000000000000018 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:71     .text.vApplicationStackOverflowHook:0000000000000018 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:72     .text.vApplicationStackOverflowHook:000000000000001a .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:79     .text.vApplicationIdleHook:0000000000000000 vApplicationIdleHook
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:81     .text.vApplicationIdleHook:0000000000000000 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:83     .text.vApplicationIdleHook:0000000000000002 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:26     .text.vApplicationTickHook:0000000000000002 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:41     .text.vApplicationMallocFailedHook:0000000000000002 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:75     .text.vApplicationStackOverflowHook:000000000000001a .L0 
                      .debug_frame:0000000000000000 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:34     .text.vApplicationMallocFailedHook:0000000000000000 .L3
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:88     .rodata.vApplicationStackOverflowHook.str1.4:0000000000000000 .LC0
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:68     .text.vApplicationStackOverflowHook:0000000000000018 .L5
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:351    .debug_abbrev:0000000000000000 .Ldebug_abbrev0
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:786    .debug_str:00000000000001b2 .LASF26
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:750    .debug_str:0000000000000049 .LASF27
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:774    .debug_str:000000000000012a .LASF28
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:726    .debug_ranges:0000000000000000 .Ldebug_ranges0
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:736    .debug_line:0000000000000000 .Ldebug_line0
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:744    .debug_str:0000000000000020 .LASF8
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:764    .debug_str:00000000000000cb .LASF0
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:756    .debug_str:0000000000000089 .LASF1
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:772    .debug_str:000000000000011c .LASF2
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:794    .debug_str:0000000000000257 .LASF3
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:796    .debug_str:0000000000000263 .LASF4
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:752    .debug_str:0000000000000069 .LASF5
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:782    .debug_str:000000000000019d .LASF6
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:790    .debug_str:0000000000000243 .LASF7
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:760    .debug_str:00000000000000a2 .LASF9
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:754    .debug_str:0000000000000077 .LASF10
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:766    .debug_str:00000000000000d8 .LASF11
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:788    .debug_str:000000000000023a .LASF12
-GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s 			page 5
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:34     .text.vApplicationMallocFailedHook:0000000000000000 .L3
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:88     .rodata.vApplicationStackOverflowHook.str1.4:0000000000000000 .LC0
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:68     .text.vApplicationStackOverflowHook:0000000000000018 .L5
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:351    .debug_abbrev:0000000000000000 .Ldebug_abbrev0
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:786    .debug_str:00000000000001b2 .LASF26
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:750    .debug_str:0000000000000049 .LASF27
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:774    .debug_str:000000000000012a .LASF28
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:726    .debug_ranges:0000000000000000 .Ldebug_ranges0
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:736    .debug_line:0000000000000000 .Ldebug_line0
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:744    .debug_str:0000000000000020 .LASF8
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:764    .debug_str:00000000000000cb .LASF0
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:756    .debug_str:0000000000000089 .LASF1
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:772    .debug_str:000000000000011c .LASF2
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:794    .debug_str:0000000000000257 .LASF3
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:796    .debug_str:0000000000000263 .LASF4
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:752    .debug_str:0000000000000069 .LASF5
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:782    .debug_str:000000000000019d .LASF6
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:790    .debug_str:0000000000000243 .LASF7
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:760    .debug_str:00000000000000a2 .LASF9
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:754    .debug_str:0000000000000077 .LASF10
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:766    .debug_str:00000000000000d8 .LASF11
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:788    .debug_str:000000000000023a .LASF12
+GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s 			page 5
 
 
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:778    .debug_str:0000000000000174 .LASF17
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:792    .debug_str:000000000000024c .LASF13
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:798    .debug_str:000000000000026f .LASF14
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:748    .debug_str:000000000000003c .LASF15
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:776    .debug_str:000000000000016f .LASF16
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:740    .debug_str:0000000000000006 .LASF18
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:800    .debug_str:000000000000027b .LASF29
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:770    .debug_str:000000000000010c .LASF23
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:762    .debug_str:00000000000000ad .LASF30
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:46     .text.vApplicationStackOverflowHook:0000000000000000 .LFB4
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:73     .text.vApplicationStackOverflowHook:000000000000001a .LFE4
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:668    .debug_loc:0000000000000000 .LLST0
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:738    .debug_str:0000000000000000 .LASF19
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:681    .debug_loc:0000000000000020 .LLST1
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:784    .debug_str:00000000000001a7 .LASF20
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:695    .debug_loc:0000000000000041 .LLST2
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:758    .debug_str:000000000000009c .LASF21
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:67     .text.vApplicationStackOverflowHook:0000000000000018 .LVL4
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:768    .debug_str:00000000000000ef .LASF31
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:31     .text.vApplicationMallocFailedHook:0000000000000000 .LFB3
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:39     .text.vApplicationMallocFailedHook:0000000000000002 .LFE3
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:746    .debug_str:0000000000000027 .LASF22
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:780    .debug_str:0000000000000184 .LASF24
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:742    .debug_str:0000000000000018 .LASF25
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:14     .text.vApplicationTickHook:0000000000000000 .LFB2
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:24     .text.vApplicationTickHook:0000000000000002 .LFE2
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:55     .text.vApplicationStackOverflowHook:0000000000000006 .LCFI0
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:49     .text.vApplicationStackOverflowHook:0000000000000000 .LVL1
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:61     .text.vApplicationStackOverflowHook:000000000000000e .LVL3
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:52     .text.vApplicationStackOverflowHook:0000000000000004 .LVL2
-C:\Users\DellBoy\AppData\Local\Temp\ccpuO0iT.s:99     .debug_info:0000000000000000 .Ldebug_info0
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:778    .debug_str:0000000000000174 .LASF17
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:792    .debug_str:000000000000024c .LASF13
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:798    .debug_str:000000000000026f .LASF14
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:748    .debug_str:000000000000003c .LASF15
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:776    .debug_str:000000000000016f .LASF16
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:740    .debug_str:0000000000000006 .LASF18
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:800    .debug_str:000000000000027b .LASF29
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:770    .debug_str:000000000000010c .LASF23
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:762    .debug_str:00000000000000ad .LASF30
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:46     .text.vApplicationStackOverflowHook:0000000000000000 .LFB4
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:73     .text.vApplicationStackOverflowHook:000000000000001a .LFE4
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:668    .debug_loc:0000000000000000 .LLST0
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:738    .debug_str:0000000000000000 .LASF19
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:681    .debug_loc:0000000000000020 .LLST1
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:784    .debug_str:00000000000001a7 .LASF20
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:695    .debug_loc:0000000000000041 .LLST2
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:758    .debug_str:000000000000009c .LASF21
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:67     .text.vApplicationStackOverflowHook:0000000000000018 .LVL4
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:768    .debug_str:00000000000000ef .LASF31
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:31     .text.vApplicationMallocFailedHook:0000000000000000 .LFB3
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:39     .text.vApplicationMallocFailedHook:0000000000000002 .LFE3
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:746    .debug_str:0000000000000027 .LASF22
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:780    .debug_str:0000000000000184 .LASF24
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:742    .debug_str:0000000000000018 .LASF25
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:14     .text.vApplicationTickHook:0000000000000000 .LFB2
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:24     .text.vApplicationTickHook:0000000000000002 .LFE2
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:55     .text.vApplicationStackOverflowHook:0000000000000006 .LCFI0
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:49     .text.vApplicationStackOverflowHook:0000000000000000 .LVL1
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:61     .text.vApplicationStackOverflowHook:000000000000000e .LVL3
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:52     .text.vApplicationStackOverflowHook:0000000000000004 .LVL2
+C:\Users\DellBoy\AppData\Local\Temp\ccM02u4U.s:99     .debug_info:0000000000000000 .Ldebug_info0
 
 UNDEFINED SYMBOLS
 write

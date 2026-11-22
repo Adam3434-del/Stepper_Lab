@@ -1,4 +1,4 @@
-GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s 			page 1
+GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s 			page 1
 
 
    1              		.file	"stepperUP.c"
@@ -9,987 +9,482 @@ GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s 			page 1
    6              		.text
    7              	.Ltext0:
    8              		.cfi_sections	.debug_frame
-   9              		.section	.text.adc_read,"ax",@progbits
+   9              		.section	.text.stepperUP_init,"ax",@progbits
   10              		.align	1
-  12              	adc_read:
-  13              	.LFB2:
-  14              		.file 1 "stepperUP.c"
+  11              		.globl	stepperUP_init
+  13              	stepperUP_init:
+  14              	.LFB3:
+  15              		.file 1 "stepperUP.c"
    1:stepperUP.c   **** #include "stepperUP.h"
    2:stepperUP.c   **** 
    3:stepperUP.c   **** static uint16_t adc_read(uint8_t ch){
-  15              		.loc 1 3 37
-  16              		.cfi_startproc
-  17              	.LVL0:
    4:stepperUP.c   ****     adc_regular_channel_config(ADC0, 0, ch, ADC_SAMPLETIME_55POINT5);
-  18              		.loc 1 4 5
-   3:stepperUP.c   ****     adc_regular_channel_config(ADC0, 0, ch, ADC_SAMPLETIME_55POINT5);
-  19              		.loc 1 3 37 is_stmt 0
+   5:stepperUP.c   ****     adc_software_trigger_enable(ADC0, ADC_REGULAR_CHANNEL);
+   6:stepperUP.c   ****     while(!adc_flag_get(ADC0, ADC_FLAG_EOC));
+   7:stepperUP.c   ****     adc_flag_clear(ADC0, ADC_FLAG_EOC);
+   8:stepperUP.c   ****     return adc_regular_data_read(ADC0);
+   9:stepperUP.c   **** }
+  10:stepperUP.c   **** 
+  11:stepperUP.c   **** void stepperUP_init(void){
+  16              		.loc 1 11 26
+  17              		.cfi_startproc
+  12:stepperUP.c   ****     motor_init(GPIOA, GPIO_PIN_0, GPIO_PIN_1, GPIO_PIN_2, GPIO_PIN_3);
+  18              		.loc 1 12 5
+  11:stepperUP.c   ****     motor_init(GPIOA, GPIO_PIN_0, GPIO_PIN_1, GPIO_PIN_2, GPIO_PIN_3);
+  19              		.loc 1 11 26 is_stmt 0
   20 0000 4111     		addi	sp,sp,-16
   21              	.LCFI0:
   22              		.cfi_def_cfa_offset 16
   23 0002 22C4     		sw	s0,8(sp)
   24              		.cfi_offset 8, -8
-  25              		.loc 1 4 5
-  26 0004 37240140 		li	s0,1073815552
-  27 0008 2A86     		mv	a2,a0
-  28 000a 9546     		li	a3,5
-  29 000c 8145     		li	a1,0
-  30 000e 13050440 		addi	a0,s0,1024
-  31              	.LVL1:
-   3:stepperUP.c   ****     adc_regular_channel_config(ADC0, 0, ch, ADC_SAMPLETIME_55POINT5);
-  32              		.loc 1 3 37
-  33 0012 06C6     		sw	ra,12(sp)
-  34 0014 26C2     		sw	s1,4(sp)
-  35              		.cfi_offset 1, -4
-  36              		.cfi_offset 9, -12
-  37              		.loc 1 4 5
-  38 0016 97000000 		call	adc_regular_channel_config
-  38      E7800000 
-  39              	.LVL2:
-   5:stepperUP.c   ****     adc_software_trigger_enable(ADC0, ADC_REGULAR_CHANNEL);
-  40              		.loc 1 5 5 is_stmt 1
-  41 001e 8545     		li	a1,1
-  42 0020 13050440 		addi	a0,s0,1024
-  43 0024 97000000 		call	adc_software_trigger_enable
-  43      E7800000 
-  44              	.LVL3:
-   6:stepperUP.c   ****     while(!adc_flag_get(ADC0, ADC_FLAG_EOC));
-  45              		.loc 1 6 5
-  46              		.loc 1 6 12 is_stmt 0
-  47 002c 93040440 		addi	s1,s0,1024
-  48              	.L2:
-GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s 			page 2
+  25              		.loc 1 12 5
+  26 0004 37140140 		li	s0,1073811456
+  27 0008 13050480 		addi	a0,s0,-2048
+  28 000c 8545     		li	a1,1
+  29 000e 2147     		li	a4,8
+  30 0010 9146     		li	a3,4
+  31 0012 0946     		li	a2,2
+  11:stepperUP.c   ****     motor_init(GPIOA, GPIO_PIN_0, GPIO_PIN_1, GPIO_PIN_2, GPIO_PIN_3);
+  32              		.loc 1 11 26
+  33 0014 06C6     		sw	ra,12(sp)
+  34              		.cfi_offset 1, -4
+  35              		.loc 1 12 5
+  36 0016 97000000 		call	motor_init
+  36      E7800000 
+  37              	.LVL0:
+  13:stepperUP.c   ****     debug_button_init(GPIOA, GPIO_PIN_7);
+  38              		.loc 1 13 5 is_stmt 1
+  39 001e 13050480 		addi	a0,s0,-2048
+  14:stepperUP.c   **** 
+  15:stepperUP.c   ****    
+  16:stepperUP.c   **** }
+GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s 			page 2
 
 
-  49              		.loc 1 6 45 is_stmt 1 discriminator 1
-  50              		.loc 1 6 12 is_stmt 0 discriminator 1
-  51 0030 8945     		li	a1,2
-  52 0032 2685     		mv	a0,s1
-  53 0034 97000000 		call	adc_flag_get
-  53      E7800000 
-  54              	.LVL4:
-  55              		.loc 1 6 10 discriminator 1
-  56 003c 75D9     		beq	a0,zero,.L2
-   7:stepperUP.c   ****     adc_flag_clear(ADC0, ADC_FLAG_EOC);
-  57              		.loc 1 7 5 is_stmt 1
-  58 003e 13050440 		addi	a0,s0,1024
-  59 0042 8945     		li	a1,2
-  60 0044 97000000 		call	adc_flag_clear
-  60      E7800000 
-  61              	.LVL5:
-   8:stepperUP.c   ****     return adc_regular_data_read(ADC0);
-  62              		.loc 1 8 5
-  63              		.loc 1 8 12 is_stmt 0
-  64 004c 13050440 		addi	a0,s0,1024
-   9:stepperUP.c   **** }
-  65              		.loc 1 9 1
-  66 0050 2244     		lw	s0,8(sp)
-  67              		.cfi_restore 8
-  68 0052 B240     		lw	ra,12(sp)
-  69              		.cfi_restore 1
-  70 0054 9244     		lw	s1,4(sp)
-  71              		.cfi_restore 9
-  72 0056 4101     		addi	sp,sp,16
-  73              	.LCFI1:
-  74              		.cfi_def_cfa_offset 0
-   8:stepperUP.c   ****     return adc_regular_data_read(ADC0);
-  75              		.loc 1 8 12
-  76 0058 17030000 		tail	adc_regular_data_read
-  76      67000300 
-  77              	.LVL6:
-  78              		.cfi_endproc
-  79              	.LFE2:
-  81              		.section	.text.stepperUP_init,"ax",@progbits
-  82              		.align	1
-  83              		.globl	stepperUP_init
-  85              	stepperUP_init:
-  86              	.LFB3:
-  10:stepperUP.c   **** 
-  11:stepperUP.c   **** void stepperUP_init(void){
-  87              		.loc 1 11 26 is_stmt 1
-  88              		.cfi_startproc
-  12:stepperUP.c   ****     rcu_periph_clock_enable(RCU_GPIOA);
-  89              		.loc 1 12 5
-  11:stepperUP.c   ****     rcu_periph_clock_enable(RCU_GPIOA);
-  90              		.loc 1 11 26 is_stmt 0
-  91 0000 4111     		addi	sp,sp,-16
-  92              	.LCFI2:
-  93              		.cfi_def_cfa_offset 16
-  94              		.loc 1 12 5
-  95 0002 13052060 		li	a0,1538
-  11:stepperUP.c   ****     rcu_periph_clock_enable(RCU_GPIOA);
-GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s 			page 3
+  40              		.loc 1 16 1 is_stmt 0
+  41 0022 2244     		lw	s0,8(sp)
+  42              		.cfi_restore 8
+  43 0024 B240     		lw	ra,12(sp)
+  44              		.cfi_restore 1
+  13:stepperUP.c   ****     debug_button_init(GPIOA, GPIO_PIN_7);
+  45              		.loc 1 13 5
+  46 0026 93050008 		li	a1,128
+  47              		.loc 1 16 1
+  48 002a 4101     		addi	sp,sp,16
+  49              	.LCFI1:
+  50              		.cfi_def_cfa_offset 0
+  13:stepperUP.c   ****     debug_button_init(GPIOA, GPIO_PIN_7);
+  51              		.loc 1 13 5
+  52 002c 17030000 		tail	debug_button_init
+  52      67000300 
+  53              	.LVL1:
+  54              		.cfi_endproc
+  55              	.LFE3:
+  57              		.section	.text.stepperUP_step,"ax",@progbits
+  58              		.align	1
+  59              		.globl	stepperUP_step
+  61              	stepperUP_step:
+  62              	.LFB5:
+  17:stepperUP.c   **** 
+  18:stepperUP.c   **** static void step_delay(void){
+  19:stepperUP.c   ****    // For some reason depending on what stuff you have added you need to change the delay to get th
+  20:stepperUP.c   ****     for (volatile uint32_t i = 0; i < 100000u; i++) {
+  21:stepperUP.c   ****     }
+  22:stepperUP.c   **** }
+  23:stepperUP.c   **** 
+  24:stepperUP.c   **** void stepperUP_step(void){
+  63              		.loc 1 24 26 is_stmt 1
+  64              		.cfi_startproc
+  25:stepperUP.c   ****     motor_run();
+  65              		.loc 1 25 5
+  24:stepperUP.c   ****     motor_run();
+  66              		.loc 1 24 26 is_stmt 0
+  67 0000 0111     		addi	sp,sp,-32
+  68              	.LCFI2:
+  69              		.cfi_def_cfa_offset 32
+  70 0002 06CE     		sw	ra,28(sp)
+  71 0004 22CC     		sw	s0,24(sp)
+  72              		.cfi_offset 1, -4
+  73              		.cfi_offset 8, -8
+  74              		.loc 1 25 5
+  75 0006 97000000 		call	motor_run
+  75      E7800000 
+  76              	.LVL2:
+  26:stepperUP.c   ****     step_delay();
+  77              		.loc 1 26 5 is_stmt 1
+  20:stepperUP.c   ****     }
+  78              		.loc 1 20 5
+  79              	.LBB5:
+  80              	.LBB6:
+  20:stepperUP.c   ****     }
+  81              		.loc 1 20 10
+GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s 			page 3
 
 
-  96              		.loc 1 11 26
-  97 0006 06C6     		sw	ra,12(sp)
-  98 0008 22C4     		sw	s0,8(sp)
-  99              		.cfi_offset 1, -4
- 100              		.cfi_offset 8, -8
- 101              		.loc 1 12 5
- 102 000a 97000000 		call	rcu_periph_clock_enable
- 102      E7800000 
- 103              	.LVL7:
-  13:stepperUP.c   ****     rcu_periph_clock_enable(RCU_GPIOB);
- 104              		.loc 1 13 5 is_stmt 1
- 105 0012 13053060 		li	a0,1539
- 106 0016 97000000 		call	rcu_periph_clock_enable
- 106      E7800000 
- 107              	.LVL8:
-  14:stepperUP.c   ****     rcu_periph_clock_enable(RCU_ADC0);
- 108              		.loc 1 14 5
- 109 001e 13059060 		li	a0,1545
- 110 0022 97000000 		call	rcu_periph_clock_enable
- 110      E7800000 
- 111              	.LVL9:
-  15:stepperUP.c   ****     rcu_adc_clock_config(RCU_CKADC_CKAPB2_DIV8); 
- 112              		.loc 1 15 5
- 113 002a 0D45     		li	a0,3
- 114 002c 97000000 		call	rcu_adc_clock_config
- 114      E7800000 
- 115              	.LVL10:
-  16:stepperUP.c   **** 
-  17:stepperUP.c   ****     gpio_init(GPIOA, GPIO_MODE_OUT_PP, GPIO_OSPEED_2MHZ, GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_2 | GPI
- 116              		.loc 1 17 5
- 117 0034 37140140 		li	s0,1073811456
- 118 0038 13050480 		addi	a0,s0,-2048
- 119 003c BD46     		li	a3,15
- 120 003e 0946     		li	a2,2
- 121 0040 C145     		li	a1,16
- 122 0042 97000000 		call	gpio_init
- 122      E7800000 
- 123              	.LVL11:
-  18:stepperUP.c   ****     gpio_init(GPIOA, GPIO_MODE_AIN, GPIO_OSPEED_2MHZ, GPIO_PIN_5 | GPIO_PIN_6); //Input pins for AD
- 124              		.loc 1 18 5
- 125 004a 13050480 		addi	a0,s0,-2048
- 126 004e 93060006 		li	a3,96
- 127 0052 0946     		li	a2,2
- 128 0054 8145     		li	a1,0
- 129 0056 97000000 		call	gpio_init
- 129      E7800000 
- 130              	.LVL12:
-  19:stepperUP.c   ****     gpio_init(GPIOB, GPIO_MODE_OUT_PP, GPIO_OSPEED_2MHZ, GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_2); //D
- 131              		.loc 1 19 5
- 132 005e 130504C0 		addi	a0,s0,-1024
- 133 0062 9D46     		li	a3,7
- 134 0064 0946     		li	a2,2
- 135 0066 C145     		li	a1,16
- 136 0068 97000000 		call	gpio_init
- 136      E7800000 
- 137              	.LVL13:
-  20:stepperUP.c   ****     gpio_init(GPIOA, GPIO_MODE_IPU, GPIO_OSPEED_2MHZ, GPIO_PIN_7); 
-GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s 			page 4
-
-
- 138              		.loc 1 20 5
- 139 0070 93060008 		li	a3,128
- 140 0074 0946     		li	a2,2
- 141 0076 93058004 		li	a1,72
- 142 007a 13050480 		addi	a0,s0,-2048
- 143 007e 97000000 		call	gpio_init
- 143      E7800000 
- 144              	.LVL14:
-  21:stepperUP.c   **** 
-  22:stepperUP.c   ****     adc_deinit(ADC0);
- 145              		.loc 1 22 5
- 146 0086 37240140 		li	s0,1073815552
- 147 008a 13050440 		addi	a0,s0,1024
- 148 008e 97000000 		call	adc_deinit
- 148      E7800000 
- 149              	.LVL15:
-  23:stepperUP.c   ****     adc_mode_config(ADC_MODE_FREE);
- 150              		.loc 1 23 5
- 151 0096 0145     		li	a0,0
- 152 0098 97000000 		call	adc_mode_config
- 152      E7800000 
- 153              	.LVL16:
-  24:stepperUP.c   ****     adc_data_alignment_config(ADC0, ADC_DATAALIGN_RIGHT);
- 154              		.loc 1 24 5
- 155 00a0 13050440 		addi	a0,s0,1024
- 156 00a4 8145     		li	a1,0
- 157 00a6 97000000 		call	adc_data_alignment_config
- 157      E7800000 
- 158              	.LVL17:
-  25:stepperUP.c   ****     adc_channel_length_config(ADC0, ADC_REGULAR_CHANNEL, 1);
- 159              		.loc 1 25 5
- 160 00ae 13050440 		addi	a0,s0,1024
- 161 00b2 0546     		li	a2,1
- 162 00b4 8545     		li	a1,1
- 163 00b6 97000000 		call	adc_channel_length_config
- 163      E7800000 
- 164              	.LVL18:
-  26:stepperUP.c   ****     adc_external_trigger_source_config(ADC0, ADC_REGULAR_CHANNEL, ADC0_1_EXTTRIG_REGULAR_NONE);
- 165              		.loc 1 26 5
- 166 00be 13050440 		addi	a0,s0,1024
- 167 00c2 37060E00 		li	a2,917504
- 168 00c6 8545     		li	a1,1
- 169 00c8 97000000 		call	adc_external_trigger_source_config
- 169      E7800000 
- 170              	.LVL19:
-  27:stepperUP.c   ****     adc_external_trigger_config(ADC0, ADC_REGULAR_CHANNEL, ENABLE);
- 171              		.loc 1 27 5
- 172 00d0 0546     		li	a2,1
- 173 00d2 8545     		li	a1,1
- 174 00d4 13050440 		addi	a0,s0,1024
- 175 00d8 97000000 		call	adc_external_trigger_config
- 175      E7800000 
- 176              	.LVL20:
-  28:stepperUP.c   ****     adc_enable(ADC0);
- 177              		.loc 1 28 5
- 178 00e0 13050440 		addi	a0,s0,1024
- 179 00e4 97000000 		call	adc_enable
-GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s 			page 5
-
-
- 179      E7800000 
- 180              	.LVL21:
-  29:stepperUP.c   ****     adc_calibration_enable(ADC0);
- 181              		.loc 1 29 5
- 182 00ec 13050440 		addi	a0,s0,1024
- 183 00f0 97000000 		call	adc_calibration_enable
- 183      E7800000 
- 184              	.LVL22:
-  30:stepperUP.c   **** 
-  31:stepperUP.c   ****     Lcd_Init(); //Initialize the LCD to debug sensor values
- 185              		.loc 1 31 5
- 186 00f8 97000000 		call	Lcd_Init
- 186      E7800000 
- 187              	.LVL23:
-  32:stepperUP.c   ****     LCD_Fill(WHITE, 0, 0, LCD_W - 1, LCD_H - 1);
- 188              		.loc 1 32 5
+  20:stepperUP.c   ****     }
+  82              		.loc 1 20 5 is_stmt 0
+  83 000e E167     		li	a5,98304
+  20:stepperUP.c   ****     }
+  84              		.loc 1 20 28
+  85 0010 02C6     		sw	zero,12(sp)
+  20:stepperUP.c   ****     }
+  86              		.loc 1 20 5
+  87 0012 9387F769 		addi	a5,a5,1695
+  88              	.L4:
+  20:stepperUP.c   ****     }
+  89              		.loc 1 20 37
+  90 0016 3247     		lw	a4,12(sp)
+  20:stepperUP.c   ****     }
+  91              		.loc 1 20 5
+  92 0018 63F3E704 		bleu	a4,a5,.L5
+  93              	.LBE6:
+  94              	.LBE5:
+  27:stepperUP.c   ****     debug_button_read();
+  95              		.loc 1 27 5 is_stmt 1
+  96 001c 97000000 		call	debug_button_read
+  96      E7800000 
+  97              	.LVL3:
+  28:stepperUP.c   ****     debug_lamp(GPIOB, GPIO_PIN_0, 0);
+  98              		.loc 1 28 5
+  99 0024 37140140 		li	s0,1073811456
+ 100 0028 130504C0 		addi	a0,s0,-1024
+ 101 002c 0146     		li	a2,0
+ 102 002e 8545     		li	a1,1
+ 103 0030 97000000 		call	debug_lamp
+ 103      E7800000 
+ 104              	.LVL4:
+  29:stepperUP.c   ****     debug_lamp(GPIOB, GPIO_PIN_1, 1);
+ 105              		.loc 1 29 5
+ 106 0038 130504C0 		addi	a0,s0,-1024
+ 107 003c 0546     		li	a2,1
+ 108 003e 8945     		li	a1,2
+ 109 0040 97000000 		call	debug_lamp
+ 109      E7800000 
+ 110              	.LVL5:
+  30:stepperUP.c   ****     debug_lamp(GPIOB, GPIO_PIN_2, 2);
+ 111              		.loc 1 30 5
+ 112 0048 130504C0 		addi	a0,s0,-1024
+  31:stepperUP.c   **** 
+  32:stepperUP.c   ****     //debug_button_read();
   33:stepperUP.c   **** 
-  34:stepperUP.c   **** 
-  35:stepperUP.c   **** 
-  36:stepperUP.c   ****     
-  37:stepperUP.c   **** }
- 189              		.loc 1 37 1 is_stmt 0
- 190 0100 2244     		lw	s0,8(sp)
- 191              		.cfi_restore 8
- 192 0102 B240     		lw	ra,12(sp)
- 193              		.cfi_restore 1
-  32:stepperUP.c   ****     LCD_Fill(WHITE, 0, 0, LCD_W - 1, LCD_H - 1);
- 194              		.loc 1 32 5
- 195 0104 4165     		li	a0,65536
- 196              		.loc 1 37 1
-  32:stepperUP.c   ****     LCD_Fill(WHITE, 0, 0, LCD_W - 1, LCD_H - 1);
- 197              		.loc 1 32 5
- 198 0106 1307F004 		li	a4,79
- 199 010a 9306F009 		li	a3,159
- 200 010e 0146     		li	a2,0
- 201 0110 8145     		li	a1,0
- 202 0112 7D15     		addi	a0,a0,-1
- 203              		.loc 1 37 1
- 204 0114 4101     		addi	sp,sp,16
- 205              	.LCFI3:
- 206              		.cfi_def_cfa_offset 0
-  32:stepperUP.c   ****     LCD_Fill(WHITE, 0, 0, LCD_W - 1, LCD_H - 1);
- 207              		.loc 1 32 5
- 208 0116 17030000 		tail	LCD_Fill
- 208      67000300 
- 209              	.LVL24:
- 210              		.cfi_endproc
- 211              	.LFE3:
- 213              		.section	.text.stepperUP_step,"ax",@progbits
- 214              		.align	1
- 215              		.globl	stepperUP_step
- 217              	stepperUP_step:
- 218              	.LFB4:
-  38:stepperUP.c   **** 
-  39:stepperUP.c   **** void stepperUP_step(void){
- 219              		.loc 1 39 26 is_stmt 1
- 220              		.cfi_startproc
-GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s 			page 6
+  34:stepperUP.c   ****     /*
+  35:stepperUP.c   ****     if(right > 1600){
+  36:stepperUP.c   ****         input = -1;
+  37:stepperUP.c   ****         gpio_bit_reset(GPIOB, GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_2);
+  38:stepperUP.c   ****         gpio_bit_set(GPIOB, GPIO_PIN_0);
+  39:stepperUP.c   ****     }
+  40:stepperUP.c   ****     if(left > 1600){
+  41:stepperUP.c   ****         input = 1;
+  42:stepperUP.c   ****         gpio_bit_reset(GPIOB, GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_2);
+  43:stepperUP.c   ****         gpio_bit_set(GPIOB, GPIO_PIN_1 | GPIO_PIN_2);
+  44:stepperUP.c   ****     }
+GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s 			page 4
 
 
-  40:stepperUP.c   ****     static uint8_t phase = 0;
- 221              		.loc 1 40 5
-  41:stepperUP.c   ****     static int8_t input = -1;
- 222              		.loc 1 41 5
-  42:stepperUP.c   **** 
-  43:stepperUP.c   ****     uint16_t left  = adc_read(ADC_CHANNEL_5);
- 223              		.loc 1 43 5
-  39:stepperUP.c   ****     static uint8_t phase = 0;
- 224              		.loc 1 39 26 is_stmt 0
- 225 0000 0111     		addi	sp,sp,-32
- 226              	.LCFI4:
- 227              		.cfi_def_cfa_offset 32
- 228              		.loc 1 43 22
- 229 0002 1545     		li	a0,5
-  39:stepperUP.c   ****     static uint8_t phase = 0;
- 230              		.loc 1 39 26
- 231 0004 06CE     		sw	ra,28(sp)
- 232 0006 26CA     		sw	s1,20(sp)
- 233 0008 22CC     		sw	s0,24(sp)
- 234 000a 4AC8     		sw	s2,16(sp)
- 235              		.cfi_offset 1, -4
- 236              		.cfi_offset 9, -12
- 237              		.cfi_offset 8, -8
- 238              		.cfi_offset 18, -16
- 239              		.loc 1 43 22
- 240 000c 97000000 		call	adc_read
- 240      E7800000 
- 241              	.LVL25:
- 242 0014 2AC6     		sw	a0,12(sp)
- 243              	.LVL26:
-  44:stepperUP.c   ****     uint16_t right = adc_read(ADC_CHANNEL_6);
- 244              		.loc 1 44 5 is_stmt 1
- 245              		.loc 1 44 22 is_stmt 0
- 246 0016 1945     		li	a0,6
- 247 0018 97000000 		call	adc_read
- 247      E7800000 
- 248              	.LVL27:
- 249 0020 AA84     		mv	s1,a0
- 250              	.LVL28:
-  45:stepperUP.c   ****     uint8_t button = gpio_input_bit_get(GPIOA, GPIO_PIN_7);
- 251              		.loc 1 45 5 is_stmt 1
- 252              		.loc 1 45 22 is_stmt 0
- 253 0022 37150140 		li	a0,1073811456
- 254 0026 93050008 		li	a1,128
- 255 002a 13050580 		addi	a0,a0,-2048
- 256 002e 97000000 		call	gpio_input_bit_get
- 256      E7800000 
- 257              	.LVL29:
-  46:stepperUP.c   ****     if(button == 1) input = -1;
- 258              		.loc 1 46 5 is_stmt 1
- 259              		.loc 1 46 7 is_stmt 0
- 260 0036 1375F50F 		andi	a0,a0,0xff
- 261 003a 0547     		li	a4,1
- 262 003c 3246     		lw	a2,12(sp)
-  47:stepperUP.c   ****     else(input = 1);
- 263              		.loc 1 47 16
- 264 003e 8547     		li	a5,1
-GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s 			page 7
+  45:stepperUP.c   ****         */
+  46:stepperUP.c   ****     
+  47:stepperUP.c   **** 
+  48:stepperUP.c   ****   
+  49:stepperUP.c   ****     
+  50:stepperUP.c   **** }
+ 113              		.loc 1 50 1 is_stmt 0
+ 114 004c 6244     		lw	s0,24(sp)
+ 115              		.cfi_remember_state
+ 116              		.cfi_restore 8
+ 117 004e F240     		lw	ra,28(sp)
+ 118              		.cfi_restore 1
+  30:stepperUP.c   ****     debug_lamp(GPIOB, GPIO_PIN_2, 2);
+ 119              		.loc 1 30 5
+ 120 0050 0946     		li	a2,2
+ 121              		.loc 1 50 1
+  30:stepperUP.c   ****     debug_lamp(GPIOB, GPIO_PIN_2, 2);
+ 122              		.loc 1 30 5
+ 123 0052 9145     		li	a1,4
+ 124              		.loc 1 50 1
+ 125 0054 0561     		addi	sp,sp,32
+ 126              	.LCFI3:
+ 127              		.cfi_def_cfa_offset 0
+  30:stepperUP.c   ****     debug_lamp(GPIOB, GPIO_PIN_2, 2);
+ 128              		.loc 1 30 5
+ 129 0056 17030000 		tail	debug_lamp
+ 129      67000300 
+ 130              	.LVL6:
+ 131              	.L5:
+ 132              	.LCFI4:
+ 133              		.cfi_restore_state
+ 134              	.LBB8:
+ 135              	.LBB7:
+  21:stepperUP.c   **** }
+ 136              		.loc 1 21 5 is_stmt 1
+  20:stepperUP.c   ****     }
+ 137              		.loc 1 20 49 is_stmt 0
+ 138 005e 3247     		lw	a4,12(sp)
+ 139 0060 0507     		addi	a4,a4,1
+ 140 0062 3AC6     		sw	a4,12(sp)
+ 141 0064 4DBF     		j	.L4
+ 142              	.LBE7:
+ 143              	.LBE8:
+ 144              		.cfi_endproc
+ 145              	.LFE5:
+ 147              		.text
+ 148              	.Letext0:
+ 149              		.file 2 "c:\\users\\dellboy\\desktop\\toolchain-gd32v-v202-win\\compiler\\riscv64-unknown-elf\\inc
+ 150              		.file 3 "c:\\users\\dellboy\\desktop\\toolchain-gd32v-v202-win\\compiler\\riscv64-unknown-elf\\inc
+ 151              		.file 4 "c:\\users\\dellboy\\desktop\\toolchain-gd32v-v202-win\\compiler\\lib\\gcc\\riscv64-unknow
+ 152              		.file 5 "c:\\users\\dellboy\\desktop\\toolchain-gd32v-v202-win\\compiler\\riscv64-unknown-elf\\inc
+ 153              		.file 6 "c:\\users\\dellboy\\desktop\\toolchain-gd32v-v202-win\\compiler\\riscv64-unknown-elf\\inc
+ 154              		.file 7 "c:\\users\\dellboy\\desktop\\toolchain-gd32v-v202-win\\compiler\\riscv64-unknown-elf\\inc
+ 155              		.file 8 "./../../firmware/GD32VF103_standard_peripheral/system_gd32vf103.h"
+ 156              		.file 9 "c:\\users\\dellboy\\desktop\\toolchain-gd32v-v202-win\\compiler\\riscv64-unknown-elf\\inc
+ 157              		.file 10 "lcd.h"
+ 158              		.file 11 "bsp_motor/bsp_motor.h"
+GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s 			page 5
 
 
-  46:stepperUP.c   ****     if(button == 1) input = -1;
- 265              		.loc 1 46 7
- 266 0040 6313E500 		bne	a0,a4,.L9
- 267 0044 FD57     		li	a5,-1
- 268              	.L9:
-  48:stepperUP.c   ****     /*
-  49:stepperUP.c   ****     if(right > 1600){
-  50:stepperUP.c   ****         input = -1;
-  51:stepperUP.c   ****         gpio_bit_reset(GPIOB, GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_2);
-  52:stepperUP.c   ****         gpio_bit_set(GPIOB, GPIO_PIN_0);
-  53:stepperUP.c   ****     }
-  54:stepperUP.c   ****     if(left > 1600){
-  55:stepperUP.c   ****         input = 1;
-  56:stepperUP.c   ****         gpio_bit_reset(GPIOB, GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_2);
-  57:stepperUP.c   ****         gpio_bit_set(GPIOB, GPIO_PIN_1 | GPIO_PIN_2);
-  58:stepperUP.c   ****     }
-  59:stepperUP.c   ****         */
-  60:stepperUP.c   ****     
-  61:stepperUP.c   ****     
-  62:stepperUP.c   ****     LCD_ShowNum(0, 0, left, 4, WHITE);
- 269              		.loc 1 62 5
- 270 0046 4164     		li	s0,65536
- 271 0048 1307F4FF 		addi	a4,s0,-1
- 272 004c 37090000 		lui	s2,%hi(.LANCHOR0)
- 273 0050 9146     		li	a3,4
- 274 0052 8145     		li	a1,0
- 275 0054 0145     		li	a0,0
- 276              	.LVL30:
- 277 0056 2300F900 		sb	a5,%lo(.LANCHOR0)(s2)
- 278              		.loc 1 62 5 is_stmt 1
- 279 005a 97000000 		call	LCD_ShowNum
- 279      E7800000 
- 280              	.LVL31:
-  63:stepperUP.c   ****     LCD_ShowNum(0, 16, right, 4, WHITE);
- 281              		.loc 1 63 5
- 282 0062 1307F4FF 		addi	a4,s0,-1
- 283 0066 2686     		mv	a2,s1
- 284 0068 9146     		li	a3,4
- 285 006a C145     		li	a1,16
- 286 006c 0145     		li	a0,0
- 287 006e 97000000 		call	LCD_ShowNum
- 287      E7800000 
- 288              	.LVL32:
-  64:stepperUP.c   **** 
-  65:stepperUP.c   ****     gpio_bit_reset(GPIOA, GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_2 | GPIO_PIN_3);
- 289              		.loc 1 65 5
- 290 0076 B7140140 		li	s1,1073811456
- 291              	.LVL33:
- 292 007a BD45     		li	a1,15
- 293 007c 13850480 		addi	a0,s1,-2048
- 294 0080 97000000 		call	gpio_bit_reset
- 294      E7800000 
- 295              	.LVL34:
-  66:stepperUP.c   ****     switch(phase){
- 296              		.loc 1 66 5
- 297 0088 37040000 		lui	s0,%hi(.LANCHOR1)
- 298 008c 83470400 		lbu	a5,%lo(.LANCHOR1)(s0)
-GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s 			page 8
-
-
- 299 0090 0547     		li	a4,1
- 300 0092 13090900 		addi	s2,s2,%lo(.LANCHOR0)
- 301 0096 13040400 		addi	s0,s0,%lo(.LANCHOR1)
- 302 009a 6382E704 		beq	a5,a4,.L10
- 303 009e 85CB     		beq	a5,zero,.L11
- 304 00a0 0947     		li	a4,2
- 305 00a2 6380E704 		beq	a5,a4,.L12
- 306 00a6 0D47     		li	a4,3
- 307 00a8 638FE702 		beq	a5,a4,.L13
- 308              	.L14:
-  67:stepperUP.c   ****         case 0: gpio_bit_set(GPIOA, GPIO_PIN_0); break;
-  68:stepperUP.c   ****         case 1: gpio_bit_set(GPIOA, GPIO_PIN_1); break;
-  69:stepperUP.c   ****         case 2: gpio_bit_set(GPIOA, GPIO_PIN_2); break;
-  70:stepperUP.c   ****         case 3: gpio_bit_set(GPIOA, GPIO_PIN_3); break;
-  71:stepperUP.c   ****     }
-  72:stepperUP.c   **** 
-  73:stepperUP.c   ****     if(input == 1) phase = (phase + 1) % 4;
- 309              		.loc 1 73 5
- 310              		.loc 1 73 7 is_stmt 0
- 311 00ac 83060900 		lb	a3,0(s2)
- 312 00b0 0547     		li	a4,1
- 313 00b2 83470400 		lbu	a5,0(s0)
- 314 00b6 639AE602 		bne	a3,a4,.L15
- 315              		.loc 1 73 20 is_stmt 1 discriminator 1
- 316              		.loc 1 73 35 is_stmt 0 discriminator 1
- 317 00ba 8507     		addi	a5,a5,1
- 318              	.L21:
-  74:stepperUP.c   ****     else           phase = (phase + 3) % 4;   
- 319              		.loc 1 74 26
- 320 00bc 8D8B     		andi	a5,a5,3
- 321 00be 2300F400 		sb	a5,0(s0)
-  75:stepperUP.c   **** 
-  76:stepperUP.c   ****     
-  77:stepperUP.c   **** }...
- 322              		.loc 1 77 1
- 323 00c2 F240     		lw	ra,28(sp)
- 324              		.cfi_remember_state
- 325              		.cfi_restore 1
- 326 00c4 6244     		lw	s0,24(sp)
- 327              		.cfi_restore 8
- 328 00c6 D244     		lw	s1,20(sp)
- 329              		.cfi_restore 9
- 330 00c8 4249     		lw	s2,16(sp)
- 331              		.cfi_restore 18
- 332 00ca 0561     		addi	sp,sp,32
- 333              	.LCFI5:
- 334              		.cfi_def_cfa_offset 0
- 335              	.LVL35:
- 336 00cc 8280     		jr	ra
- 337              	.LVL36:
- 338              	.L11:
- 339              	.LCFI6:
- 340              		.cfi_restore_state
-  67:stepperUP.c   ****         case 0: gpio_bit_set(GPIOA, GPIO_PIN_0); break;
- 341              		.loc 1 67 17 is_stmt 1
- 342 00ce 8545     		li	a1,1
- 343              	.L20:
-GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s 			page 9
-
-
-  70:stepperUP.c   ****         case 3: gpio_bit_set(GPIOA, GPIO_PIN_3); break;
- 344              		.loc 1 70 17 is_stmt 0
- 345 00d0 13850480 		addi	a0,s1,-2048
- 346 00d4 97000000 		call	gpio_bit_set
- 346      E7800000 
- 347              	.LVL37:
-  70:stepperUP.c   ****         case 3: gpio_bit_set(GPIOA, GPIO_PIN_3); break;
- 348              		.loc 1 70 50 is_stmt 1
-  70:stepperUP.c   ****         case 3: gpio_bit_set(GPIOA, GPIO_PIN_3); break;
- 349              		.loc 1 70 9 is_stmt 0
- 350 00dc C1BF     		j	.L14
- 351              	.L10:
-  68:stepperUP.c   ****         case 1: gpio_bit_set(GPIOA, GPIO_PIN_1); break;
- 352              		.loc 1 68 17 is_stmt 1
- 353 00de 8945     		li	a1,2
- 354 00e0 C5BF     		j	.L20
- 355              	.L12:
-  69:stepperUP.c   ****         case 2: gpio_bit_set(GPIOA, GPIO_PIN_2); break;
- 356              		.loc 1 69 17
- 357 00e2 9145     		li	a1,4
- 358 00e4 F5B7     		j	.L20
- 359              	.L13:
-  70:stepperUP.c   ****         case 3: gpio_bit_set(GPIOA, GPIO_PIN_3); break;
- 360              		.loc 1 70 17
- 361 00e6 A145     		li	a1,8
- 362 00e8 E5B7     		j	.L20
- 363              	.L15:
-  74:stepperUP.c   ****     else           phase = (phase + 3) % 4;   
- 364              		.loc 1 74 20
-  74:stepperUP.c   ****     else           phase = (phase + 3) % 4;   
- 365              		.loc 1 74 35 is_stmt 0
- 366 00ea 8D07     		addi	a5,a5,3
- 367 00ec C1BF     		j	.L21
- 368              		.cfi_endproc
- 369              	.LFE4:
- 371              		.section	.sbss.phase.4197,"aw",@nobits
- 372              		.set	.LANCHOR1,. + 0
- 375              	phase.4197:
- 376 0000 00       		.zero	1
- 377              		.section	.sdata.input.4198,"aw"
- 378              		.set	.LANCHOR0,. + 0
- 381              	input.4198:
- 382 0000 FF       		.byte	-1
- 383              		.text
- 384              	.Letext0:
- 385              		.file 2 "c:\\users\\dellboy\\desktop\\toolchain-gd32v-v202-win\\compiler\\riscv64-unknown-elf\\inc
- 386              		.file 3 "c:\\users\\dellboy\\desktop\\toolchain-gd32v-v202-win\\compiler\\riscv64-unknown-elf\\inc
- 387              		.file 4 "./../../firmware/GD32VF103_standard_peripheral/gd32vf103.h"
- 388              		.file 5 "./../../firmware/GD32VF103_standard_peripheral/Include/gd32vf103_rcu.h"
- 389              		.file 6 "c:\\users\\dellboy\\desktop\\toolchain-gd32v-v202-win\\compiler\\lib\\gcc\\riscv64-unknow
- 390              		.file 7 "c:\\users\\dellboy\\desktop\\toolchain-gd32v-v202-win\\compiler\\riscv64-unknown-elf\\inc
- 391              		.file 8 "c:\\users\\dellboy\\desktop\\toolchain-gd32v-v202-win\\compiler\\riscv64-unknown-elf\\inc
- 392              		.file 9 "c:\\users\\dellboy\\desktop\\toolchain-gd32v-v202-win\\compiler\\riscv64-unknown-elf\\inc
- 393              		.file 10 "./../../firmware/GD32VF103_standard_peripheral/system_gd32vf103.h"
- 394              		.file 11 "c:\\users\\dellboy\\desktop\\toolchain-gd32v-v202-win\\compiler\\riscv64-unknown-elf\\in
- 395              		.file 12 "lcd.h"
- 396              		.file 13 "./../../firmware/GD32VF103_standard_peripheral/Include/gd32vf103_gpio.h"
-GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s 			page 10
-
-
- 397              		.file 14 "./../../firmware/GD32VF103_standard_peripheral/Include/gd32vf103_adc.h"
-GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s 			page 11
+GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s 			page 6
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 stepperUP.c
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:12     .text.adc_read:0000000000000000 adc_read
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:16     .text.adc_read:0000000000000000 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:18     .text.adc_read:0000000000000000 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:19     .text.adc_read:0000000000000000 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:20     .text.adc_read:0000000000000000 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:22     .text.adc_read:0000000000000002 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:24     .text.adc_read:0000000000000004 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:26     .text.adc_read:0000000000000004 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:33     .text.adc_read:0000000000000012 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:35     .text.adc_read:0000000000000016 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:36     .text.adc_read:0000000000000016 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:38     .text.adc_read:0000000000000016 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:41     .text.adc_read:000000000000001e .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:46     .text.adc_read:000000000000002c .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:47     .text.adc_read:000000000000002c .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:50     .text.adc_read:0000000000000030 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:51     .text.adc_read:0000000000000030 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:56     .text.adc_read:000000000000003c .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:58     .text.adc_read:000000000000003e .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:63     .text.adc_read:000000000000004c .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:64     .text.adc_read:000000000000004c .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:66     .text.adc_read:0000000000000050 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:67     .text.adc_read:0000000000000052 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:69     .text.adc_read:0000000000000054 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:71     .text.adc_read:0000000000000056 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:74     .text.adc_read:0000000000000058 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:76     .text.adc_read:0000000000000058 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:78     .text.adc_read:0000000000000060 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:85     .text.stepperUP_init:0000000000000000 stepperUP_init
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:88     .text.stepperUP_init:0000000000000000 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:89     .text.stepperUP_init:0000000000000000 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:90     .text.stepperUP_init:0000000000000000 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:91     .text.stepperUP_init:0000000000000000 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:93     .text.stepperUP_init:0000000000000002 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:95     .text.stepperUP_init:0000000000000002 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:97     .text.stepperUP_init:0000000000000006 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:99     .text.stepperUP_init:000000000000000a .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:100    .text.stepperUP_init:000000000000000a .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:102    .text.stepperUP_init:000000000000000a .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:105    .text.stepperUP_init:0000000000000012 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:109    .text.stepperUP_init:000000000000001e .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:113    .text.stepperUP_init:000000000000002a .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:117    .text.stepperUP_init:0000000000000034 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:125    .text.stepperUP_init:000000000000004a .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:132    .text.stepperUP_init:000000000000005e .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:139    .text.stepperUP_init:0000000000000070 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:146    .text.stepperUP_init:0000000000000086 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:151    .text.stepperUP_init:0000000000000096 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:155    .text.stepperUP_init:00000000000000a0 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:160    .text.stepperUP_init:00000000000000ae .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:166    .text.stepperUP_init:00000000000000be .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:172    .text.stepperUP_init:00000000000000d0 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:178    .text.stepperUP_init:00000000000000e0 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:182    .text.stepperUP_init:00000000000000ec .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:186    .text.stepperUP_init:00000000000000f8 .L0 
-GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s 			page 12
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:13     .text.stepperUP_init:0000000000000000 stepperUP_init
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:17     .text.stepperUP_init:0000000000000000 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:18     .text.stepperUP_init:0000000000000000 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:19     .text.stepperUP_init:0000000000000000 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:20     .text.stepperUP_init:0000000000000000 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:22     .text.stepperUP_init:0000000000000002 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:24     .text.stepperUP_init:0000000000000004 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:26     .text.stepperUP_init:0000000000000004 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:33     .text.stepperUP_init:0000000000000014 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:34     .text.stepperUP_init:0000000000000016 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:36     .text.stepperUP_init:0000000000000016 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:39     .text.stepperUP_init:000000000000001e .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:41     .text.stepperUP_init:0000000000000022 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:42     .text.stepperUP_init:0000000000000024 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:44     .text.stepperUP_init:0000000000000026 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:46     .text.stepperUP_init:0000000000000026 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:48     .text.stepperUP_init:000000000000002a .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:50     .text.stepperUP_init:000000000000002c .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:52     .text.stepperUP_init:000000000000002c .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:54     .text.stepperUP_init:0000000000000034 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:61     .text.stepperUP_step:0000000000000000 stepperUP_step
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:64     .text.stepperUP_step:0000000000000000 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:65     .text.stepperUP_step:0000000000000000 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:66     .text.stepperUP_step:0000000000000000 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:67     .text.stepperUP_step:0000000000000000 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:69     .text.stepperUP_step:0000000000000002 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:72     .text.stepperUP_step:0000000000000006 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:73     .text.stepperUP_step:0000000000000006 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:75     .text.stepperUP_step:0000000000000006 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:78     .text.stepperUP_step:000000000000000e .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:81     .text.stepperUP_step:000000000000000e .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:82     .text.stepperUP_step:000000000000000e .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:83     .text.stepperUP_step:000000000000000e .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:85     .text.stepperUP_step:0000000000000010 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:87     .text.stepperUP_step:0000000000000012 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:90     .text.stepperUP_step:0000000000000016 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:92     .text.stepperUP_step:0000000000000018 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:96     .text.stepperUP_step:000000000000001c .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:99     .text.stepperUP_step:0000000000000024 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:106    .text.stepperUP_step:0000000000000038 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:112    .text.stepperUP_step:0000000000000048 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:114    .text.stepperUP_step:000000000000004c .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:115    .text.stepperUP_step:000000000000004e .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:116    .text.stepperUP_step:000000000000004e .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:118    .text.stepperUP_step:0000000000000050 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:120    .text.stepperUP_step:0000000000000050 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:122    .text.stepperUP_step:0000000000000052 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:123    .text.stepperUP_step:0000000000000052 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:125    .text.stepperUP_step:0000000000000054 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:127    .text.stepperUP_step:0000000000000056 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:129    .text.stepperUP_step:0000000000000056 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:133    .text.stepperUP_step:000000000000005e .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:137    .text.stepperUP_step:000000000000005e .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:138    .text.stepperUP_step:000000000000005e .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:144    .text.stepperUP_step:0000000000000066 .L0 
+GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s 			page 7
 
 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:189    .text.stepperUP_init:0000000000000100 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:190    .text.stepperUP_init:0000000000000100 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:191    .text.stepperUP_init:0000000000000102 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:193    .text.stepperUP_init:0000000000000104 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:195    .text.stepperUP_init:0000000000000104 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:197    .text.stepperUP_init:0000000000000106 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:198    .text.stepperUP_init:0000000000000106 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:204    .text.stepperUP_init:0000000000000114 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:206    .text.stepperUP_init:0000000000000116 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:208    .text.stepperUP_init:0000000000000116 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:210    .text.stepperUP_init:000000000000011e .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:217    .text.stepperUP_step:0000000000000000 stepperUP_step
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:220    .text.stepperUP_step:0000000000000000 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:221    .text.stepperUP_step:0000000000000000 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:222    .text.stepperUP_step:0000000000000000 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:223    .text.stepperUP_step:0000000000000000 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:224    .text.stepperUP_step:0000000000000000 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:225    .text.stepperUP_step:0000000000000000 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:227    .text.stepperUP_step:0000000000000002 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:229    .text.stepperUP_step:0000000000000002 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:231    .text.stepperUP_step:0000000000000004 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:235    .text.stepperUP_step:000000000000000c .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:236    .text.stepperUP_step:000000000000000c .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:237    .text.stepperUP_step:000000000000000c .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:238    .text.stepperUP_step:000000000000000c .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:240    .text.stepperUP_step:000000000000000c .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:245    .text.stepperUP_step:0000000000000016 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:246    .text.stepperUP_step:0000000000000016 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:252    .text.stepperUP_step:0000000000000022 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:253    .text.stepperUP_step:0000000000000022 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:259    .text.stepperUP_step:0000000000000036 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:260    .text.stepperUP_step:0000000000000036 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:264    .text.stepperUP_step:000000000000003e .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:266    .text.stepperUP_step:0000000000000040 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:270    .text.stepperUP_step:0000000000000046 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:279    .text.stepperUP_step:000000000000005a .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:282    .text.stepperUP_step:0000000000000062 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:290    .text.stepperUP_step:0000000000000076 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:297    .text.stepperUP_step:0000000000000088 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:310    .text.stepperUP_step:00000000000000ac .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:311    .text.stepperUP_step:00000000000000ac .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:316    .text.stepperUP_step:00000000000000ba .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:317    .text.stepperUP_step:00000000000000ba .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:320    .text.stepperUP_step:00000000000000bc .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:323    .text.stepperUP_step:00000000000000c2 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:324    .text.stepperUP_step:00000000000000c4 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:325    .text.stepperUP_step:00000000000000c4 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:327    .text.stepperUP_step:00000000000000c6 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:329    .text.stepperUP_step:00000000000000c8 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:331    .text.stepperUP_step:00000000000000ca .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:334    .text.stepperUP_step:00000000000000cc .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:340    .text.stepperUP_step:00000000000000ce .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:342    .text.stepperUP_step:00000000000000ce .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:345    .text.stepperUP_step:00000000000000d0 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:349    .text.stepperUP_step:00000000000000dc .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:350    .text.stepperUP_step:00000000000000dc .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:353    .text.stepperUP_step:00000000000000de .L0 
-GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s 			page 13
-
-
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:357    .text.stepperUP_step:00000000000000e2 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:361    .text.stepperUP_step:00000000000000e6 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:365    .text.stepperUP_step:00000000000000ea .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:366    .text.stepperUP_step:00000000000000ea .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:368    .text.stepperUP_step:00000000000000ee .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:372    .sbss.phase.4197:0000000000000000 .LANCHOR1
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:375    .sbss.phase.4197:0000000000000000 phase.4197
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:378    .sdata.input.4198:0000000000000000 .LANCHOR0
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:381    .sdata.input.4198:0000000000000000 input.4198
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:81     .text.adc_read:0000000000000060 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:213    .text.stepperUP_init:000000000000011e .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:371    .text.stepperUP_step:00000000000000ee .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:57     .text.stepperUP_init:0000000000000034 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:147    .text.stepperUP_step:0000000000000066 .L0 
                      .debug_frame:0000000000000000 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:48     .text.adc_read:0000000000000030 .L2
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:268    .text.stepperUP_step:0000000000000046 .L9
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:351    .text.stepperUP_step:00000000000000de .L10
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:338    .text.stepperUP_step:00000000000000ce .L11
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:355    .text.stepperUP_step:00000000000000e2 .L12
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:359    .text.stepperUP_step:00000000000000e6 .L13
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:363    .text.stepperUP_step:00000000000000ea .L15
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:308    .text.stepperUP_step:00000000000000ac .L14
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:343    .text.stepperUP_step:00000000000000d0 .L20
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:318    .text.stepperUP_step:00000000000000bc .L21
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:2772   .debug_abbrev:0000000000000000 .Ldebug_abbrev0
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3917   .debug_str:00000000000006f8 .LASF199
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3599   .debug_str:0000000000000070 .LASF200
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3935   .debug_str:00000000000007d8 .LASF201
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3565   .debug_ranges:0000000000000000 .Ldebug_ranges0
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3575   .debug_line:0000000000000000 .Ldebug_line0
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3899   .debug_str:00000000000006a0 .LASF0
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3623   .debug_str:00000000000000fb .LASF2
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3641   .debug_str:000000000000016b .LASF1
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3597   .debug_str:0000000000000066 .LASF3
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3823   .debug_str:000000000000052c .LASF4
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3905   .debug_str:00000000000006c1 .LASF5
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3901   .debug_str:00000000000006ad .LASF6
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3847   .debug_str:00000000000005a3 .LASF7
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3663   .debug_str:00000000000001cd .LASF8
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3697   .debug_str:000000000000026d .LASF9
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3723   .debug_str:00000000000002f3 .LASF10
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3681   .debug_str:0000000000000219 .LASF11
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3611   .debug_str:00000000000000b2 .LASF12
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3929   .debug_str:00000000000007bc .LASF13
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3909   .debug_str:00000000000006d3 .LASF14
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3683   .debug_str:0000000000000227 .LASF15
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3939   .debug_str:0000000000000830 .LASF16
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3715   .debug_str:00000000000002c7 .LASF165
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3855   .debug_str:00000000000005cd .LASF17
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3677   .debug_str:0000000000000208 .LASF18
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3585   .debug_str:0000000000000027 .LASF19
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3643   .debug_str:0000000000000177 .LASF20
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3637   .debug_str:000000000000015c .LASF21
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3903   .debug_str:00000000000006b8 .LASF22
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3679   .debug_str:000000000000020f .LASF23
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3807   .debug_str:00000000000004c7 .LASF24
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3809   .debug_str:00000000000004d2 .LASF25
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3811   .debug_str:00000000000004dd .LASF26
-GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s 			page 14
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:131    .text.stepperUP_step:000000000000005e .L5
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:88     .text.stepperUP_step:0000000000000016 .L4
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:1810   .debug_abbrev:0000000000000000 .Ldebug_abbrev0
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2690   .debug_str:0000000000000418 .LASF132
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2484   .debug_str:0000000000000031 .LASF133
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2702   .debug_str:00000000000004d6 .LASF134
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2458   .debug_ranges:0000000000000000 .Ldebug_ranges0
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2472   .debug_line:0000000000000000 .Ldebug_line0
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2684   .debug_str:00000000000003f8 .LASF0
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2508   .debug_str:00000000000000c5 .LASF1
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2626   .debug_str:00000000000002fb .LASF2
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2476   .debug_str:000000000000000c .LASF3
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2694   .debug_str:00000000000004a9 .LASF4
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2524   .debug_str:000000000000010a .LASF5
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2548   .debug_str:0000000000000184 .LASF9
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2570   .debug_str:00000000000001e3 .LASF6
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2534   .debug_str:0000000000000133 .LASF7
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2492   .debug_str:0000000000000066 .LASF8
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2706   .debug_str:000000000000052e .LASF10
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2564   .debug_str:00000000000001c3 .LASF120
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2674   .debug_str:00000000000003d1 .LASF11
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2618   .debug_str:00000000000002cd .LASF12
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2504   .debug_str:00000000000000b7 .LASF13
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2672   .debug_str:00000000000003c9 .LASF14
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2716   .debug_str:0000000000000561 .LASF15
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2588   .debug_str:0000000000000243 .LASF16
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2562   .debug_str:00000000000001bc .LASF17
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2664   .debug_str:00000000000003a9 .LASF18
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2666   .debug_str:00000000000003b1 .LASF19
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2622   .debug_str:00000000000002de .LASF20
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2698   .debug_str:00000000000004c1 .LASF21
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2624   .debug_str:00000000000002e9 .LASF22
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2632   .debug_str:0000000000000318 .LASF23
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2556   .debug_str:00000000000001a9 .LASF28
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2686   .debug_str:0000000000000405 .LASF24
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2658   .debug_str:0000000000000394 .LASF25
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2550   .debug_str:000000000000018f .LASF26
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2712   .debug_str:0000000000000556 .LASF27
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2560   .debug_str:00000000000001b7 .LASF29
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2502   .debug_str:00000000000000ae .LASF30
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2736   .debug_str:00000000000005c7 .LASF31
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2514   .debug_str:00000000000000dd .LASF32
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2746   .debug_str:00000000000005f2 .LASF33
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2608   .debug_str:0000000000000298 .LASF34
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2602   .debug_str:000000000000027e .LASF35
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2670   .debug_str:00000000000003bf .LASF36
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2634   .debug_str:0000000000000321 .LASF37
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2732   .debug_str:00000000000005ad .LASF38
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2518   .debug_str:00000000000000ec .LASF39
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2478   .debug_str:0000000000000016 .LASF40
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2474   .debug_str:0000000000000000 .LASF41
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2692   .debug_str:00000000000004a0 .LASF42
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2528   .debug_str:000000000000011a .LASF43
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2610   .debug_str:00000000000002a1 .LASF44
+GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s 			page 8
 
 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3813   .debug_str:00000000000004e8 .LASF27
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3815   .debug_str:00000000000004f3 .LASF28
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3817   .debug_str:00000000000004fe .LASF29
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3915   .debug_str:00000000000006ee .LASF30
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3581   .debug_str:0000000000000015 .LASF31
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3583   .debug_str:000000000000001e .LASF32
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3783   .debug_str:000000000000044a .LASF33
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3785   .debug_str:0000000000000455 .LASF34
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3613   .debug_str:00000000000000c9 .LASF35
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3615   .debug_str:00000000000000d3 .LASF36
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3955   .debug_str:000000000000088a .LASF37
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3881   .debug_str:0000000000000655 .LASF38
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3693   .debug_str:000000000000025f .LASF39
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3635   .debug_str:0000000000000153 .LASF40
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3887   .debug_str:0000000000000670 .LASF41
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3933   .debug_str:00000000000007d0 .LASF42
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3743   .debug_str:0000000000000362 .LASF43
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3733   .debug_str:0000000000000333 .LASF44
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3595   .debug_str:000000000000005f .LASF45
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3619   .debug_str:00000000000000e6 .LASF46
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3717   .debug_str:00000000000002d7 .LASF47
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3719   .debug_str:00000000000002e1 .LASF48
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3625   .debug_str:0000000000000104 .LASF49
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3627   .debug_str:000000000000010e .LASF50
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3729   .debug_str:0000000000000321 .LASF51
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3731   .debug_str:000000000000032a .LASF52
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3805   .debug_str:00000000000004bc .LASF53
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3579   .debug_str:000000000000000c .LASF54
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3781   .debug_str:000000000000043f .LASF55
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3889   .debug_str:0000000000000679 .LASF56
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3797   .debug_str:0000000000000495 .LASF57
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3605   .debug_str:000000000000008b .LASF58
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3885   .debug_str:0000000000000668 .LASF59
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3947   .debug_str:0000000000000851 .LASF60
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3751   .debug_str:000000000000038b .LASF61
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3713   .debug_str:00000000000002c0 .LASF62
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3875   .debug_str:000000000000063f .LASF63
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3877   .debug_str:0000000000000647 .LASF64
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3803   .debug_str:00000000000004b1 .LASF65
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3927   .debug_str:00000000000007b4 .LASF66
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3771   .debug_str:0000000000000400 .LASF67
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3831   .debug_str:0000000000000550 .LASF68
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3707   .debug_str:00000000000002ad .LASF73
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3911   .debug_str:00000000000006db .LASF69
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3865   .debug_str:0000000000000613 .LASF70
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3701   .debug_str:0000000000000293 .LASF71
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3943   .debug_str:0000000000000846 .LASF72
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3711   .debug_str:00000000000002bb .LASF74
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3633   .debug_str:000000000000014a .LASF75
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3965   .debug_str:00000000000008bb .LASF76
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3649   .debug_str:000000000000018c .LASF77
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3981   .debug_str:0000000000000906 .LASF78
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3773   .debug_str:0000000000000412 .LASF79
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3767   .debug_str:00000000000003ed .LASF80
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3883   .debug_str:000000000000065e .LASF81
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3975   .debug_str:00000000000008ef .LASF82
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3961   .debug_str:00000000000008a1 .LASF83
-GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s 			page 15
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2650   .debug_str:0000000000000364 .LASF45
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2546   .debug_str:000000000000017f .LASF46
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2636   .debug_str:000000000000032b .LASF47
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2512   .debug_str:00000000000000d7 .LASF48
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2682   .debug_str:00000000000003f2 .LASF49
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2642   .debug_str:0000000000000341 .LASF50
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2526   .debug_str:0000000000000113 .LASF51
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2572   .debug_str:00000000000001f5 .LASF52
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2494   .debug_str:000000000000007d .LASF53
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2520   .debug_str:00000000000000fa .LASF54
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2558   .debug_str:00000000000001b1 .LASF55
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2600   .debug_str:0000000000000277 .LASF56
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2668   .debug_str:00000000000003b9 .LASF57
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2506   .debug_str:00000000000000be .LASF58
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2510   .debug_str:00000000000000d1 .LASF59
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2726   .debug_str:0000000000000594 .LASF60
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2680   .debug_str:00000000000003e9 .LASF61
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2538   .debug_str:0000000000000149 .LASF62
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2574   .debug_str:00000000000001fb .LASF63
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2596   .debug_str:000000000000026b .LASF64
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2644   .debug_str:0000000000000349 .LASF65
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2638   .debug_str:0000000000000332 .LASF66
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2660   .debug_str:000000000000039c .LASF67
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2676   .debug_str:00000000000003dd .LASF68
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2530   .debug_str:0000000000000122 .LASF69
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2566   .debug_str:00000000000001d3 .LASF70
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2554   .debug_str:00000000000001a1 .LASF71
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2648   .debug_str:000000000000035f .LASF72
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2482   .debug_str:0000000000000026 .LASF73
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2656   .debug_str:000000000000037b .LASF74
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2652   .debug_str:0000000000000369 .LASF75
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2614   .debug_str:00000000000002b3 .LASF76
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2654   .debug_str:0000000000000371 .LASF77
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2586   .debug_str:000000000000023b .LASF78
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2532   .debug_str:0000000000000129 .LASF79
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2744   .debug_str:00000000000005ed .LASF80
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2620   .debug_str:00000000000002d4 .LASF81
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2568   .debug_str:00000000000001db .LASF82
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2536   .debug_str:0000000000000141 .LASF83
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2594   .debug_str:0000000000000266 .LASF84
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2486   .debug_str:000000000000003d .LASF85
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2720   .debug_str:0000000000000574 .LASF86
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2522   .debug_str:0000000000000102 .LASF87
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2516   .debug_str:00000000000000e7 .LASF88
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2678   .debug_str:00000000000003e4 .LASF89
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2640   .debug_str:000000000000033a .LASF90
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2714   .debug_str:000000000000055b .LASF91
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2576   .debug_str:0000000000000201 .LASF92
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2628   .debug_str:0000000000000309 .LASF93
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2480   .debug_str:000000000000001e .LASF94
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2662   .debug_str:00000000000003a3 .LASF95
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2598   .debug_str:0000000000000271 .LASF96
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2696   .debug_str:00000000000004bc .LASF97
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2710   .debug_str:0000000000000549 .LASF98
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2688   .debug_str:000000000000040b .LASF99
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2584   .debug_str:000000000000022e .LASF100
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2734   .debug_str:00000000000005b8 .LASF101
+GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s 			page 9
 
 
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3655   .debug_str:00000000000001a9 .LASF84
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3587   .debug_str:0000000000000030 .LASF85
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3577   .debug_str:0000000000000000 .LASF86
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3919   .debug_str:0000000000000780 .LASF87
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3671   .debug_str:00000000000001ef .LASF88
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3787   .debug_str:0000000000000460 .LASF89
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3853   .debug_str:00000000000005c8 .LASF90
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3695   .debug_str:0000000000000268 .LASF91
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3835   .debug_str:0000000000000569 .LASF92
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3647   .debug_str:0000000000000186 .LASF93
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3897   .debug_str:000000000000069a .LASF94
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3843   .debug_str:0000000000000592 .LASF95
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3669   .debug_str:00000000000001e8 .LASF96
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3725   .debug_str:0000000000000305 .LASF97
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3617   .debug_str:00000000000000dd .LASF98
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3657   .debug_str:00000000000001b7 .LASF99
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3709   .debug_str:00000000000002b5 .LASF100
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3765   .debug_str:00000000000003e6 .LASF101
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3879   .debug_str:000000000000064f .LASF102
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3639   .debug_str:0000000000000164 .LASF103
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3645   .debug_str:0000000000000180 .LASF104
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3957   .debug_str:0000000000000893 .LASF105
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3895   .debug_str:0000000000000691 .LASF106
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3687   .debug_str:0000000000000238 .LASF107
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3735   .debug_str:000000000000033b .LASF108
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3759   .debug_str:00000000000003c3 .LASF109
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3845   .debug_str:000000000000059a .LASF110
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3837   .debug_str:0000000000000570 .LASF111
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3867   .debug_str:000000000000061b .LASF112
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3891   .debug_str:0000000000000685 .LASF113
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3673   .debug_str:00000000000001f7 .LASF114
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3907   .debug_str:00000000000006cb .LASF115
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3705   .debug_str:00000000000002a5 .LASF116
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3851   .debug_str:00000000000005c3 .LASF117
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3593   .debug_str:0000000000000054 .LASF118
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3861   .debug_str:00000000000005e5 .LASF119
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3977   .debug_str:00000000000008f9 .LASF120
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3791   .debug_str:0000000000000472 .LASF121
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3859   .debug_str:00000000000005db .LASF122
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3749   .debug_str:0000000000000383 .LASF123
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3675   .debug_str:00000000000001fe .LASF124
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3973   .debug_str:00000000000008ea .LASF125
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3801   .debug_str:00000000000004a7 .LASF126
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3721   .debug_str:00000000000002eb .LASF127
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3685   .debug_str:0000000000000230 .LASF128
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3667   .debug_str:00000000000001e3 .LASF129
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3601   .debug_str:000000000000007c .LASF130
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3951   .debug_str:0000000000000864 .LASF131
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3659   .debug_str:00000000000001bf .LASF132
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3653   .debug_str:00000000000001a4 .LASF133
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3893   .debug_str:000000000000068c .LASF134
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3839   .debug_str:0000000000000578 .LASF135
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3945   .debug_str:000000000000084b .LASF136
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3737   .debug_str:0000000000000341 .LASF137
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3825   .debug_str:000000000000053a .LASF138
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3869   .debug_str:0000000000000622 .LASF139
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3871   .debug_str:000000000000062a .LASF140
-GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s 			page 16
-
-
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3763   .debug_str:00000000000003e0 .LASF141
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3925   .debug_str:00000000000007af .LASF142
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3941   .debug_str:0000000000000839 .LASF143
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3913   .debug_str:00000000000006e1 .LASF144
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3747   .debug_str:0000000000000376 .LASF145
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3963   .debug_str:00000000000008ac .LASF146
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3793   .debug_str:000000000000047d .LASF147
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3741   .debug_str:0000000000000357 .LASF148
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3779   .debug_str:000000000000043a .LASF149
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3849   .debug_str:00000000000005b6 .LASF150
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3971   .debug_str:00000000000008dc .LASF151
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3651   .debug_str:0000000000000196 .LASF152
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3949   .debug_str:000000000000085a .LASF153
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3745   .debug_str:000000000000036a .LASF154
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3931   .debug_str:00000000000007c3 .LASF155
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3691   .debug_str:0000000000000251 .LASF156
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3629   .debug_str:0000000000000118 .LASF157
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3689   .debug_str:0000000000000240 .LASF158
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3607   .debug_str:0000000000000092 .LASF159
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3609   .debug_str:00000000000000a1 .LASF160
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3829   .debug_str:0000000000000547 .LASF161
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3777   .debug_str:0000000000000433 .LASF162
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3769   .debug_str:00000000000003f7 .LASF163
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3959   .debug_str:0000000000000899 .LASF164
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3621   .debug_str:00000000000000f0 .LASF202
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3703   .debug_str:0000000000000299 .LASF166
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3937   .debug_str:000000000000081d .LASF167
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3789   .debug_str:0000000000000468 .LASF168
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3755   .debug_str:000000000000039c .LASF169
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3739   .debug_str:0000000000000348 .LASF175
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:218    .text.stepperUP_step:0000000000000000 .LFB4
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:369    .text.stepperUP_step:00000000000000ee .LFE4
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3443   .debug_loc:0000000000000000 .LLST3
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3661   .debug_str:00000000000001c7 .LASF170
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3857   .debug_str:00000000000005d5 .LASF171
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3979   .debug_str:0000000000000901 .LASF172
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3466   .debug_loc:0000000000000038 .LLST4
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3603   .debug_str:0000000000000085 .LASF173
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3484   .debug_loc:0000000000000064 .LLST5
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3827   .debug_str:0000000000000540 .LASF174
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3491   .debug_loc:0000000000000077 .LLST6
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:241    .text.stepperUP_step:0000000000000014 .LVL25
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:248    .text.stepperUP_step:0000000000000020 .LVL27
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:257    .text.stepperUP_step:0000000000000036 .LVL29
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:280    .text.stepperUP_step:0000000000000062 .LVL31
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:288    .text.stepperUP_step:0000000000000076 .LVL32
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:295    .text.stepperUP_step:0000000000000088 .LVL34
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:347    .text.stepperUP_step:00000000000000dc .LVL37
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3873   .debug_str:0000000000000630 .LASF176
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:86     .text.stepperUP_init:0000000000000000 .LFB3
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:211    .text.stepperUP_init:000000000000011e .LFE3
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3498   .debug_loc:000000000000008a .LLST2
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:103    .text.stepperUP_init:0000000000000012 .LVL7
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:107    .text.stepperUP_init:000000000000001e .LVL8
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:111    .text.stepperUP_init:000000000000002a .LVL9
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:115    .text.stepperUP_init:0000000000000034 .LVL10
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:123    .text.stepperUP_init:000000000000004a .LVL11
-GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s 			page 17
-
-
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:130    .text.stepperUP_init:000000000000005e .LVL12
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:137    .text.stepperUP_init:0000000000000070 .LVL13
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:144    .text.stepperUP_init:0000000000000086 .LVL14
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:149    .text.stepperUP_init:0000000000000096 .LVL15
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:153    .text.stepperUP_init:00000000000000a0 .LVL16
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:158    .text.stepperUP_init:00000000000000ae .LVL17
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:164    .text.stepperUP_init:00000000000000be .LVL18
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:170    .text.stepperUP_init:00000000000000d0 .LVL19
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:176    .text.stepperUP_init:00000000000000e0 .LVL20
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:180    .text.stepperUP_init:00000000000000ec .LVL21
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:184    .text.stepperUP_init:00000000000000f8 .LVL22
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:187    .text.stepperUP_init:0000000000000100 .LVL23
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:209    .text.stepperUP_init:000000000000011e .LVL24
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3821   .debug_str:0000000000000523 .LASF203
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:13     .text.adc_read:0000000000000000 .LFB2
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:79     .text.adc_read:0000000000000060 .LFE2
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3516   .debug_loc:00000000000000b6 .LLST0
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3534   .debug_loc:00000000000000e2 .LLST1
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:39     .text.adc_read:000000000000001e .LVL2
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:44     .text.adc_read:000000000000002c .LVL3
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:54     .text.adc_read:000000000000003c .LVL4
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:61     .text.adc_read:000000000000004c .LVL5
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:77     .text.adc_read:0000000000000060 .LVL6
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3841   .debug_str:000000000000057f .LASF177
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3921   .debug_str:0000000000000789 .LASF178
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3589   .debug_str:0000000000000038 .LASF179
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3591   .debug_str:0000000000000047 .LASF180
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3775   .debug_str:000000000000041b .LASF181
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3863   .debug_str:00000000000005fe .LASF182
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3983   .debug_str:0000000000000910 .LASF183
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3753   .debug_str:0000000000000391 .LASF184
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3833   .debug_str:0000000000000559 .LASF185
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3923   .debug_str:0000000000000795 .LASF186
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3819   .debug_str:0000000000000509 .LASF187
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3631   .debug_str:0000000000000127 .LASF188
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3953   .debug_str:000000000000086e .LASF189
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3799   .debug_str:000000000000049c .LASF190
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3761   .debug_str:00000000000003c9 .LASF191
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3969   .debug_str:00000000000008d3 .LASF192
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3795   .debug_str:000000000000048c .LASF193
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3699   .debug_str:0000000000000278 .LASF194
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3757   .debug_str:00000000000003a7 .LASF195
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3665   .debug_str:00000000000001d6 .LASF196
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3967   .debug_str:00000000000008c4 .LASF197
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:3727   .debug_str:000000000000030b .LASF198
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:226    .text.stepperUP_step:0000000000000002 .LCFI4
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:333    .text.stepperUP_step:00000000000000cc .LCFI5
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:339    .text.stepperUP_step:00000000000000ce .LCFI6
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:243    .text.stepperUP_step:0000000000000016 .LVL26
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:335    .text.stepperUP_step:00000000000000cc .LVL35
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:337    .text.stepperUP_step:00000000000000ce .LVL36
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:250    .text.stepperUP_step:0000000000000022 .LVL28
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:291    .text.stepperUP_step:000000000000007a .LVL33
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:276    .text.stepperUP_step:0000000000000056 .LVL30
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:92     .text.stepperUP_init:0000000000000002 .LCFI2
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:205    .text.stepperUP_init:0000000000000116 .LCFI3
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:21     .text.adc_read:0000000000000002 .LCFI0
-GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s 			page 18
-
-
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:73     .text.adc_read:0000000000000058 .LCFI1
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:17     .text.adc_read:0000000000000000 .LVL0
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:31     .text.adc_read:0000000000000012 .LVL1
-C:\Users\DellBoy\AppData\Local\Temp\ccWfdgQt.s:399    .debug_info:0000000000000000 .Ldebug_info0
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2616   .debug_str:00000000000002be .LASF102
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2580   .debug_str:0000000000000217 .LASF103
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2738   .debug_str:00000000000005d0 .LASF104
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2646   .debug_str:0000000000000352 .LASF105
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2742   .debug_str:00000000000005df .LASF106
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2500   .debug_str:00000000000000a0 .LASF107
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2718   .debug_str:000000000000056a .LASF108
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2582   .debug_str:0000000000000222 .LASF109
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2700   .debug_str:00000000000004c9 .LASF110
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2542   .debug_str:0000000000000162 .LASF111
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2498   .debug_str:0000000000000091 .LASF112
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2540   .debug_str:0000000000000151 .LASF113
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2488   .debug_str:0000000000000046 .LASF114
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2490   .debug_str:0000000000000055 .LASF115
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2630   .debug_str:000000000000030f .LASF116
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2606   .debug_str:0000000000000291 .LASF117
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2604   .debug_str:0000000000000288 .LASF118
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2728   .debug_str:000000000000059a .LASF119
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2496   .debug_str:0000000000000086 .LASF135
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2552   .debug_str:0000000000000195 .LASF121
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2704   .debug_str:000000000000051b .LASF122
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2612   .debug_str:00000000000002a9 .LASF123
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2592   .debug_str:000000000000025b .LASF124
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2578   .debug_str:0000000000000208 .LASF125
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:62     .text.stepperUP_step:0000000000000000 .LFB5
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:145    .text.stepperUP_step:0000000000000066 .LFE5
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2402   .debug_loc:0000000000000000 .LLST1
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:79     .text.stepperUP_step:000000000000000e .LBB5
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:76     .text.stepperUP_step:000000000000000e .LVL2
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:97     .text.stepperUP_step:0000000000000024 .LVL3
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:104    .text.stepperUP_step:0000000000000038 .LVL4
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:110    .text.stepperUP_step:0000000000000048 .LVL5
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:130    .text.stepperUP_step:000000000000005e .LVL6
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2722   .debug_str:000000000000057e .LASF136
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2544   .debug_str:0000000000000170 .LASF126
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:14     .text.stepperUP_init:0000000000000000 .LFB3
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:55     .text.stepperUP_init:0000000000000034 .LFE3
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2425   .debug_loc:0000000000000038 .LLST0
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:37     .text.stepperUP_init:000000000000001e .LVL0
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:53     .text.stepperUP_init:0000000000000034 .LVL1
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2740   .debug_str:00000000000005d5 .LASF127
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2590   .debug_str:0000000000000249 .LASF128
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2724   .debug_str:0000000000000589 .LASF129
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2730   .debug_str:00000000000005a2 .LASF130
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:2708   .debug_str:0000000000000537 .LASF131
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:68     .text.stepperUP_step:0000000000000002 .LCFI2
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:126    .text.stepperUP_step:0000000000000056 .LCFI3
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:132    .text.stepperUP_step:000000000000005e .LCFI4
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:21     .text.stepperUP_init:0000000000000002 .LCFI0
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:49     .text.stepperUP_init:000000000000002c .LCFI1
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:160    .debug_info:0000000000000000 .Ldebug_info0
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:94     .text.stepperUP_step:000000000000001c .LBE5
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:134    .text.stepperUP_step:000000000000005e .LBB8
+C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s:143    .text.stepperUP_step:0000000000000066 .LBE8
 
 UNDEFINED SYMBOLS
-adc_regular_channel_config
-adc_software_trigger_enable
-adc_flag_get
-adc_flag_clear
-adc_regular_data_read
-rcu_periph_clock_enable
-rcu_adc_clock_config
-gpio_init
-adc_deinit
-adc_mode_config
-adc_data_alignment_config
-adc_channel_length_config
-adc_external_trigger_source_config
-adc_external_trigger_config
-adc_enable
-adc_calibration_enable
-Lcd_Init
-LCD_Fill
-gpio_input_bit_get
-LCD_ShowNum
-gpio_bit_reset
-gpio_bit_set
+motor_init
+GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\ccNuOJB1.s 			page 10
+
+
+debug_button_init
+motor_run
+debug_button_read
+debug_lamp

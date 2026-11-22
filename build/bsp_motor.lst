@@ -1,0 +1,1270 @@
+GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s 			page 1
+
+
+   1              		.file	"bsp_motor.c"
+   2              		.option nopic
+   3              		.attribute arch, "rv32i2p0_m2p0_a2p0_c2p0"
+   4              		.attribute unaligned_access, 0
+   5              		.attribute stack_align, 16
+   6              		.text
+   7              	.Ltext0:
+   8              		.cfi_sections	.debug_frame
+   9              		.section	.text.gpio_clock_on,"ax",@progbits
+  10              		.align	1
+  12              	gpio_clock_on:
+  13              	.LFB2:
+  14              		.file 1 "bsp_motor/bsp_motor.c"
+   1:bsp_motor/bsp_motor.c **** #include "bsp_motor/bsp_motor.h"
+   2:bsp_motor/bsp_motor.c **** 
+   3:bsp_motor/bsp_motor.c **** 
+   4:bsp_motor/bsp_motor.c **** 
+   5:bsp_motor/bsp_motor.c ****  static uint8_t dir = 1; // 1 for clockwise, 0 for counterclockwise
+   6:bsp_motor/bsp_motor.c **** static int8_t phase = 0; // 0-3 for the four phases of the stepper motor
+   7:bsp_motor/bsp_motor.c **** static uint8_t pins[4] = {};
+   8:bsp_motor/bsp_motor.c **** static uint32_t peripheral = 0; // Store the GPIO peripheral for the motor pins
+   9:bsp_motor/bsp_motor.c **** 
+  10:bsp_motor/bsp_motor.c **** static uint32_t button_peripheral = 0; // Store the GPIO peripheral for the button pin
+  11:bsp_motor/bsp_motor.c **** static uint8_t button_pin = 0; // Store the GPIO pin for the button
+  12:bsp_motor/bsp_motor.c **** 
+  13:bsp_motor/bsp_motor.c **** static void gpio_clock_on(uint32_t port){
+  15              		.loc 1 13 41
+  16              		.cfi_startproc
+  17              	.LVL0:
+  14:bsp_motor/bsp_motor.c ****     switch (port) {
+  18              		.loc 1 14 5
+  19 0000 B7170140 		li	a5,1073811456
+  20 0004 6301F504 		beq	a0,a5,.L2
+  21 0008 63EBA700 		bgtu	a0,a5,.L3
+  22 000c 13870780 		addi	a4,a5,-2048
+  23 0010 6302E502 		beq	a0,a4,.L4
+  24 0014 938707C0 		addi	a5,a5,-1024
+  25 0018 6304F502 		beq	a0,a5,.L5
+  26 001c 8280     		ret
+  27              	.L3:
+  28 001e 93870740 		addi	a5,a5,1024
+  29 0022 6305F502 		beq	a0,a5,.L7
+  30 0026 B7270140 		li	a5,1073815552
+  31 002a 93870780 		addi	a5,a5,-2048
+  32 002e 6302F502 		beq	a0,a5,.L8
+  33 0032 8280     		ret
+  34              	.L4:
+  15:bsp_motor/bsp_motor.c ****         case GPIOA: rcu_periph_clock_enable(RCU_GPIOA); break;
+  35              		.loc 1 15 21
+  36 0034 13052060 		li	a0,1538
+  37              	.LVL1:
+  38              	.L9:
+  16:bsp_motor/bsp_motor.c ****         case GPIOB: rcu_periph_clock_enable(RCU_GPIOB); break;
+  17:bsp_motor/bsp_motor.c ****         case GPIOC: rcu_periph_clock_enable(RCU_GPIOC); break;
+  18:bsp_motor/bsp_motor.c ****         case GPIOD: rcu_periph_clock_enable(RCU_GPIOD); break;
+  19:bsp_motor/bsp_motor.c ****         case GPIOE: rcu_periph_clock_enable(RCU_GPIOE); break;
+  39              		.loc 1 19 21 is_stmt 0
+GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s 			page 2
+
+
+  40 0038 17030000 		tail	rcu_periph_clock_enable
+  40      67000300 
+  41              	.LVL2:
+  42              	.L5:
+  16:bsp_motor/bsp_motor.c ****         case GPIOB: rcu_periph_clock_enable(RCU_GPIOB); break;
+  43              		.loc 1 16 21 is_stmt 1
+  44 0040 13053060 		li	a0,1539
+  45              	.LVL3:
+  46 0044 D5BF     		j	.L9
+  47              	.LVL4:
+  48              	.L2:
+  17:bsp_motor/bsp_motor.c ****         case GPIOD: rcu_periph_clock_enable(RCU_GPIOD); break;
+  49              		.loc 1 17 21
+  50 0046 13054060 		li	a0,1540
+  51              	.LVL5:
+  52 004a FDB7     		j	.L9
+  53              	.LVL6:
+  54              	.L7:
+  18:bsp_motor/bsp_motor.c ****         case GPIOE: rcu_periph_clock_enable(RCU_GPIOE); break;
+  55              		.loc 1 18 21
+  56 004c 13055060 		li	a0,1541
+  57              	.LVL7:
+  58 0050 E5B7     		j	.L9
+  59              	.LVL8:
+  60              	.L8:
+  61              		.loc 1 19 21
+  62 0052 13056060 		li	a0,1542
+  63              	.LVL9:
+  64 0056 CDB7     		j	.L9
+  65              		.cfi_endproc
+  66              	.LFE2:
+  68              		.section	.text.motor_init,"ax",@progbits
+  69              		.align	1
+  70              		.globl	motor_init
+  72              	motor_init:
+  73              	.LFB3:
+  20:bsp_motor/bsp_motor.c ****         default: break;
+  21:bsp_motor/bsp_motor.c ****     }
+  22:bsp_motor/bsp_motor.c **** }
+  23:bsp_motor/bsp_motor.c **** 
+  24:bsp_motor/bsp_motor.c **** void motor_init(uint32_t gpio_periph, uint8_t pin1, uint8_t pin2, uint8_t pin3, uint8_t pin4){
+  74              		.loc 1 24 94
+  75              		.cfi_startproc
+  76              	.LVL10:
+  25:bsp_motor/bsp_motor.c ****     gpio_clock_on(gpio_periph);
+  77              		.loc 1 25 5
+  24:bsp_motor/bsp_motor.c ****     gpio_clock_on(gpio_periph);
+  78              		.loc 1 24 94 is_stmt 0
+  79 0000 7971     		addi	sp,sp,-48
+  80              	.LCFI0:
+  81              		.cfi_def_cfa_offset 48
+  82 0002 22D4     		sw	s0,40(sp)
+  83 0004 26D2     		sw	s1,36(sp)
+  84              		.cfi_offset 8, -8
+  85              		.cfi_offset 9, -12
+  86 0006 2A84     		mv	s0,a0
+  87 0008 4AD0     		sw	s2,32(sp)
+GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s 			page 3
+
+
+  88 000a 4ECE     		sw	s3,28(sp)
+  89 000c 2EC6     		sw	a1,12(sp)
+  90 000e 32C4     		sw	a2,8(sp)
+  91 0010 36C2     		sw	a3,4(sp)
+  92 0012 3AC0     		sw	a4,0(sp)
+  93 0014 06D6     		sw	ra,44(sp)
+  94              		.cfi_offset 18, -16
+  95              		.cfi_offset 19, -20
+  96              		.cfi_offset 1, -4
+  97              		.loc 1 25 5
+  98 0016 97000000 		call	gpio_clock_on
+  98      E7800000 
+  99              	.LVL11:
+  26:bsp_motor/bsp_motor.c **** 
+  27:bsp_motor/bsp_motor.c ****     peripheral = gpio_periph;
+ 100              		.loc 1 27 5 is_stmt 1
+  28:bsp_motor/bsp_motor.c ****     pins[0] = pin1;
+ 101              		.loc 1 28 13 is_stmt 0
+ 102 001e B245     		lw	a1,12(sp)
+  29:bsp_motor/bsp_motor.c ****     pins[1] = pin2;
+ 103              		.loc 1 29 13
+ 104 0020 2246     		lw	a2,8(sp)
+  30:bsp_motor/bsp_motor.c ****     pins[2] = pin3;
+ 105              		.loc 1 30 13
+ 106 0022 9246     		lw	a3,4(sp)
+  31:bsp_motor/bsp_motor.c ****     pins[3] = pin4;
+ 107              		.loc 1 31 13
+ 108 0024 0247     		lw	a4,0(sp)
+  28:bsp_motor/bsp_motor.c ****     pins[1] = pin2;
+ 109              		.loc 1 28 13
+ 110 0026 37050000 		lui	a0,%hi(.LANCHOR1)
+ 111 002a 13080500 		addi	a6,a0,%lo(.LANCHOR1)
+  27:bsp_motor/bsp_motor.c ****     pins[0] = pin1;
+ 112              		.loc 1 27 16
+ 113 002e B7070000 		lui	a5,%hi(.LANCHOR0)
+ 114 0032 23A08700 		sw	s0,%lo(.LANCHOR0)(a5)
+  28:bsp_motor/bsp_motor.c ****     pins[1] = pin2;
+ 115              		.loc 1 28 5 is_stmt 1
+  28:bsp_motor/bsp_motor.c ****     pins[1] = pin2;
+ 116              		.loc 1 28 13 is_stmt 0
+ 117 0036 2300B800 		sb	a1,0(a6)
+  29:bsp_motor/bsp_motor.c ****     pins[2] = pin3;
+ 118              		.loc 1 29 5 is_stmt 1
+  29:bsp_motor/bsp_motor.c ****     pins[2] = pin3;
+ 119              		.loc 1 29 13 is_stmt 0
+ 120 003a A300C800 		sb	a2,1(a6)
+  30:bsp_motor/bsp_motor.c ****     pins[3] = pin4;
+ 121              		.loc 1 30 5 is_stmt 1
+  30:bsp_motor/bsp_motor.c ****     pins[3] = pin4;
+ 122              		.loc 1 30 13 is_stmt 0
+ 123 003e 2301D800 		sb	a3,2(a6)
+ 124              		.loc 1 31 5 is_stmt 1
+ 125              		.loc 1 31 13 is_stmt 0
+ 126 0042 A301E800 		sb	a4,3(a6)
+  32:bsp_motor/bsp_motor.c **** 
+  33:bsp_motor/bsp_motor.c ****     for(int i = 0; i < 4; i++){
+ 127              		.loc 1 33 5 is_stmt 1
+GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s 			page 4
+
+
+ 128              	.LBB2:
+ 129              		.loc 1 33 9
+ 130              	.LVL12:
+ 131              		.loc 1 33 13 is_stmt 0
+ 132 0046 0144     		li	s0,0
+ 133              	.LVL13:
+ 134 0048 93840700 		addi	s1,a5,%lo(.LANCHOR0)
+ 135 004c 13090500 		addi	s2,a0,%lo(.LANCHOR1)
+ 136              		.loc 1 33 5
+ 137 0050 9149     		li	s3,4
+ 138              	.LVL14:
+ 139              	.L11:
+  34:bsp_motor/bsp_motor.c ****         gpio_init(peripheral, GPIO_MODE_OUT_PP, GPIO_OSPEED_2MHZ, pins[i]);
+ 140              		.loc 1 34 9 is_stmt 1 discriminator 3
+ 141              		.loc 1 34 71 is_stmt 0 discriminator 3
+ 142 0052 B3078900 		add	a5,s2,s0
+ 143              		.loc 1 34 9 discriminator 3
+ 144 0056 83C60700 		lbu	a3,0(a5)
+ 145 005a 8840     		lw	a0,0(s1)
+ 146 005c 0946     		li	a2,2
+ 147 005e C145     		li	a1,16
+  33:bsp_motor/bsp_motor.c ****         gpio_init(peripheral, GPIO_MODE_OUT_PP, GPIO_OSPEED_2MHZ, pins[i]);
+ 148              		.loc 1 33 28 discriminator 3
+ 149 0060 0504     		addi	s0,s0,1
+ 150              	.LVL15:
+ 151              		.loc 1 34 9 discriminator 3
+ 152 0062 97000000 		call	gpio_init
+ 152      E7800000 
+ 153              	.LVL16:
+  33:bsp_motor/bsp_motor.c ****         gpio_init(peripheral, GPIO_MODE_OUT_PP, GPIO_OSPEED_2MHZ, pins[i]);
+ 154              		.loc 1 33 5 discriminator 3
+ 155 006a E31434FF 		bne	s0,s3,.L11
+ 156              	.LBE2:
+  35:bsp_motor/bsp_motor.c ****     }
+  36:bsp_motor/bsp_motor.c **** 
+  37:bsp_motor/bsp_motor.c **** }
+ 157              		.loc 1 37 1
+ 158 006e B250     		lw	ra,44(sp)
+ 159              		.cfi_restore 1
+ 160 0070 2254     		lw	s0,40(sp)
+ 161              		.cfi_restore 8
+ 162              	.LVL17:
+ 163 0072 9254     		lw	s1,36(sp)
+ 164              		.cfi_restore 9
+ 165 0074 0259     		lw	s2,32(sp)
+ 166              		.cfi_restore 18
+ 167 0076 F249     		lw	s3,28(sp)
+ 168              		.cfi_restore 19
+ 169 0078 4561     		addi	sp,sp,48
+ 170              	.LCFI1:
+ 171              		.cfi_def_cfa_offset 0
+ 172 007a 8280     		jr	ra
+ 173              		.cfi_endproc
+ 174              	.LFE3:
+ 176              		.section	.text.set_motor_direction,"ax",@progbits
+ 177              		.align	1
+ 178              		.globl	set_motor_direction
+GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s 			page 5
+
+
+ 180              	set_motor_direction:
+ 181              	.LFB4:
+  38:bsp_motor/bsp_motor.c **** 
+  39:bsp_motor/bsp_motor.c **** void set_motor_direction(int8_t direction){
+ 182              		.loc 1 39 43 is_stmt 1
+ 183              		.cfi_startproc
+ 184              	.LVL18:
+  40:bsp_motor/bsp_motor.c ****     if(direction == 1 || direction == 0){
+ 185              		.loc 1 40 5
+ 186 0000 37070000 		lui	a4,%hi(.LANCHOR2)
+ 187 0004 AA87     		mv	a5,a0
+ 188 0006 11C1     		beq	a0,zero,.L15
+ 189 0008 8547     		li	a5,1
+ 190              	.L15:
+ 191 000a 2300F700 		sb	a5,%lo(.LANCHOR2)(a4)
+  41:bsp_motor/bsp_motor.c ****         dir = direction;
+  42:bsp_motor/bsp_motor.c ****     }
+  43:bsp_motor/bsp_motor.c ****     else{
+  44:bsp_motor/bsp_motor.c ****         dir = 1; 
+  45:bsp_motor/bsp_motor.c ****     }
+  46:bsp_motor/bsp_motor.c **** }
+ 192              		.loc 1 46 1 is_stmt 0
+ 193 000e 8280     		ret
+ 194              		.cfi_endproc
+ 195              	.LFE4:
+ 197              		.section	.text.motor_run,"ax",@progbits
+ 198              		.align	1
+ 199              		.globl	motor_run
+ 201              	motor_run:
+ 202              	.LFB5:
+  47:bsp_motor/bsp_motor.c **** void motor_run(){
+ 203              		.loc 1 47 17 is_stmt 1
+ 204              		.cfi_startproc
+  48:bsp_motor/bsp_motor.c ****     if(dir == 1){
+ 205              		.loc 1 48 5
+ 206              		.loc 1 48 12 is_stmt 0
+ 207 0000 B7070000 		lui	a5,%hi(.LANCHOR2)
+ 208 0004 83C70700 		lbu	a5,%lo(.LANCHOR2)(a5)
+  47:bsp_motor/bsp_motor.c **** void motor_run(){
+ 209              		.loc 1 47 17
+ 210 0008 4111     		addi	sp,sp,-16
+ 211              	.LCFI2:
+ 212              		.cfi_def_cfa_offset 16
+ 213 000a 06C6     		sw	ra,12(sp)
+ 214 000c 22C4     		sw	s0,8(sp)
+ 215 000e 26C2     		sw	s1,4(sp)
+ 216              		.cfi_offset 1, -4
+ 217              		.cfi_offset 8, -8
+ 218              		.cfi_offset 9, -12
+ 219              		.loc 1 48 7
+ 220 0010 0547     		li	a4,1
+ 221 0012 6390E706 		bne	a5,a4,.L20
+  49:bsp_motor/bsp_motor.c ****         phase++;
+ 222              		.loc 1 49 9 is_stmt 1
+ 223              		.loc 1 49 14 is_stmt 0
+ 224 0016 37070000 		lui	a4,%hi(.LANCHOR3)
+ 225 001a 13070700 		addi	a4,a4,%lo(.LANCHOR3)
+GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s 			page 6
+
+
+ 226 001e 83470700 		lbu	a5,0(a4)
+  50:bsp_motor/bsp_motor.c ****         if(phase > 3) phase = 0;
+ 227              		.loc 1 50 11
+ 228 0022 8D46     		li	a3,3
+  49:bsp_motor/bsp_motor.c ****         phase++;
+ 229              		.loc 1 49 14
+ 230 0024 8507     		addi	a5,a5,1
+ 231 0026 E207     		slli	a5,a5,24
+ 232 0028 E187     		srai	a5,a5,24
+ 233              		.loc 1 50 9 is_stmt 1
+ 234              		.loc 1 50 11 is_stmt 0
+ 235 002a 63D0F606 		ble	a5,a3,.L21
+ 236              		.loc 1 50 23 is_stmt 1 discriminator 1
+ 237              		.loc 1 50 29 is_stmt 0 discriminator 1
+ 238 002e 23000700 		sb	zero,0(a4)
+  51:bsp_motor/bsp_motor.c ****     }
+  52:bsp_motor/bsp_motor.c ****     else if(dir == 0){
+  53:bsp_motor/bsp_motor.c ****         phase--;
+  54:bsp_motor/bsp_motor.c ****         if(phase < 0) phase = 3;
+  55:bsp_motor/bsp_motor.c ****     }
+  56:bsp_motor/bsp_motor.c ****     else return;
+  57:bsp_motor/bsp_motor.c **** 
+  58:bsp_motor/bsp_motor.c ****     switch(phase){
+ 239              		.loc 1 58 5 is_stmt 1 discriminator 1
+ 240              	.L22:
+  59:bsp_motor/bsp_motor.c ****         case 0:
+  60:bsp_motor/bsp_motor.c ****             gpio_bit_set(peripheral, pins[0]);
+ 241              		.loc 1 60 13
+ 242              		.loc 1 60 42 is_stmt 0
+ 243 0032 37040000 		lui	s0,%hi(.LANCHOR1)
+ 244              		.loc 1 60 13
+ 245 0036 B7040000 		lui	s1,%hi(.LANCHOR0)
+ 246              		.loc 1 60 42
+ 247 003a 13040400 		addi	s0,s0,%lo(.LANCHOR1)
+ 248              		.loc 1 60 13
+ 249 003e 93840400 		addi	s1,s1,%lo(.LANCHOR0)
+ 250 0042 83450400 		lbu	a1,0(s0)
+ 251 0046 8840     		lw	a0,0(s1)
+ 252 0048 97000000 		call	gpio_bit_set
+ 252      E7800000 
+ 253              	.LVL19:
+  61:bsp_motor/bsp_motor.c ****             gpio_bit_reset(peripheral, pins[1] | pins[2] | pins[3]);
+ 254              		.loc 1 61 13 is_stmt 1
+ 255 0050 83471400 		lbu	a5,1(s0)
+ 256              	.L35:
+  62:bsp_motor/bsp_motor.c ****             break;
+  63:bsp_motor/bsp_motor.c ****         case 1:
+  64:bsp_motor/bsp_motor.c ****             gpio_bit_set(peripheral, pins[1]);
+  65:bsp_motor/bsp_motor.c ****             gpio_bit_reset(peripheral, pins[0] | pins[2] | pins[3]);
+ 257              		.loc 1 65 13 is_stmt 0
+ 258 0054 83452400 		lbu	a1,2(s0)
+ 259              	.L36:
+ 260 0058 CD8F     		or	a5,a5,a1
+ 261 005a 83453400 		lbu	a1,3(s0)
+ 262              	.L34:
+  66:bsp_motor/bsp_motor.c ****             break;
+  67:bsp_motor/bsp_motor.c ****         case 2:
+GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s 			page 7
+
+
+  68:bsp_motor/bsp_motor.c ****             gpio_bit_set(peripheral, pins[2]);
+  69:bsp_motor/bsp_motor.c ****             gpio_bit_reset(peripheral, pins[0] | pins[1] | pins[3]);
+  70:bsp_motor/bsp_motor.c ****             break;
+  71:bsp_motor/bsp_motor.c ****         case 3:
+  72:bsp_motor/bsp_motor.c ****             gpio_bit_set(peripheral, pins[3]);
+  73:bsp_motor/bsp_motor.c ****             gpio_bit_reset(peripheral, pins[0] | pins[1] | pins[2]);
+  74:bsp_motor/bsp_motor.c ****             break;
+  75:bsp_motor/bsp_motor.c ****     }
+  76:bsp_motor/bsp_motor.c **** }
+ 263              		.loc 1 76 1
+ 264 005e 2244     		lw	s0,8(sp)
+ 265              		.cfi_remember_state
+ 266              		.cfi_restore 8
+  73:bsp_motor/bsp_motor.c ****             break;
+ 267              		.loc 1 73 13
+ 268 0060 8840     		lw	a0,0(s1)
+ 269              		.loc 1 76 1
+ 270 0062 B240     		lw	ra,12(sp)
+ 271              		.cfi_restore 1
+ 272 0064 9244     		lw	s1,4(sp)
+ 273              		.cfi_restore 9
+  73:bsp_motor/bsp_motor.c ****             break;
+ 274              		.loc 1 73 13
+ 275 0066 DD8D     		or	a1,a5,a1
+ 276              		.loc 1 76 1
+ 277 0068 4101     		addi	sp,sp,16
+ 278              	.LCFI3:
+ 279              		.cfi_def_cfa_offset 0
+  73:bsp_motor/bsp_motor.c ****             break;
+ 280              		.loc 1 73 13
+ 281 006a 17030000 		tail	gpio_bit_reset
+ 281      67000300 
+ 282              	.LVL20:
+ 283              	.L20:
+ 284              	.LCFI4:
+ 285              		.cfi_restore_state
+  52:bsp_motor/bsp_motor.c ****         phase--;
+ 286              		.loc 1 52 10 is_stmt 1
+  52:bsp_motor/bsp_motor.c ****         phase--;
+ 287              		.loc 1 52 12 is_stmt 0
+ 288 0072 85EB     		bne	a5,zero,.L19
+  53:bsp_motor/bsp_motor.c ****         if(phase < 0) phase = 3;
+ 289              		.loc 1 53 9 is_stmt 1
+  53:bsp_motor/bsp_motor.c ****         if(phase < 0) phase = 3;
+ 290              		.loc 1 53 14 is_stmt 0
+ 291 0074 37070000 		lui	a4,%hi(.LANCHOR3)
+ 292 0078 13070700 		addi	a4,a4,%lo(.LANCHOR3)
+ 293 007c 83470700 		lbu	a5,0(a4)
+ 294 0080 FD17     		addi	a5,a5,-1
+ 295 0082 E207     		slli	a5,a5,24
+ 296 0084 E187     		srai	a5,a5,24
+  54:bsp_motor/bsp_motor.c ****     }
+ 297              		.loc 1 54 9 is_stmt 1
+  54:bsp_motor/bsp_motor.c ****     }
+ 298              		.loc 1 54 11 is_stmt 0
+ 299 0086 63C30702 		blt	a5,zero,.L24
+ 300              	.L21:
+GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s 			page 8
+
+
+  49:bsp_motor/bsp_motor.c ****         if(phase > 3) phase = 0;
+ 301              		.loc 1 49 14
+ 302 008a 2300F700 		sb	a5,0(a4)
+  58:bsp_motor/bsp_motor.c ****         case 0:
+ 303              		.loc 1 58 5 is_stmt 1
+ 304 008e B7070000 		lui	a5,%hi(.LANCHOR3)
+ 305 0092 83870700 		lb	a5,%lo(.LANCHOR3)(a5)
+ 306 0096 0547     		li	a4,1
+ 307 0098 638BE704 		beq	a5,a4,.L27
+ 308 009c 6342F704 		bgt	a5,a4,.L28
+ 309 00a0 C9DB     		beq	a5,zero,.L22
+ 310              	.L19:
+ 311              		.loc 1 76 1 is_stmt 0
+ 312 00a2 B240     		lw	ra,12(sp)
+ 313              		.cfi_remember_state
+ 314              		.cfi_restore 1
+ 315 00a4 2244     		lw	s0,8(sp)
+ 316              		.cfi_restore 8
+ 317 00a6 9244     		lw	s1,4(sp)
+ 318              		.cfi_restore 9
+ 319 00a8 4101     		addi	sp,sp,16
+ 320              	.LCFI5:
+ 321              		.cfi_def_cfa_offset 0
+ 322 00aa 8280     		jr	ra
+ 323              	.L24:
+ 324              	.LCFI6:
+ 325              		.cfi_restore_state
+  54:bsp_motor/bsp_motor.c ****     }
+ 326              		.loc 1 54 23 is_stmt 1 discriminator 1
+  54:bsp_motor/bsp_motor.c ****     }
+ 327              		.loc 1 54 29 is_stmt 0 discriminator 1
+ 328 00ac 8D47     		li	a5,3
+ 329 00ae 2300F700 		sb	a5,0(a4)
+  58:bsp_motor/bsp_motor.c ****         case 0:
+ 330              		.loc 1 58 5 is_stmt 1 discriminator 1
+ 331              	.L26:
+  72:bsp_motor/bsp_motor.c ****             gpio_bit_reset(peripheral, pins[0] | pins[1] | pins[2]);
+ 332              		.loc 1 72 13
+  72:bsp_motor/bsp_motor.c ****             gpio_bit_reset(peripheral, pins[0] | pins[1] | pins[2]);
+ 333              		.loc 1 72 42 is_stmt 0
+ 334 00b2 37040000 		lui	s0,%hi(.LANCHOR1)
+  72:bsp_motor/bsp_motor.c ****             gpio_bit_reset(peripheral, pins[0] | pins[1] | pins[2]);
+ 335              		.loc 1 72 13
+ 336 00b6 B7040000 		lui	s1,%hi(.LANCHOR0)
+  72:bsp_motor/bsp_motor.c ****             gpio_bit_reset(peripheral, pins[0] | pins[1] | pins[2]);
+ 337              		.loc 1 72 42
+ 338 00ba 13040400 		addi	s0,s0,%lo(.LANCHOR1)
+  72:bsp_motor/bsp_motor.c ****             gpio_bit_reset(peripheral, pins[0] | pins[1] | pins[2]);
+ 339              		.loc 1 72 13
+ 340 00be 93840400 		addi	s1,s1,%lo(.LANCHOR0)
+ 341 00c2 83453400 		lbu	a1,3(s0)
+ 342 00c6 8840     		lw	a0,0(s1)
+ 343 00c8 97000000 		call	gpio_bit_set
+ 343      E7800000 
+ 344              	.LVL21:
+  73:bsp_motor/bsp_motor.c ****             break;
+ 345              		.loc 1 73 13 is_stmt 1
+GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s 			page 9
+
+
+ 346 00d0 83451400 		lbu	a1,1(s0)
+ 347 00d4 83470400 		lbu	a5,0(s0)
+ 348 00d8 CD8F     		or	a5,a5,a1
+ 349 00da 83452400 		lbu	a1,2(s0)
+ 350 00de 41B7     		j	.L34
+ 351              	.L28:
+  58:bsp_motor/bsp_motor.c ****         case 0:
+ 352              		.loc 1 58 5 is_stmt 0
+ 353 00e0 0947     		li	a4,2
+ 354 00e2 6388E702 		beq	a5,a4,.L29
+ 355 00e6 0D47     		li	a4,3
+ 356 00e8 E39DE7FA 		bne	a5,a4,.L19
+ 357 00ec D9B7     		j	.L26
+ 358              	.L27:
+  64:bsp_motor/bsp_motor.c ****             gpio_bit_reset(peripheral, pins[0] | pins[2] | pins[3]);
+ 359              		.loc 1 64 13 is_stmt 1
+  64:bsp_motor/bsp_motor.c ****             gpio_bit_reset(peripheral, pins[0] | pins[2] | pins[3]);
+ 360              		.loc 1 64 42 is_stmt 0
+ 361 00ee 37040000 		lui	s0,%hi(.LANCHOR1)
+  64:bsp_motor/bsp_motor.c ****             gpio_bit_reset(peripheral, pins[0] | pins[2] | pins[3]);
+ 362              		.loc 1 64 13
+ 363 00f2 B7040000 		lui	s1,%hi(.LANCHOR0)
+  64:bsp_motor/bsp_motor.c ****             gpio_bit_reset(peripheral, pins[0] | pins[2] | pins[3]);
+ 364              		.loc 1 64 42
+ 365 00f6 13040400 		addi	s0,s0,%lo(.LANCHOR1)
+  64:bsp_motor/bsp_motor.c ****             gpio_bit_reset(peripheral, pins[0] | pins[2] | pins[3]);
+ 366              		.loc 1 64 13
+ 367 00fa 93840400 		addi	s1,s1,%lo(.LANCHOR0)
+ 368 00fe 83451400 		lbu	a1,1(s0)
+ 369 0102 8840     		lw	a0,0(s1)
+ 370 0104 97000000 		call	gpio_bit_set
+ 370      E7800000 
+ 371              	.LVL22:
+  65:bsp_motor/bsp_motor.c ****             break;
+ 372              		.loc 1 65 13 is_stmt 1
+ 373 010c 83470400 		lbu	a5,0(s0)
+ 374 0110 91B7     		j	.L35
+ 375              	.L29:
+  68:bsp_motor/bsp_motor.c ****             gpio_bit_reset(peripheral, pins[0] | pins[1] | pins[3]);
+ 376              		.loc 1 68 13
+  68:bsp_motor/bsp_motor.c ****             gpio_bit_reset(peripheral, pins[0] | pins[1] | pins[3]);
+ 377              		.loc 1 68 42 is_stmt 0
+ 378 0112 37040000 		lui	s0,%hi(.LANCHOR1)
+  68:bsp_motor/bsp_motor.c ****             gpio_bit_reset(peripheral, pins[0] | pins[1] | pins[3]);
+ 379              		.loc 1 68 13
+ 380 0116 B7040000 		lui	s1,%hi(.LANCHOR0)
+  68:bsp_motor/bsp_motor.c ****             gpio_bit_reset(peripheral, pins[0] | pins[1] | pins[3]);
+ 381              		.loc 1 68 42
+ 382 011a 13040400 		addi	s0,s0,%lo(.LANCHOR1)
+  68:bsp_motor/bsp_motor.c ****             gpio_bit_reset(peripheral, pins[0] | pins[1] | pins[3]);
+ 383              		.loc 1 68 13
+ 384 011e 93840400 		addi	s1,s1,%lo(.LANCHOR0)
+ 385 0122 83452400 		lbu	a1,2(s0)
+ 386 0126 8840     		lw	a0,0(s1)
+ 387 0128 97000000 		call	gpio_bit_set
+ 387      E7800000 
+ 388              	.LVL23:
+GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s 			page 10
+
+
+  69:bsp_motor/bsp_motor.c ****             break;
+ 389              		.loc 1 69 13 is_stmt 1
+ 390 0130 83470400 		lbu	a5,0(s0)
+ 391 0134 83451400 		lbu	a1,1(s0)
+ 392 0138 05B7     		j	.L36
+ 393              		.cfi_endproc
+ 394              	.LFE5:
+ 396              		.section	.text.debug_button_init,"ax",@progbits
+ 397              		.align	1
+ 398              		.globl	debug_button_init
+ 400              	debug_button_init:
+ 401              	.LFB6:
+  77:bsp_motor/bsp_motor.c **** 
+  78:bsp_motor/bsp_motor.c **** void debug_button_init(uint32_t gpio_periph, uint32_t pin){
+ 402              		.loc 1 78 59
+ 403              		.cfi_startproc
+ 404              	.LVL24:
+  79:bsp_motor/bsp_motor.c ****     gpio_clock_on(gpio_periph);
+ 405              		.loc 1 79 5
+  78:bsp_motor/bsp_motor.c ****     gpio_clock_on(gpio_periph);
+ 406              		.loc 1 78 59 is_stmt 0
+ 407 0000 4111     		addi	sp,sp,-16
+ 408              	.LCFI7:
+ 409              		.cfi_def_cfa_offset 16
+ 410 0002 06C6     		sw	ra,12(sp)
+ 411 0004 22C4     		sw	s0,8(sp)
+ 412 0006 26C2     		sw	s1,4(sp)
+ 413              		.cfi_offset 1, -4
+ 414              		.cfi_offset 8, -8
+ 415              		.cfi_offset 9, -12
+  78:bsp_motor/bsp_motor.c ****     gpio_clock_on(gpio_periph);
+ 416              		.loc 1 78 59
+ 417 0008 2E84     		mv	s0,a1
+ 418 000a AA84     		mv	s1,a0
+ 419              		.loc 1 79 5
+ 420 000c 97000000 		call	gpio_clock_on
+ 420      E7800000 
+ 421              	.LVL25:
+  80:bsp_motor/bsp_motor.c ****     gpio_init(gpio_periph, GPIO_MODE_IPU, GPIO_OSPEED_2MHZ, pin); 
+ 422              		.loc 1 80 5 is_stmt 1
+ 423 0014 A286     		mv	a3,s0
+ 424 0016 2685     		mv	a0,s1
+ 425 0018 0946     		li	a2,2
+ 426 001a 93058004 		li	a1,72
+ 427 001e 97000000 		call	gpio_init
+ 427      E7800000 
+ 428              	.LVL26:
+  81:bsp_motor/bsp_motor.c ****     button_peripheral = gpio_periph;
+ 429              		.loc 1 81 5
+ 430              		.loc 1 81 23 is_stmt 0
+ 431 0026 B7070000 		lui	a5,%hi(.LANCHOR4)
+ 432 002a 23A09700 		sw	s1,%lo(.LANCHOR4)(a5)
+  82:bsp_motor/bsp_motor.c ****     button_pin = pin;
+ 433              		.loc 1 82 5 is_stmt 1
+ 434              		.loc 1 82 16 is_stmt 0
+ 435 002e B7070000 		lui	a5,%hi(.LANCHOR5)
+ 436 0032 23808700 		sb	s0,%lo(.LANCHOR5)(a5)
+GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s 			page 11
+
+
+  83:bsp_motor/bsp_motor.c **** }
+ 437              		.loc 1 83 1
+ 438 0036 B240     		lw	ra,12(sp)
+ 439              		.cfi_restore 1
+ 440 0038 2244     		lw	s0,8(sp)
+ 441              		.cfi_restore 8
+ 442              	.LVL27:
+ 443 003a 9244     		lw	s1,4(sp)
+ 444              		.cfi_restore 9
+ 445              	.LVL28:
+ 446 003c 4101     		addi	sp,sp,16
+ 447              	.LCFI8:
+ 448              		.cfi_def_cfa_offset 0
+ 449 003e 8280     		jr	ra
+ 450              		.cfi_endproc
+ 451              	.LFE6:
+ 453              		.section	.text.debug_button_read,"ax",@progbits
+ 454              		.align	1
+ 455              		.globl	debug_button_read
+ 457              	debug_button_read:
+ 458              	.LFB7:
+  84:bsp_motor/bsp_motor.c **** 
+  85:bsp_motor/bsp_motor.c **** void debug_button_read(){
+ 459              		.loc 1 85 25 is_stmt 1
+ 460              		.cfi_startproc
+  86:bsp_motor/bsp_motor.c ****     dir = gpio_input_bit_get(button_peripheral, button_pin);
+ 461              		.loc 1 86 5
+ 462              		.loc 1 86 11 is_stmt 0
+ 463 0000 B7070000 		lui	a5,%hi(.LANCHOR5)
+ 464 0004 83C50700 		lbu	a1,%lo(.LANCHOR5)(a5)
+ 465 0008 B7070000 		lui	a5,%hi(.LANCHOR4)
+ 466 000c 03A50700 		lw	a0,%lo(.LANCHOR4)(a5)
+  85:bsp_motor/bsp_motor.c ****     dir = gpio_input_bit_get(button_peripheral, button_pin);
+ 467              		.loc 1 85 25
+ 468 0010 4111     		addi	sp,sp,-16
+ 469              	.LCFI9:
+ 470              		.cfi_def_cfa_offset 16
+ 471 0012 06C6     		sw	ra,12(sp)
+ 472              		.cfi_offset 1, -4
+ 473              		.loc 1 86 11
+ 474 0014 97000000 		call	gpio_input_bit_get
+ 474      E7800000 
+ 475              	.LVL29:
+  87:bsp_motor/bsp_motor.c **** }
+ 476              		.loc 1 87 1
+ 477 001c B240     		lw	ra,12(sp)
+ 478              		.cfi_restore 1
+  86:bsp_motor/bsp_motor.c ****     dir = gpio_input_bit_get(button_peripheral, button_pin);
+ 479              		.loc 1 86 9
+ 480 001e B7070000 		lui	a5,%hi(.LANCHOR2)
+ 481 0022 2380A700 		sb	a0,%lo(.LANCHOR2)(a5)
+ 482              		.loc 1 87 1
+ 483 0026 4101     		addi	sp,sp,16
+ 484              	.LCFI10:
+ 485              		.cfi_def_cfa_offset 0
+ 486 0028 8280     		jr	ra
+ 487              		.cfi_endproc
+GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s 			page 12
+
+
+ 488              	.LFE7:
+ 490              		.section	.text.debug_lamp,"ax",@progbits
+ 491              		.align	1
+ 492              		.globl	debug_lamp
+ 494              	debug_lamp:
+ 495              	.LFB8:
+  88:bsp_motor/bsp_motor.c **** 
+  89:bsp_motor/bsp_motor.c **** void debug_lamp(uint32_t gpio_periph, uint32_t pin1, uint8_t state){
+ 496              		.loc 1 89 68 is_stmt 1
+ 497              		.cfi_startproc
+ 498              	.LVL30:
+  90:bsp_motor/bsp_motor.c ****     gpio_clock_on(gpio_periph);
+ 499              		.loc 1 90 5
+  89:bsp_motor/bsp_motor.c ****     gpio_clock_on(gpio_periph);
+ 500              		.loc 1 89 68 is_stmt 0
+ 501 0000 4111     		addi	sp,sp,-16
+ 502              	.LCFI11:
+ 503              		.cfi_def_cfa_offset 16
+ 504 0002 06C6     		sw	ra,12(sp)
+ 505 0004 22C4     		sw	s0,8(sp)
+ 506 0006 26C2     		sw	s1,4(sp)
+ 507              		.cfi_offset 1, -4
+ 508              		.cfi_offset 8, -8
+ 509              		.cfi_offset 9, -12
+ 510 0008 2A84     		mv	s0,a0
+ 511 000a AE84     		mv	s1,a1
+ 512 000c 4AC0     		sw	s2,0(sp)
+ 513              		.cfi_offset 18, -16
+  89:bsp_motor/bsp_motor.c ****     gpio_clock_on(gpio_periph);
+ 514              		.loc 1 89 68
+ 515 000e 3289     		mv	s2,a2
+ 516              		.loc 1 90 5
+ 517 0010 97000000 		call	gpio_clock_on
+ 517      E7800000 
+ 518              	.LVL31:
+  91:bsp_motor/bsp_motor.c ****     gpio_init(gpio_periph, GPIO_MODE_OUT_PP, GPIO_OSPEED_2MHZ, pin1);
+ 519              		.loc 1 91 5 is_stmt 1
+ 520 0018 C145     		li	a1,16
+ 521 001a 2285     		mv	a0,s0
+ 522 001c A686     		mv	a3,s1
+ 523 001e 0946     		li	a2,2
+ 524 0020 97000000 		call	gpio_init
+ 524      E7800000 
+ 525              	.LVL32:
+  92:bsp_motor/bsp_motor.c ****     if(state == dir){
+ 526              		.loc 1 92 5
+ 527              		.loc 1 92 7 is_stmt 0
+ 528 0028 B7070000 		lui	a5,%hi(.LANCHOR2)
+ 529 002c 83C70700 		lbu	a5,%lo(.LANCHOR2)(a5)
+  93:bsp_motor/bsp_motor.c ****         gpio_bit_set(gpio_periph, pin1);
+ 530              		.loc 1 93 9
+ 531 0030 A685     		mv	a1,s1
+ 532 0032 2285     		mv	a0,s0
+  92:bsp_motor/bsp_motor.c ****     if(state == dir){
+ 533              		.loc 1 92 7
+ 534 0034 639B2701 		bne	a5,s2,.L42
+ 535              		.loc 1 93 9 is_stmt 1
+GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s 			page 13
+
+
+  94:bsp_motor/bsp_motor.c ****     }
+  95:bsp_motor/bsp_motor.c ****     else{
+  96:bsp_motor/bsp_motor.c ****         gpio_bit_reset(gpio_periph, pin1);
+  97:bsp_motor/bsp_motor.c ****     }
+  98:bsp_motor/bsp_motor.c **** }
+ 536              		.loc 1 98 1 is_stmt 0
+ 537 0038 2244     		lw	s0,8(sp)
+ 538              		.cfi_remember_state
+ 539              		.cfi_restore 8
+ 540              	.LVL33:
+ 541 003a B240     		lw	ra,12(sp)
+ 542              		.cfi_restore 1
+ 543 003c 9244     		lw	s1,4(sp)
+ 544              		.cfi_restore 9
+ 545              	.LVL34:
+ 546 003e 0249     		lw	s2,0(sp)
+ 547              		.cfi_restore 18
+ 548 0040 4101     		addi	sp,sp,16
+ 549              	.LCFI12:
+ 550              		.cfi_def_cfa_offset 0
+  93:bsp_motor/bsp_motor.c ****         gpio_bit_set(gpio_periph, pin1);
+ 551              		.loc 1 93 9
+ 552 0042 17030000 		tail	gpio_bit_set
+ 552      67000300 
+ 553              	.LVL35:
+ 554              	.L42:
+ 555              	.LCFI13:
+ 556              		.cfi_restore_state
+  96:bsp_motor/bsp_motor.c ****     }
+ 557              		.loc 1 96 9 is_stmt 1
+ 558              		.loc 1 98 1 is_stmt 0
+ 559 004a 2244     		lw	s0,8(sp)
+ 560              		.cfi_restore 8
+ 561              	.LVL36:
+ 562 004c B240     		lw	ra,12(sp)
+ 563              		.cfi_restore 1
+ 564 004e 9244     		lw	s1,4(sp)
+ 565              		.cfi_restore 9
+ 566              	.LVL37:
+ 567 0050 0249     		lw	s2,0(sp)
+ 568              		.cfi_restore 18
+ 569 0052 4101     		addi	sp,sp,16
+ 570              	.LCFI14:
+ 571              		.cfi_def_cfa_offset 0
+  96:bsp_motor/bsp_motor.c ****     }
+ 572              		.loc 1 96 9
+ 573 0054 17030000 		tail	gpio_bit_reset
+ 573      67000300 
+ 574              	.LVL38:
+ 575              		.cfi_endproc
+ 576              	.LFE8:
+ 578              		.section	.sbss.button_peripheral,"aw",@nobits
+ 579              		.align	2
+ 580              		.set	.LANCHOR4,. + 0
+ 583              	button_peripheral:
+ 584 0000 00000000 		.zero	4
+ 585              		.section	.sbss.button_pin,"aw",@nobits
+GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s 			page 14
+
+
+ 586              		.set	.LANCHOR5,. + 0
+ 589              	button_pin:
+ 590 0000 00       		.zero	1
+ 591              		.section	.sbss.peripheral,"aw",@nobits
+ 592              		.align	2
+ 593              		.set	.LANCHOR0,. + 0
+ 596              	peripheral:
+ 597 0000 00000000 		.zero	4
+ 598              		.section	.sbss.phase,"aw",@nobits
+ 599              		.set	.LANCHOR3,. + 0
+ 602              	phase:
+ 603 0000 00       		.zero	1
+ 604              		.section	.sbss.pins,"aw",@nobits
+ 605              		.align	2
+ 606              		.set	.LANCHOR1,. + 0
+ 609              	pins:
+ 610 0000 00000000 		.zero	4
+ 611              		.section	.sdata.dir,"aw"
+ 612              		.set	.LANCHOR2,. + 0
+ 615              	dir:
+ 616 0000 01       		.byte	1
+ 617              		.text
+ 618              	.Letext0:
+ 619              		.file 2 "c:\\users\\dellboy\\desktop\\toolchain-gd32v-v202-win\\compiler\\riscv64-unknown-elf\\inc
+ 620              		.file 3 "c:\\users\\dellboy\\desktop\\toolchain-gd32v-v202-win\\compiler\\riscv64-unknown-elf\\inc
+ 621              		.file 4 "./../../firmware/GD32VF103_standard_peripheral/Include/gd32vf103_gpio.h"
+ 622              		.file 5 "./../../firmware/GD32VF103_standard_peripheral/Include/gd32vf103_rcu.h"
+ 623              		.file 6 "./../../firmware/GD32VF103_standard_peripheral/system_gd32vf103.h"
+GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s 			page 15
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 bsp_motor.c
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:12     .text.gpio_clock_on:0000000000000000 gpio_clock_on
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:16     .text.gpio_clock_on:0000000000000000 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:18     .text.gpio_clock_on:0000000000000000 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:19     .text.gpio_clock_on:0000000000000000 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:36     .text.gpio_clock_on:0000000000000034 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:40     .text.gpio_clock_on:0000000000000038 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:44     .text.gpio_clock_on:0000000000000040 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:50     .text.gpio_clock_on:0000000000000046 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:56     .text.gpio_clock_on:000000000000004c .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:62     .text.gpio_clock_on:0000000000000052 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:65     .text.gpio_clock_on:0000000000000058 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:72     .text.motor_init:0000000000000000 motor_init
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:75     .text.motor_init:0000000000000000 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:77     .text.motor_init:0000000000000000 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:78     .text.motor_init:0000000000000000 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:79     .text.motor_init:0000000000000000 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:81     .text.motor_init:0000000000000002 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:84     .text.motor_init:0000000000000006 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:85     .text.motor_init:0000000000000006 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:94     .text.motor_init:0000000000000016 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:95     .text.motor_init:0000000000000016 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:96     .text.motor_init:0000000000000016 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:98     .text.motor_init:0000000000000016 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:101    .text.motor_init:000000000000001e .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:102    .text.motor_init:000000000000001e .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:104    .text.motor_init:0000000000000020 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:106    .text.motor_init:0000000000000022 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:108    .text.motor_init:0000000000000024 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:110    .text.motor_init:0000000000000026 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:113    .text.motor_init:000000000000002e .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:116    .text.motor_init:0000000000000036 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:117    .text.motor_init:0000000000000036 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:119    .text.motor_init:000000000000003a .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:120    .text.motor_init:000000000000003a .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:122    .text.motor_init:000000000000003e .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:123    .text.motor_init:000000000000003e .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:125    .text.motor_init:0000000000000042 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:126    .text.motor_init:0000000000000042 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:129    .text.motor_init:0000000000000046 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:131    .text.motor_init:0000000000000046 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:132    .text.motor_init:0000000000000046 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:137    .text.motor_init:0000000000000050 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:141    .text.motor_init:0000000000000052 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:142    .text.motor_init:0000000000000052 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:144    .text.motor_init:0000000000000056 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:149    .text.motor_init:0000000000000060 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:152    .text.motor_init:0000000000000062 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:155    .text.motor_init:000000000000006a .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:158    .text.motor_init:000000000000006e .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:159    .text.motor_init:0000000000000070 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:161    .text.motor_init:0000000000000072 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:164    .text.motor_init:0000000000000074 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:166    .text.motor_init:0000000000000076 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:168    .text.motor_init:0000000000000078 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:171    .text.motor_init:000000000000007a .L0 
+GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s 			page 16
+
+
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:173    .text.motor_init:000000000000007c .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:180    .text.set_motor_direction:0000000000000000 set_motor_direction
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:183    .text.set_motor_direction:0000000000000000 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:185    .text.set_motor_direction:0000000000000000 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:186    .text.set_motor_direction:0000000000000000 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:193    .text.set_motor_direction:000000000000000e .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:194    .text.set_motor_direction:0000000000000010 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:201    .text.motor_run:0000000000000000 motor_run
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:204    .text.motor_run:0000000000000000 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:205    .text.motor_run:0000000000000000 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:206    .text.motor_run:0000000000000000 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:207    .text.motor_run:0000000000000000 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:210    .text.motor_run:0000000000000008 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:212    .text.motor_run:000000000000000a .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:216    .text.motor_run:0000000000000010 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:217    .text.motor_run:0000000000000010 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:218    .text.motor_run:0000000000000010 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:220    .text.motor_run:0000000000000010 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:223    .text.motor_run:0000000000000016 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:224    .text.motor_run:0000000000000016 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:228    .text.motor_run:0000000000000022 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:230    .text.motor_run:0000000000000024 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:234    .text.motor_run:000000000000002a .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:235    .text.motor_run:000000000000002a .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:237    .text.motor_run:000000000000002e .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:238    .text.motor_run:000000000000002e .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:241    .text.motor_run:0000000000000032 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:242    .text.motor_run:0000000000000032 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:243    .text.motor_run:0000000000000032 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:245    .text.motor_run:0000000000000036 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:247    .text.motor_run:000000000000003a .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:249    .text.motor_run:000000000000003e .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:255    .text.motor_run:0000000000000050 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:258    .text.motor_run:0000000000000054 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:264    .text.motor_run:000000000000005e .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:265    .text.motor_run:0000000000000060 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:266    .text.motor_run:0000000000000060 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:268    .text.motor_run:0000000000000060 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:270    .text.motor_run:0000000000000062 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:271    .text.motor_run:0000000000000064 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:273    .text.motor_run:0000000000000066 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:275    .text.motor_run:0000000000000066 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:277    .text.motor_run:0000000000000068 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:279    .text.motor_run:000000000000006a .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:281    .text.motor_run:000000000000006a .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:285    .text.motor_run:0000000000000072 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:287    .text.motor_run:0000000000000072 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:288    .text.motor_run:0000000000000072 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:290    .text.motor_run:0000000000000074 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:291    .text.motor_run:0000000000000074 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:298    .text.motor_run:0000000000000086 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:299    .text.motor_run:0000000000000086 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:302    .text.motor_run:000000000000008a .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:304    .text.motor_run:000000000000008e .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:312    .text.motor_run:00000000000000a2 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:313    .text.motor_run:00000000000000a4 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:314    .text.motor_run:00000000000000a4 .L0 
+GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s 			page 17
+
+
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:316    .text.motor_run:00000000000000a6 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:318    .text.motor_run:00000000000000a8 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:321    .text.motor_run:00000000000000aa .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:325    .text.motor_run:00000000000000ac .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:327    .text.motor_run:00000000000000ac .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:328    .text.motor_run:00000000000000ac .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:332    .text.motor_run:00000000000000b2 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:333    .text.motor_run:00000000000000b2 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:334    .text.motor_run:00000000000000b2 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:336    .text.motor_run:00000000000000b6 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:338    .text.motor_run:00000000000000ba .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:340    .text.motor_run:00000000000000be .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:346    .text.motor_run:00000000000000d0 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:353    .text.motor_run:00000000000000e0 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:360    .text.motor_run:00000000000000ee .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:361    .text.motor_run:00000000000000ee .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:363    .text.motor_run:00000000000000f2 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:365    .text.motor_run:00000000000000f6 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:367    .text.motor_run:00000000000000fa .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:373    .text.motor_run:000000000000010c .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:377    .text.motor_run:0000000000000112 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:378    .text.motor_run:0000000000000112 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:380    .text.motor_run:0000000000000116 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:382    .text.motor_run:000000000000011a .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:384    .text.motor_run:000000000000011e .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:390    .text.motor_run:0000000000000130 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:393    .text.motor_run:000000000000013a .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:400    .text.debug_button_init:0000000000000000 debug_button_init
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:403    .text.debug_button_init:0000000000000000 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:405    .text.debug_button_init:0000000000000000 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:406    .text.debug_button_init:0000000000000000 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:407    .text.debug_button_init:0000000000000000 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:409    .text.debug_button_init:0000000000000002 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:413    .text.debug_button_init:0000000000000008 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:414    .text.debug_button_init:0000000000000008 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:415    .text.debug_button_init:0000000000000008 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:417    .text.debug_button_init:0000000000000008 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:420    .text.debug_button_init:000000000000000c .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:423    .text.debug_button_init:0000000000000014 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:430    .text.debug_button_init:0000000000000026 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:431    .text.debug_button_init:0000000000000026 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:434    .text.debug_button_init:000000000000002e .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:435    .text.debug_button_init:000000000000002e .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:438    .text.debug_button_init:0000000000000036 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:439    .text.debug_button_init:0000000000000038 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:441    .text.debug_button_init:000000000000003a .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:444    .text.debug_button_init:000000000000003c .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:448    .text.debug_button_init:000000000000003e .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:450    .text.debug_button_init:0000000000000040 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:457    .text.debug_button_read:0000000000000000 debug_button_read
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:460    .text.debug_button_read:0000000000000000 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:461    .text.debug_button_read:0000000000000000 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:462    .text.debug_button_read:0000000000000000 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:463    .text.debug_button_read:0000000000000000 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:468    .text.debug_button_read:0000000000000010 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:470    .text.debug_button_read:0000000000000012 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:472    .text.debug_button_read:0000000000000014 .L0 
+GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s 			page 18
+
+
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:474    .text.debug_button_read:0000000000000014 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:477    .text.debug_button_read:000000000000001c .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:478    .text.debug_button_read:000000000000001e .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:480    .text.debug_button_read:000000000000001e .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:483    .text.debug_button_read:0000000000000026 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:485    .text.debug_button_read:0000000000000028 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:487    .text.debug_button_read:000000000000002a .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:494    .text.debug_lamp:0000000000000000 debug_lamp
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:497    .text.debug_lamp:0000000000000000 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:499    .text.debug_lamp:0000000000000000 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:500    .text.debug_lamp:0000000000000000 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:501    .text.debug_lamp:0000000000000000 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:503    .text.debug_lamp:0000000000000002 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:507    .text.debug_lamp:0000000000000008 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:508    .text.debug_lamp:0000000000000008 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:509    .text.debug_lamp:0000000000000008 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:513    .text.debug_lamp:000000000000000e .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:515    .text.debug_lamp:000000000000000e .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:517    .text.debug_lamp:0000000000000010 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:520    .text.debug_lamp:0000000000000018 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:527    .text.debug_lamp:0000000000000028 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:528    .text.debug_lamp:0000000000000028 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:531    .text.debug_lamp:0000000000000030 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:534    .text.debug_lamp:0000000000000034 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:536    .text.debug_lamp:0000000000000038 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:537    .text.debug_lamp:0000000000000038 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:538    .text.debug_lamp:000000000000003a .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:539    .text.debug_lamp:000000000000003a .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:542    .text.debug_lamp:000000000000003c .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:544    .text.debug_lamp:000000000000003e .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:547    .text.debug_lamp:0000000000000040 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:550    .text.debug_lamp:0000000000000042 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:552    .text.debug_lamp:0000000000000042 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:556    .text.debug_lamp:000000000000004a .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:558    .text.debug_lamp:000000000000004a .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:559    .text.debug_lamp:000000000000004a .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:560    .text.debug_lamp:000000000000004c .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:563    .text.debug_lamp:000000000000004e .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:565    .text.debug_lamp:0000000000000050 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:568    .text.debug_lamp:0000000000000052 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:571    .text.debug_lamp:0000000000000054 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:573    .text.debug_lamp:0000000000000054 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:575    .text.debug_lamp:000000000000005c .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:580    .sbss.button_peripheral:0000000000000000 .LANCHOR4
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:583    .sbss.button_peripheral:0000000000000000 button_peripheral
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:586    .sbss.button_pin:0000000000000000 .LANCHOR5
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:589    .sbss.button_pin:0000000000000000 button_pin
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:593    .sbss.peripheral:0000000000000000 .LANCHOR0
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:596    .sbss.peripheral:0000000000000000 peripheral
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:599    .sbss.phase:0000000000000000 .LANCHOR3
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:602    .sbss.phase:0000000000000000 phase
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:606    .sbss.pins:0000000000000000 .LANCHOR1
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:609    .sbss.pins:0000000000000000 pins
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:612    .sdata.dir:0000000000000000 .LANCHOR2
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:615    .sdata.dir:0000000000000000 dir
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:68     .text.gpio_clock_on:0000000000000058 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:176    .text.motor_init:000000000000007c .L0 
+GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s 			page 19
+
+
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:197    .text.set_motor_direction:0000000000000010 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:396    .text.motor_run:000000000000013a .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:453    .text.debug_button_init:0000000000000040 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:490    .text.debug_button_read:000000000000002a .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:578    .text.debug_lamp:000000000000005c .L0 
+                     .debug_frame:0000000000000000 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:48     .text.gpio_clock_on:0000000000000046 .L2
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:27     .text.gpio_clock_on:000000000000001e .L3
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:34     .text.gpio_clock_on:0000000000000034 .L4
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:42     .text.gpio_clock_on:0000000000000040 .L5
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:54     .text.gpio_clock_on:000000000000004c .L7
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:60     .text.gpio_clock_on:0000000000000052 .L8
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:38     .text.gpio_clock_on:0000000000000038 .L9
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:139    .text.motor_init:0000000000000052 .L11
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:190    .text.set_motor_direction:000000000000000a .L15
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:283    .text.motor_run:0000000000000072 .L20
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:300    .text.motor_run:000000000000008a .L21
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:310    .text.motor_run:00000000000000a2 .L19
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:323    .text.motor_run:00000000000000ac .L24
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:358    .text.motor_run:00000000000000ee .L27
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:351    .text.motor_run:00000000000000e0 .L28
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:240    .text.motor_run:0000000000000032 .L22
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:262    .text.motor_run:000000000000005e .L34
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:375    .text.motor_run:0000000000000112 .L29
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:331    .text.motor_run:00000000000000b2 .L26
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:256    .text.motor_run:0000000000000054 .L35
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:259    .text.motor_run:0000000000000058 .L36
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:554    .text.debug_lamp:000000000000004a .L42
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:1287   .debug_abbrev:0000000000000000 .Ldebug_abbrev0
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2155   .debug_str:0000000000000013 .LASF76
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2205   .debug_str:000000000000018f .LASF77
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2307   .debug_str:00000000000003d2 .LASF78
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2133   .debug_ranges:0000000000000000 .Ldebug_ranges0
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2151   .debug_line:0000000000000000 .Ldebug_line0
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2261   .debug_str:00000000000002d0 .LASF0
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2271   .debug_str:000000000000030e .LASF2
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2253   .debug_str:0000000000000299 .LASF1
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2315   .debug_str:0000000000000432 .LASF3
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2239   .debug_str:0000000000000241 .LASF4
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2219   .debug_str:00000000000001d8 .LASF5
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2269   .debug_str:00000000000002fb .LASF6
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2211   .debug_str:00000000000001b4 .LASF7
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2189   .debug_str:0000000000000126 .LASF8
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2291   .debug_str:0000000000000377 .LASF9
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2187   .debug_str:0000000000000118 .LASF10
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2255   .debug_str:00000000000002a5 .LASF11
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2161   .debug_str:00000000000000b2 .LASF12
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2197   .debug_str:000000000000015a .LASF13
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2257   .debug_str:00000000000002bc .LASF14
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2157   .debug_str:000000000000009b .LASF79
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2283   .debug_str:0000000000000358 .LASF15
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2285   .debug_str:0000000000000361 .LASF16
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2313   .debug_str:000000000000042a .LASF17
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2311   .debug_str:0000000000000421 .LASF18
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2301   .debug_str:00000000000003b4 .LASF19
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2223   .debug_str:00000000000001ed .LASF20
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2225   .debug_str:00000000000001f8 .LASF21
+GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s 			page 20
+
+
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2227   .debug_str:0000000000000203 .LASF22
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2229   .debug_str:000000000000020e .LASF23
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2231   .debug_str:0000000000000219 .LASF24
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2233   .debug_str:0000000000000224 .LASF25
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2207   .debug_str:00000000000001a5 .LASF26
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2215   .debug_str:00000000000001c6 .LASF27
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2217   .debug_str:00000000000001cf .LASF28
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2297   .debug_str:000000000000039e .LASF29
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2299   .debug_str:00000000000003a9 .LASF30
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2303   .debug_str:00000000000003be .LASF31
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2305   .debug_str:00000000000003c8 .LASF32
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2275   .debug_str:0000000000000329 .LASF33
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2277   .debug_str:0000000000000332 .LASF34
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2181   .debug_str:00000000000000ff .LASF35
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2203   .debug_str:0000000000000186 .LASF36
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2251   .debug_str:0000000000000290 .LASF37
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2267   .debug_str:00000000000002f3 .LASF38
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2287   .debug_str:000000000000036a .LASF39
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2193   .debug_str:0000000000000145 .LASF40
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2159   .debug_str:00000000000000ab .LASF41
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2163   .debug_str:00000000000000b9 .LASF42
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2165   .debug_str:00000000000000c3 .LASF43
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2167   .debug_str:00000000000000cd .LASF44
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2169   .debug_str:00000000000000d7 .LASF45
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2171   .debug_str:00000000000000e1 .LASF46
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2243   .debug_str:0000000000000267 .LASF47
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2245   .debug_str:0000000000000270 .LASF48
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2221   .debug_str:00000000000001e2 .LASF49
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2213   .debug_str:00000000000001bd .LASF50
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2295   .debug_str:0000000000000393 .LASF51
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2237   .debug_str:0000000000000235 .LASF52
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2183   .debug_str:0000000000000108 .LASF53
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2209   .debug_str:00000000000001af .LASF54
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2249   .debug_str:0000000000000285 .LASF55
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2273   .debug_str:0000000000000317 .LASF56
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2259   .debug_str:00000000000002c5 .LASF57
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2265   .debug_str:00000000000002e8 .LASF61
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:495    .text.debug_lamp:0000000000000000 .LFB8
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:576    .text.debug_lamp:000000000000005c .LFE8
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:1712   .debug_loc:0000000000000000 .LLST13
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2247   .debug_str:0000000000000279 .LASF58
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:1740   .debug_loc:0000000000000044 .LLST14
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2173   .debug_str:00000000000000eb .LASF59
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:1777   .debug_loc:000000000000009f .LLST15
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2235   .debug_str:000000000000022f .LASF60
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:1814   .debug_loc:00000000000000fa .LLST16
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:518    .text.debug_lamp:0000000000000018 .LVL31
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:525    .text.debug_lamp:0000000000000028 .LVL32
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:553    .text.debug_lamp:000000000000004a .LVL35
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:574    .text.debug_lamp:000000000000005c .LVL38
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2201   .debug_str:0000000000000174 .LASF80
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:458    .text.debug_button_read:0000000000000000 .LFB7
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:488    .text.debug_button_read:000000000000002a .LFE7
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:1828   .debug_loc:000000000000011b .LLST12
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:475    .text.debug_button_read:000000000000001c .LVL29
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2199   .debug_str:0000000000000162 .LASF62
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:401    .text.debug_button_init:0000000000000000 .LFB6
+GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s 			page 21
+
+
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:451    .text.debug_button_init:0000000000000040 .LFE6
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:1846   .debug_loc:0000000000000147 .LLST9
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:1864   .debug_loc:0000000000000173 .LLST10
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:1880   .debug_loc:00000000000001a0 .LLST11
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:421    .text.debug_button_init:0000000000000014 .LVL25
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:428    .text.debug_button_init:0000000000000026 .LVL26
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2309   .debug_str:0000000000000417 .LASF63
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:202    .text.motor_run:0000000000000000 .LFB5
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:394    .text.motor_run:000000000000013a .LFE5
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:1898   .debug_loc:00000000000001cc .LLST8
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:253    .text.motor_run:0000000000000050 .LVL19
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:282    .text.motor_run:0000000000000072 .LVL20
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:344    .text.motor_run:00000000000000d0 .LVL21
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:371    .text.motor_run:000000000000010c .LVL22
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:388    .text.motor_run:0000000000000130 .LVL23
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2191   .debug_str:0000000000000131 .LASF64
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:181    .text.set_motor_direction:0000000000000000 .LFB4
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:195    .text.set_motor_direction:0000000000000010 .LFE4
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2185   .debug_str:000000000000010e .LASF65
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2263   .debug_str:00000000000002dd .LASF66
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:73     .text.motor_init:0000000000000000 .LFB3
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:174    .text.motor_init:000000000000007c .LFE3
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:1931   .debug_loc:000000000000021c .LLST1
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:1949   .debug_loc:0000000000000248 .LLST2
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:1972   .debug_loc:0000000000000283 .LLST3
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2175   .debug_str:00000000000000f0 .LASF67
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:1986   .debug_loc:00000000000002a4 .LLST4
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2177   .debug_str:00000000000000f5 .LASF68
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2000   .debug_loc:00000000000002c5 .LLST5
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2179   .debug_str:00000000000000fa .LASF69
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2014   .debug_loc:00000000000002e6 .LLST6
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:128    .text.motor_init:0000000000000046 .LBB2
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:156    .text.motor_init:000000000000006e .LBE2
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2028   .debug_loc:0000000000000307 .LLST7
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:153    .text.motor_init:000000000000006a .LVL16
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:99     .text.motor_init:000000000000001e .LVL11
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2281   .debug_str:000000000000034a .LASF81
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:13     .text.gpio_clock_on:0000000000000000 .LFB2
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:66     .text.gpio_clock_on:0000000000000058 .LFE2
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2289   .debug_str:0000000000000372 .LASF70
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2050   .debug_loc:000000000000033e .LLST0
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:41     .text.gpio_clock_on:0000000000000040 .LVL2
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2293   .debug_str:0000000000000389 .LASF71
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2195   .debug_str:000000000000014d .LASF72
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2279   .debug_str:000000000000033b .LASF73
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2153   .debug_str:0000000000000000 .LASF74
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:2241   .debug_str:000000000000024f .LASF75
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:502    .text.debug_lamp:0000000000000002 .LCFI11
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:549    .text.debug_lamp:0000000000000042 .LCFI12
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:555    .text.debug_lamp:000000000000004a .LCFI13
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:570    .text.debug_lamp:0000000000000054 .LCFI14
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:498    .text.debug_lamp:0000000000000000 .LVL30
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:540    .text.debug_lamp:000000000000003a .LVL33
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:561    .text.debug_lamp:000000000000004c .LVL36
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:545    .text.debug_lamp:000000000000003e .LVL34
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:566    .text.debug_lamp:0000000000000050 .LVL37
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:469    .text.debug_button_read:0000000000000012 .LCFI9
+GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s 			page 22
+
+
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:484    .text.debug_button_read:0000000000000028 .LCFI10
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:408    .text.debug_button_init:0000000000000002 .LCFI7
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:447    .text.debug_button_init:000000000000003e .LCFI8
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:404    .text.debug_button_init:0000000000000000 .LVL24
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:445    .text.debug_button_init:000000000000003c .LVL28
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:442    .text.debug_button_init:000000000000003a .LVL27
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:211    .text.motor_run:000000000000000a .LCFI2
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:278    .text.motor_run:000000000000006a .LCFI3
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:284    .text.motor_run:0000000000000072 .LCFI4
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:320    .text.motor_run:00000000000000aa .LCFI5
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:324    .text.motor_run:00000000000000ac .LCFI6
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:80     .text.motor_init:0000000000000002 .LCFI0
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:170    .text.motor_init:000000000000007a .LCFI1
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:76     .text.motor_init:0000000000000000 .LVL10
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:133    .text.motor_init:0000000000000048 .LVL13
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:138    .text.motor_init:0000000000000052 .LVL14
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:130    .text.motor_init:0000000000000046 .LVL12
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:150    .text.motor_init:0000000000000062 .LVL15
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:162    .text.motor_init:0000000000000072 .LVL17
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:17     .text.gpio_clock_on:0000000000000000 .LVL0
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:37     .text.gpio_clock_on:0000000000000038 .LVL1
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:45     .text.gpio_clock_on:0000000000000044 .LVL3
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:47     .text.gpio_clock_on:0000000000000046 .LVL4
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:51     .text.gpio_clock_on:000000000000004a .LVL5
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:53     .text.gpio_clock_on:000000000000004c .LVL6
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:57     .text.gpio_clock_on:0000000000000050 .LVL7
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:59     .text.gpio_clock_on:0000000000000052 .LVL8
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:63     .text.gpio_clock_on:0000000000000056 .LVL9
+C:\Users\DellBoy\AppData\Local\Temp\cca5divZ.s:625    .debug_info:0000000000000000 .Ldebug_info0
+
+UNDEFINED SYMBOLS
+rcu_periph_clock_enable
+gpio_init
+gpio_bit_set
+gpio_bit_reset
+gpio_input_bit_get

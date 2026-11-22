@@ -1,4 +1,4 @@
-GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s 			page 1
+GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s 			page 1
 
 
    1              		.file	"main.c"
@@ -49,56 +49,181 @@ GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s 			page 1
   38              	.Letext0:
   39              		.file 2 "c:\\users\\dellboy\\desktop\\toolchain-gd32v-v202-win\\compiler\\riscv64-unknown-elf\\inc
   40              		.file 3 "c:\\users\\dellboy\\desktop\\toolchain-gd32v-v202-win\\compiler\\riscv64-unknown-elf\\inc
-  41              		.file 4 "stepperUP.h"
-  42              		.file 5 "./../../firmware/GD32VF103_standard_peripheral/system_gd32vf103.h"
-GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s 			page 2
+  41              		.file 4 "c:\\users\\dellboy\\desktop\\toolchain-gd32v-v202-win\\compiler\\lib\\gcc\\riscv64-unknow
+  42              		.file 5 "c:\\users\\dellboy\\desktop\\toolchain-gd32v-v202-win\\compiler\\riscv64-unknown-elf\\inc
+  43              		.file 6 "c:\\users\\dellboy\\desktop\\toolchain-gd32v-v202-win\\compiler\\riscv64-unknown-elf\\inc
+  44              		.file 7 "c:\\users\\dellboy\\desktop\\toolchain-gd32v-v202-win\\compiler\\riscv64-unknown-elf\\inc
+  45              		.file 8 "./../../firmware/GD32VF103_standard_peripheral/system_gd32vf103.h"
+  46              		.file 9 "c:\\users\\dellboy\\desktop\\toolchain-gd32v-v202-win\\compiler\\riscv64-unknown-elf\\inc
+  47              		.file 10 "lcd.h"
+  48              		.file 11 "stepperUP.h"
+GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s 			page 2
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 main.c
-C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:13     .text.startup.main:0000000000000000 main
-C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:17     .text.startup.main:0000000000000000 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:18     .text.startup.main:0000000000000000 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:19     .text.startup.main:0000000000000000 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:20     .text.startup.main:0000000000000000 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:22     .text.startup.main:0000000000000002 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:24     .text.startup.main:0000000000000004 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:26     .text.startup.main:0000000000000004 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:30     .text.startup.main:000000000000000c .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:31     .text.startup.main:000000000000000c .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:34     .text.startup.main:0000000000000016 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:37     .text.startup.main:0000000000000016 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:13     .text.startup.main:0000000000000000 main
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:17     .text.startup.main:0000000000000000 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:18     .text.startup.main:0000000000000000 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:19     .text.startup.main:0000000000000000 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:20     .text.startup.main:0000000000000000 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:22     .text.startup.main:0000000000000002 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:24     .text.startup.main:0000000000000004 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:26     .text.startup.main:0000000000000004 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:30     .text.startup.main:000000000000000c .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:31     .text.startup.main:000000000000000c .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:34     .text.startup.main:0000000000000016 .L0 
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:37     .text.startup.main:0000000000000016 .L0 
                      .debug_frame:0000000000000000 .L0 
-C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:28     .text.startup.main:000000000000000c .L2
-C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:160    .debug_abbrev:0000000000000000 .Ldebug_abbrev0
-C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:358    .debug_str:00000000000000e5 .LASF14
-C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:336    .debug_str:000000000000001c .LASF15
-C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:340    .debug_str:000000000000002e .LASF16
-C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:324    .debug_ranges:0000000000000000 .Ldebug_ranges0
-C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:330    .debug_line:0000000000000000 .Ldebug_line0
-C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:334    .debug_str:000000000000000f .LASF0
-C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:362    .debug_str:0000000000000180 .LASF1
-C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:344    .debug_str:000000000000008a .LASF2
-C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:368    .debug_str:00000000000001a1 .LASF3
-C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:360    .debug_str:000000000000016d .LASF4
-C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:364    .debug_str:000000000000018c .LASF5
-C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:338    .debug_str:0000000000000023 .LASF9
-C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:354    .debug_str:00000000000000c5 .LASF6
-C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:356    .debug_str:00000000000000d7 .LASF7
-C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:342    .debug_str:0000000000000073 .LASF8
-C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:350    .debug_str:00000000000000ac .LASF10
-C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:352    .debug_str:00000000000000b5 .LASF17
-C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:366    .debug_str:0000000000000195 .LASF11
-C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:346    .debug_str:0000000000000098 .LASF18
-C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:14     .text.startup.main:0000000000000000 .LFB2
-C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:35     .text.startup.main:0000000000000016 .LFE2
-C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:298    .debug_loc:0000000000000000 .LLST0
-C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:27     .text.startup.main:000000000000000c .LVL0
-C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:32     .text.startup.main:0000000000000014 .LVL1
-C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:348    .debug_str:000000000000009d .LASF12
-C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:332    .debug_str:0000000000000000 .LASF13
-C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:21     .text.startup.main:0000000000000002 .LCFI0
-C:\Users\DellBoy\AppData\Local\Temp\ccEgEWr5.s:44     .debug_info:0000000000000000 .Ldebug_info0
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:28     .text.startup.main:000000000000000c .L2
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:1516   .debug_abbrev:0000000000000000 .Ldebug_abbrev0
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2244   .debug_str:0000000000000401 .LASF127
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2146   .debug_str:0000000000000248 .LASF128
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2256   .debug_str:00000000000004bf .LASF129
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2022   .debug_ranges:0000000000000000 .Ldebug_ranges0
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2028   .debug_line:0000000000000000 .Ldebug_line0
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2238   .debug_str:00000000000003e1 .LASF0
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2064   .debug_str:00000000000000c4 .LASF1
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2178   .debug_str:00000000000002d9 .LASF2
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2032   .debug_str:000000000000000c .LASF3
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2248   .debug_str:0000000000000492 .LASF4
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2080   .debug_str:0000000000000109 .LASF5
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2104   .debug_str:0000000000000183 .LASF9
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2126   .debug_str:00000000000001e2 .LASF6
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2090   .debug_str:0000000000000132 .LASF7
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2048   .debug_str:0000000000000065 .LASF8
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2260   .debug_str:0000000000000517 .LASF10
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2120   .debug_str:00000000000001c2 .LASF120
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2228   .debug_str:00000000000003ba .LASF11
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2172   .debug_str:00000000000002b6 .LASF12
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2060   .debug_str:00000000000000b6 .LASF13
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2226   .debug_str:00000000000003b2 .LASF14
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2268   .debug_str:0000000000000538 .LASF15
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2144   .debug_str:0000000000000242 .LASF16
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2118   .debug_str:00000000000001bb .LASF17
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2218   .debug_str:0000000000000392 .LASF18
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2220   .debug_str:000000000000039a .LASF19
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2194   .debug_str:000000000000031f .LASF20
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2252   .debug_str:00000000000004aa .LASF21
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2176   .debug_str:00000000000002c7 .LASF22
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2184   .debug_str:00000000000002f6 .LASF23
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2112   .debug_str:00000000000001a8 .LASF28
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2240   .debug_str:00000000000003ee .LASF24
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2212   .debug_str:000000000000037d .LASF25
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2106   .debug_str:000000000000018e .LASF26
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2264   .debug_str:000000000000052d .LASF27
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2116   .debug_str:00000000000001b6 .LASF29
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2058   .debug_str:00000000000000ad .LASF30
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2282   .debug_str:000000000000057d .LASF31
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2070   .debug_str:00000000000000dc .LASF32
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2292   .debug_str:00000000000005a3 .LASF33
+GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s 			page 3
+
+
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2162   .debug_str:0000000000000281 .LASF34
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2156   .debug_str:0000000000000267 .LASF35
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2224   .debug_str:00000000000003a8 .LASF36
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2186   .debug_str:00000000000002ff .LASF37
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2278   .debug_str:0000000000000563 .LASF38
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2074   .debug_str:00000000000000eb .LASF39
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2034   .debug_str:0000000000000016 .LASF40
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2030   .debug_str:0000000000000000 .LASF41
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2246   .debug_str:0000000000000489 .LASF42
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2084   .debug_str:0000000000000119 .LASF43
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2164   .debug_str:000000000000028a .LASF44
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2204   .debug_str:000000000000034d .LASF45
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2102   .debug_str:000000000000017e .LASF46
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2188   .debug_str:0000000000000309 .LASF47
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2068   .debug_str:00000000000000d6 .LASF48
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2236   .debug_str:00000000000003db .LASF49
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2196   .debug_str:000000000000032a .LASF50
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2082   .debug_str:0000000000000112 .LASF51
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2128   .debug_str:00000000000001f4 .LASF52
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2050   .debug_str:000000000000007c .LASF53
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2076   .debug_str:00000000000000f9 .LASF54
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2114   .debug_str:00000000000001b0 .LASF55
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2154   .debug_str:0000000000000260 .LASF56
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2222   .debug_str:00000000000003a2 .LASF57
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2062   .debug_str:00000000000000bd .LASF58
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2066   .debug_str:00000000000000d0 .LASF59
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2274   .debug_str:0000000000000555 .LASF60
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2234   .debug_str:00000000000003d2 .LASF61
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2094   .debug_str:0000000000000148 .LASF62
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2130   .debug_str:00000000000001fa .LASF63
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2150   .debug_str:0000000000000254 .LASF64
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2198   .debug_str:0000000000000332 .LASF65
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2190   .debug_str:0000000000000310 .LASF66
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2214   .debug_str:0000000000000385 .LASF67
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2230   .debug_str:00000000000003c6 .LASF68
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2086   .debug_str:0000000000000121 .LASF69
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2122   .debug_str:00000000000001d2 .LASF70
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2110   .debug_str:00000000000001a0 .LASF71
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2202   .debug_str:0000000000000348 .LASF72
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2038   .debug_str:0000000000000026 .LASF73
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2210   .debug_str:0000000000000364 .LASF74
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2206   .debug_str:0000000000000352 .LASF75
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2168   .debug_str:000000000000029c .LASF76
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2208   .debug_str:000000000000035a .LASF77
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2142   .debug_str:000000000000023a .LASF78
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2088   .debug_str:0000000000000128 .LASF79
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2288   .debug_str:0000000000000599 .LASF80
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2174   .debug_str:00000000000002bd .LASF81
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2124   .debug_str:00000000000001da .LASF82
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2092   .debug_str:0000000000000140 .LASF83
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2148   .debug_str:000000000000024f .LASF84
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2040   .debug_str:0000000000000031 .LASF85
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2272   .debug_str:000000000000054b .LASF86
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2078   .debug_str:0000000000000101 .LASF87
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2072   .debug_str:00000000000000e6 .LASF88
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2232   .debug_str:00000000000003cd .LASF89
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2192   .debug_str:0000000000000318 .LASF90
+GAS LISTING C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s 			page 4
+
+
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2266   .debug_str:0000000000000532 .LASF91
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2132   .debug_str:0000000000000200 .LASF92
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2180   .debug_str:00000000000002e7 .LASF93
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2036   .debug_str:000000000000001e .LASF94
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2216   .debug_str:000000000000038c .LASF95
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2152   .debug_str:000000000000025a .LASF96
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2250   .debug_str:00000000000004a5 .LASF97
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2262   .debug_str:0000000000000520 .LASF98
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2242   .debug_str:00000000000003f4 .LASF99
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2140   .debug_str:000000000000022d .LASF100
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2280   .debug_str:000000000000056e .LASF101
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2170   .debug_str:00000000000002a7 .LASF102
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2136   .debug_str:0000000000000216 .LASF103
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2284   .debug_str:0000000000000586 .LASF104
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2200   .debug_str:000000000000033b .LASF105
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2286   .debug_str:000000000000058b .LASF106
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2056   .debug_str:000000000000009f .LASF107
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2270   .debug_str:0000000000000541 .LASF108
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2138   .debug_str:0000000000000221 .LASF109
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2254   .debug_str:00000000000004b2 .LASF110
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2098   .debug_str:0000000000000161 .LASF111
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2054   .debug_str:0000000000000090 .LASF112
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2096   .debug_str:0000000000000150 .LASF113
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2042   .debug_str:000000000000003a .LASF114
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2044   .debug_str:0000000000000049 .LASF115
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2182   .debug_str:00000000000002ed .LASF116
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2160   .debug_str:000000000000027a .LASF117
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2158   .debug_str:0000000000000271 .LASF118
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2276   .debug_str:000000000000055b .LASF119
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2052   .debug_str:0000000000000085 .LASF130
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2108   .debug_str:0000000000000194 .LASF121
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2258   .debug_str:0000000000000504 .LASF122
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2166   .debug_str:0000000000000292 .LASF123
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2046   .debug_str:000000000000005a .LASF124
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2290   .debug_str:000000000000059e .LASF131
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:14     .text.startup.main:0000000000000000 .LFB2
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:35     .text.startup.main:0000000000000016 .LFE2
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:1996   .debug_loc:0000000000000000 .LLST0
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:27     .text.startup.main:000000000000000c .LVL0
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:32     .text.startup.main:0000000000000014 .LVL1
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2100   .debug_str:000000000000016f .LASF125
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:2134   .debug_str:0000000000000207 .LASF126
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:21     .text.startup.main:0000000000000002 .LCFI0
+C:\Users\DellBoy\AppData\Local\Temp\ccRJWVEs.s:50     .debug_info:0000000000000000 .Ldebug_info0
 
 UNDEFINED SYMBOLS
 stepperUP_init

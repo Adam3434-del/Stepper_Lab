@@ -26,7 +26,8 @@ build/main.o: main.c stepperUP.h \
  ../../firmware/RISCV/drivers/n200_func.h \
  ../../firmware/RISCV/drivers/n200_timer.h \
  ../../firmware/RISCV/drivers/n200_eclic.h \
- ../../firmware/RISCV/drivers/riscv_const.h
+ ../../firmware/RISCV/drivers/riscv_const.h bsp_motor/bsp_motor.h \
+ bsp_sensor/bsp_sensor.h lcd.h
 
 stepperUP.h:
 
@@ -85,3 +86,9 @@ stepperUP.h:
 ../../firmware/RISCV/drivers/n200_eclic.h:
 
 ../../firmware/RISCV/drivers/riscv_const.h:
+
+bsp_motor/bsp_motor.h:
+
+bsp_sensor/bsp_sensor.h:
+
+lcd.h:
